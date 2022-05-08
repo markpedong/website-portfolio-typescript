@@ -52,6 +52,7 @@ export const Landing = () => {
             <ActionIcon>
               <AiFillGithub />
             </ActionIcon>
+
             <ActionIcon>
               <AiFillLinkedin />
             </ActionIcon>
