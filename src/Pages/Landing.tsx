@@ -3,13 +3,22 @@ import {
   Container,
   Group,
   Image,
+  Paper,
   Text,
   useMantineColorScheme,
 } from "@mantine/core";
 import React from "react";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import logo from "../Images/logo.svg";
+import picture from "../Images/mypicture.png";
 import { FlexContainer } from "../Styles/Container";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
+import {
+  AiFillGithub,
+  AiFillInstagram,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
+
 export const Landing = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -32,6 +41,28 @@ export const Landing = () => {
             {dark ? <MdLightMode size={18} /> : <MdDarkMode size={18} />}
           </ActionIcon>
         </Group>
+      </FlexContainer>
+      <FlexContainer>
+        <Image src={picture} />
+        <Paper>
+          <Text>Hi my name is,</Text>
+          <Text>Mark Jesson Pedong</Text>
+          <Text>Aspring Programmer</Text>
+          <Container>
+            <ActionIcon>
+              <AiFillGithub />
+            </ActionIcon>
+            <ActionIcon>
+              <AiFillLinkedin />
+            </ActionIcon>
+            <ActionIcon>
+              <AiFillTwitterCircle />
+            </ActionIcon>
+            <ActionIcon>
+              <AiFillInstagram />
+            </ActionIcon>
+          </Container>
+        </Paper>
       </FlexContainer>
     </Container>
   );
