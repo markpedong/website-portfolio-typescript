@@ -6,6 +6,7 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
+import { About } from "./Pages/About";
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
@@ -24,6 +25,7 @@ export const App = () => {
           withNormalizeCSS
         >
           <Landing />
+          <About />
         </MantineProvider>
       </ColorSchemeProvider>
     </div>
