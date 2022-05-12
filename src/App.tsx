@@ -9,6 +9,7 @@ import {
 import { About } from "./Pages/About";
 import { Programs } from "./Pages/Programs";
 import { Portfolio } from "./Pages/Portfolio";
+import { Contact } from "./Pages/Contact";
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
@@ -30,6 +31,7 @@ export const App = () => {
           <About />
           <Programs />
           <Portfolio />
+          <Contact />
         </MantineProvider>
       </ColorSchemeProvider>
     </div>
