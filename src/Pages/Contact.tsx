@@ -1,7 +1,7 @@
+import { Container } from "@mantine/core";
 import React from "react";
+import { WhiteContainer } from "../Styles/Container";
 
-type Props = {};
-
-export const Contact = (props: Props) => {
-  return <div>Contact</div>;
+export const Contact = () => {
+  return <WhiteContainer fluid>Contact</WhiteContainer>;
 };
