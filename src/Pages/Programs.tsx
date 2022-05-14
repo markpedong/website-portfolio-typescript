@@ -1,7 +1,6 @@
 import React from "react";
+import { WhiteContainer } from "../Styles/Container";
 
-type Props = {};
-
-export const Programs = (props: Props) => {
-  return <div>Programs</div>;
+export const Programs = () => {
+  return <WhiteContainer>Programs</WhiteContainer>;
 };
