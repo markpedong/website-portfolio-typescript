@@ -42,7 +42,7 @@ export const Landing = () => {
           </ActionIcon>
         </Group>
       </FlexContainer>
-      <FlexContainer>
+      {/* <FlexContainer>
         <Image src={picture} />
         <Paper>
           <Text>Hi my name is,</Text>
@@ -64,7 +64,7 @@ export const Landing = () => {
             </ActionIcon>
           </Container>
         </Paper>
-      </FlexContainer>
+      </FlexContainer> */}
     </Container>
   );
 };

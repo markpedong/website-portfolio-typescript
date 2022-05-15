@@ -28,10 +28,10 @@ export const App = () => {
           withNormalizeCSS
         >
           <Landing />
-          <About />
+          {/* <About />
           <Programs />
           <Portfolio />
-          <Contact />
+          <Contact /> */}
         </MantineProvider>
       </ColorSchemeProvider>
     </div>
