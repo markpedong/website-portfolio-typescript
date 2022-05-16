@@ -18,6 +18,7 @@ import {
   AiFillLinkedin,
   AiFillTwitterCircle,
 } from "react-icons/ai";
+import { BlackText } from "../Styles/Text";
 
 export const Landing = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -28,10 +29,10 @@ export const Landing = () => {
       <FlexContainer>
         <Image src={logo} height="75px" width="75px" />
         <Group>
-          <Text>Home</Text>
-          <Text>About</Text>
-          <Text>Portfolio</Text>
-          <Text>Contact</Text>
+          <BlackText>Home</BlackText>
+          <BlackText>About</BlackText>
+          <BlackText>Portfolio</BlackText>
+          <BlackText>Contact</BlackText>
           <ActionIcon
             variant="outline"
             color={dark ? "yellow" : "blue"}
