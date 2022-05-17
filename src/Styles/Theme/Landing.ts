@@ -59,8 +59,6 @@ export const NavStyles = createStyles((theme) => ({
 
   landingContent: {
     paddingBlockStart: "5rem",
-    alignItems: "start",
-    display: "flex",
 
     [theme.fn.largerThan("md")]: {
       flexDirection: "row",
