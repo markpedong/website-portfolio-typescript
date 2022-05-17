@@ -4,6 +4,7 @@ import { Landing } from "./Pages/Landing";
 import {
   ColorScheme,
   ColorSchemeProvider,
+  Global,
   MantineProvider,
 } from "@mantine/core";
 import { About } from "./Pages/About";
@@ -23,7 +24,7 @@ export const App = () => {
         toggleColorScheme={toggleColorScheme}
       >
         <MantineProvider
-          theme={{ colorScheme }}
+          theme={{ colorScheme, fontFamily: "Inter" }}
           withGlobalStyles
           withNormalizeCSS
         >
