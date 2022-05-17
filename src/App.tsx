@@ -24,7 +24,21 @@ export const App = () => {
         toggleColorScheme={toggleColorScheme}
       >
         <MantineProvider
-          theme={{ colorScheme, fontFamily: "Inter" }}
+          theme={{
+            colorScheme,
+            fontFamily: "Inter",
+          }}
+          defaultProps={{
+            Container: {
+              sizes: {
+                xs: 576,
+                sm: 768,
+                md: 992,
+                lg: 1200,
+                xl: 1400,
+              },
+            },
+          }}
           withGlobalStyles
           withNormalizeCSS
         >
