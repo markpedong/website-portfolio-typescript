@@ -18,8 +18,9 @@ import logo from "../Images/logo.svg";
 import logodark from "../Images/logo_dark.svg";
 import picture from "../Images/mypicture.png";
 import picture992 from "../Images/mypicture@992.png";
-import { BlackText, WhiteText } from "../Styles/Text";
-import { NavStyles } from "../Theme/Navbar";
+import { FlexContainer } from "../Styles/StyledComponents/Container";
+import { BlackText, WhiteText } from "../Styles/StyledComponents/Text";
+import { NavStyles } from "../Styles/Theme/Landing";
 
 export const Landing = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -100,7 +101,7 @@ export const Landing = () => {
           </Transition>
         </Container>
       </Container>
-      <Container px="0" size="md" className={classes.landingContent}>
+      <FlexContainer px="0" size="md" className={classes.landingContent}>
         <Paper className={classes.landingTitle}>
           <Text style={{ fontSize: "1.5rem" }}>Hi, I am</Text>
           <Text className={classes.name}>Mark Jesson Pedong</Text>
@@ -129,7 +130,7 @@ export const Landing = () => {
         >
           <Image src={picture992} height="30rem" />
         </MediaQuery>
-      </Container>
+      </FlexContainer>
     </Container>
   );
 };

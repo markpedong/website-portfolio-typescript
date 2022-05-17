@@ -1,10 +1,16 @@
 import { Container } from "@mantine/core";
 import styled from "styled-components";
 
+type Props = {
+  position: "flex-start" | "flex-end" | "center" | "space-between";
+  direction: "row" | "column" | "row-reverse" | "column-reverse";
+};
+
 export const FlexContainer = styled(Container)`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: ${(props: Props) => props.position};
+  align-items: ${(props: Props) => props.position};
+  flex-direction: ${(props: Props) => props.direction};
 `;
 
 export const WhiteContainer = styled(Container)`
