@@ -2,7 +2,7 @@ import { Container } from "@mantine/core";
 import styled from "styled-components";
 
 type Props = {
-  position: "flex-start" | "flex-end" | "center" | "space-between";
+  position: "center" | "space-between" | "start" | "end";
   direction: "row" | "column" | "row-reverse" | "column-reverse";
 };
 
