@@ -36,6 +36,12 @@ export const Footer = createStyles((theme) => ({
     borderRadius: "5px",
     fontFamily: "Montserrat, sans-serif",
     backgroundColor: "transparent",
+    transition: "all 0.2s ease",
+
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "black",
+    },
 
     "&:active": {
       backgroundColor: "transparent",
