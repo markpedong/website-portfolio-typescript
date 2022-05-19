@@ -25,4 +25,26 @@ export const Footer = createStyles((theme) => ({
       display: "none",
     },
   },
+
+  ReadMore: {
+    height: "100%",
+    marginTop: "2rem",
+    textTransform: "uppercase",
+    color: "white",
+    border: "1px solid white",
+    padding: "1rem 2rem",
+    borderRadius: "5px",
+    fontFamily: "Montserrat, sans-serif",
+    backgroundColor: "transparent",
+    transition: "all 0.2s ease",
+
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "black",
+    },
+
+    "&:active": {
+      backgroundColor: "transparent",
+    },
+  },
 }));
