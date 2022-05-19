@@ -5,13 +5,13 @@ export const NavStyles = createStyles((theme) => ({
     [theme.fn.smallerThan("md")]: {
       background:
         theme.colorScheme === "dark"
-          ? "black"
+          ? "linear-gradient(180deg, rgb(15,18,28) 67%, rgba(0, 0, 0, 1) 33%)"
           : "linear-gradient(180deg, #dee2e6 67%, rgba(0, 0, 0, 1) 33%)",
     },
     [theme.fn.largerThan("md")]: {
       background:
         theme.colorScheme === "dark"
-          ? "black"
+          ? "linear-gradient(100deg, rgb(15,18,28) 48%, rgba(0, 0, 0, 1) 48%)"
           : "linear-gradient(100deg, #dee2e6 48%, rgba(0, 0, 0, 1) 48%)",
     },
   },

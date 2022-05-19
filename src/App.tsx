@@ -45,8 +45,8 @@ export const App = () => {
         >
           <Landing />
           <LandingFooter />
-          {/* <About />
-          <Programs />
+          <About />
+          {/* <Programs />
           <Portfolio />
           <Contact /> */}
         </MantineProvider>
