@@ -1,8 +1,8 @@
-import { Button, Container, Image, MediaQuery, Text } from "@mantine/core";
+import { Button, Container, Image, Text } from "@mantine/core";
 import React from "react";
-import { Footer } from "../Styles/Theme/Footer";
 import avalanche from "../Images/avalanchelogo.svg";
 import { FlexContainer } from "../Styles/StyledComponents/Container";
+import { Footer } from "../Styles/Theme/Footer";
 
 export const LandingFooter = () => {
   const { classes } = Footer();

@@ -10,7 +10,7 @@ export const AboutStyles = createStyles((theme) => ({
         : "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(196,196,196,1) 100%)",
   },
   Container: {
-    paddingBlock: "5rem",
+    paddingBlockStart: "5rem",
   },
 
   Maintenance: {
@@ -35,7 +35,6 @@ export const AboutStyles = createStyles((theme) => ({
     textAlign: "center",
     gap: "3rem",
     paddingInline: 0,
-    paddingBlockEnd: "8rem",
   },
 
   Image: {
@@ -47,11 +46,17 @@ export const AboutStyles = createStyles((theme) => ({
   Divider: {
     display: "flex",
     justifyContent: "center",
-    marginBlock: "8rem",
+    paddingBlock: "8rem",
   },
 
   Title: {
     border:
       theme.colorScheme === "dark" ? "4px solid white" : "4px solid black",
+  },
+
+  Program: {
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
   },
 }));

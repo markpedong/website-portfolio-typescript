@@ -19,6 +19,10 @@ import react from "../Images/react.svg";
 import git from "../Images/git.svg";
 import typescript from "../Images/typescript.svg";
 import mantine from "../Images/mantine.svg";
+import figma from "../Images/figma.svg";
+import premierepro from "../Images/premierepro.svg";
+import photoshop from "../Images/photoshop.svg";
+import word from "../Images/word.svg";
 
 export const NavLinks = ["Home", "About", "Portfolio", "Contact"];
 export const SocialLinks = [
@@ -100,5 +104,27 @@ export const ProgramsUsing = [
   {
     title: "mantine",
     logo: mantine,
+  },
+];
+
+export const Learning = [
+  {
+    title: "figma",
+    logo: figma,
+  },
+];
+
+export const OtherPrograms = [
+  {
+    title: "premiere",
+    logo: premierepro,
+  },
+  {
+    title: "photoshop",
+    logo: photoshop,
+  },
+  {
+    title: "microsoft word",
+    logo: word,
   },
 ];
