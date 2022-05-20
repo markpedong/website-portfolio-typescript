@@ -54,7 +54,7 @@ export const Portfolio = () => {
                   src={project.background}
                   style={{
                     color: "white",
-                    padding: "0.5rem 1rem",
+                    padding: "0.5rem",
                   }}
                 >
                   <Text size="xs" style={{ fontStyle: "italic" }}>
@@ -67,11 +67,11 @@ export const Portfolio = () => {
                       wordBreak: "break-word",
                     }}
                     weight={800}
-                    py="xl"
+                    py="lg"
                   >
                     {project.title}
                   </Text>
-                  <Text style={{ fontSize: "0.9rem" }} weight={600} pb="xl">
+                  <Text style={{ fontSize: "0.9rem" }} weight={600} pb="lg">
                     {project.description}
                   </Text>
                   <Text size="xs" weight={800} transform="capitalize">

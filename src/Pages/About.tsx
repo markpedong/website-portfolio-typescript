@@ -1,6 +1,8 @@
 import { Container, Image, Text, useMantineColorScheme } from "@mantine/core";
 import React from "react";
+import { HeaderAndDescription } from "../Component/HeaderAndDescription";
 import { ProgramComp } from "../Component/Program";
+import { AboutDescription } from "../Config/Text";
 import {
   Learning,
   OtherPrograms,
@@ -24,21 +26,7 @@ export const About = () => {
   return (
     <Container fluid className={classes.MainBG}>
       <Container className={classes.Container} size="md">
-        <FlexContainer className={classes.About} size="sm">
-          <HeaderBorder className={classes.Title} padding={`${true}`}>
-            about me
-          </HeaderBorder>
-          <Text>
-            A 21-year old Self-taught / Aspiring Programmer living in Cavite,
-            Philippines. I'm continuously learning different Programming
-            Softwares in order to attain my goals.
-          </Text>
-        </FlexContainer>
-        <Image
-          className={classes.Divider}
-          src={colorScheme === "dark" ? divider_dark : divider}
-          width="15rem"
-        />
+        <HeaderAndDescription title="about me" description={AboutDescription} />
         <GridContainer>
           {Skills.map((skill) => (
             <SkillContainer

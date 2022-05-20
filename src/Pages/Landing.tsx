@@ -10,7 +10,7 @@ import {
   Transition,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useBooleanToggle } from "@mantine/hooks";
+import { useBooleanToggle, useScrollIntoView } from "@mantine/hooks";
 import React from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { NavLinks, SocialLinks } from "../Config/Variable";

@@ -5,6 +5,7 @@ import {
 } from "@mantine/core";
 import React, { useState } from "react";
 import { About } from "./Pages/About";
+import { Contact } from "./Pages/Contact";
 import { Landing } from "./Pages/Landing";
 import { LandingFooter } from "./Pages/LandingFooter";
 import { Portfolio } from "./Pages/Portfolio";
@@ -44,8 +45,7 @@ export const App = () => {
           <LandingFooter />
           <About />
           <Portfolio />
-          {/* 
-          <Contact /> */}
+          <Contact />
         </MantineProvider>
       </ColorSchemeProvider>
     </div>

@@ -1,6 +1,48 @@
+import { Button, Center, Container, Input } from "@mantine/core";
 import React from "react";
-import { WhiteContainer } from "../Styles/StyledComponents/Container";
+import { HeaderAndDescription } from "../Component/HeaderAndDescription";
+import { ContactDescription } from "../Config/Text";
+import { ContactStyles } from "../Styles/Theme/Contact";
 
 export const Contact = () => {
-  return <WhiteContainer fluid>Contact</WhiteContainer>;
+  const { classes } = ContactStyles();
+  return (
+    <Container className={classes.Container} fluid>
+      <Container className={classes.MainContainer} size="md">
+        <HeaderAndDescription
+          title="contact"
+          description={ContactDescription}
+        />
+        <Container size="xs">
+          <Input
+            className={classes.Input}
+            variant="unstyled"
+            size="md"
+            placeholder="name"
+          />
+          <Input
+            className={classes.Input}
+            variant="unstyled"
+            size="md"
+            placeholder="name"
+          />
+          <Input
+            className={classes.Input}
+            variant="unstyled"
+            size="md"
+            placeholder="name"
+          />
+          <Input
+            className={classes.Input}
+            variant="unstyled"
+            size="md"
+            placeholder="name"
+          />
+          <Center>
+            <Button className={classes.Submit}>Submit</Button>
+          </Center>
+        </Container>
+      </Container>
+    </Container>
+  );
 };
