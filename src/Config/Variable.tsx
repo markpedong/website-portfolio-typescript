@@ -23,6 +23,13 @@ import figma from "../Images/figma.svg";
 import premierepro from "../Images/premierepro.svg";
 import photoshop from "../Images/photoshop.svg";
 import word from "../Images/word.svg";
+import Affiliate from "../Images/Affiliate.jpg";
+import BlockChain from "../Images/BlockChain.jpg";
+import BlockDetails from "../Images/BlockDetails.jpg";
+import Calculator from "../Images/Calculator.jpg";
+import Electricity from "../Images/Electricity.jpg";
+import Item from "../Images/Item.jpg";
+import Recipe from "../Images/Recipe.jpg";
 
 export const NavLinks = ["Home", "About", "Portfolio", "Contact"];
 export const SocialLinks = [
@@ -126,5 +133,76 @@ export const OtherPrograms = [
   {
     title: "microsoft word",
     logo: word,
+  },
+];
+
+export const ProjectArr = [
+  {
+    background: BlockDetails,
+    written: "coded, designed",
+    title: "BLOCKDETAILS",
+    description:
+      "I created this website as a Clone for CoinmarketCap and Coingecko!",
+    techStack: [typescript, react, mantine],
+    website: "https://block-details.web.app/",
+    github: "https://github.com/markpedong/blockdetails",
+  },
+  {
+    background: Affiliate,
+    written: "coded, designed",
+    title: "SOLITUDE",
+    description:
+      "Find discounted deals and discounts for your favorite products!",
+    techStack: [react, bootstrap, sass],
+    website: "https://solitude.web.app/",
+    github: "https://github.com/markpedong/affiliate-marketing",
+  },
+  {
+    background: BlockChain,
+    written: "coded, designed",
+    title: "BLOCKCHAIN PROJECTS",
+    description:
+      "Browse different network in order to find the Project you need!",
+    techStack: [bootstrap, sass, javascript],
+    website: "https://blockchainprojects.web.app/",
+    github: "https://github.com/markpedong/blockchainprojects",
+  },
+  {
+    background: Electricity,
+    written: "coded, designed",
+    title: "ELECTRICITY CALCULATOR",
+    description: "Make lives easier by knowing the cost of the Electricty",
+    techStack: [javascript, sass, bootstrap],
+    website: "https://elec-calculator.web.app/",
+    github: "https://github.com/markpedong/Electricity-Calculator",
+  },
+  {
+    background: Recipe,
+    written: "coded",
+    title: "FORKIFY ©️JONASSCHMEDTMANN",
+    description:
+      "This is just a test project when I started learning Javascript!",
+    techStack: [javascript, css, html],
+    website: "https://forkify-markpedong.web.app/",
+    github: "https://github.com/markpedong/Forkify-APP",
+  },
+  {
+    background: Item,
+    written: "coded, designed",
+    title: "ITEM TRACKER",
+    description:
+      "This is just a test project when I started learning Javascript!",
+    techStack: [javascript, css, html],
+    website: "https://project05-item-tracker.web.app/",
+    github: "https://github.com/markpedong/Item-Tracker",
+  },
+  {
+    background: Calculator,
+    written: "coded, designed",
+    title: "CALCULATOR",
+    description: "Basic Calculator that could solve arithmetic expressions",
+    techStack: [javascript, css, html],
+    website: "https://project01-calculator.web.app/",
+    github: "https://github.com/markpedong/Calculator",
   },
 ];

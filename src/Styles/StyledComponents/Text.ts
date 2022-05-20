@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Text } from "@mantine/core";
 
-type Props = { border: boolean; padding: boolean };
+type Props = { border: boolean; padding?: boolean };
 
 export const BlackText = styled(Text)`
   padding-block: 1rem;

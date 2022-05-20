@@ -1,17 +1,14 @@
-import React, { useState } from "react";
-import "./Styles/App.css";
-import { Landing } from "./Pages/Landing";
 import {
   ColorScheme,
   ColorSchemeProvider,
-  Global,
   MantineProvider,
 } from "@mantine/core";
+import React, { useState } from "react";
 import { About } from "./Pages/About";
-import { Programs } from "./Pages/Programs";
-import { Portfolio } from "./Pages/Portfolio";
-import { Contact } from "./Pages/Contact";
+import { Landing } from "./Pages/Landing";
 import { LandingFooter } from "./Pages/LandingFooter";
+import { Portfolio } from "./Pages/Portfolio";
+import "./Styles/App.css";
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
@@ -46,9 +43,8 @@ export const App = () => {
           <Landing />
           <LandingFooter />
           <About />
-          <Programs />
-          {/* 
           <Portfolio />
+          {/* 
           <Contact /> */}
         </MantineProvider>
       </ColorSchemeProvider>

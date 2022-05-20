@@ -107,8 +107,13 @@ export const Landing = () => {
           <Text className={classes.name}>Mark Jesson Pedong</Text>
           <Text weight="500">Aspring Programmer</Text>
           <Group px="0" pt="1rem" direction="row">
-            {SocialLinks?.map((link, index) => (
-              <Text component="a" href={link.link} target="_blank">
+            {SocialLinks?.map((link) => (
+              <Text
+                key={link.link}
+                component="a"
+                href={link.link}
+                target="_blank"
+              >
                 {link.icon}
               </Text>
             ))}

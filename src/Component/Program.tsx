@@ -24,7 +24,7 @@ export const ProgramComp = ({ Programs, title }: Props) => {
       </Text>
       <Grid style={{ width: "100%" }}>
         {Programs.map((program: Program) => (
-          <Grid.Col span={6} xs={4} sm={3}>
+          <Grid.Col span={6} xs={4} sm={3} key={program.title}>
             <FlexContainer
               className={classes.Program}
               style={{

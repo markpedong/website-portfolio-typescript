@@ -25,7 +25,7 @@ export const About = () => {
     <Container fluid className={classes.MainBG}>
       <Container className={classes.Container} size="md">
         <FlexContainer className={classes.About} size="sm">
-          <HeaderBorder className={classes.Title} padding>
+          <HeaderBorder className={classes.Title} padding={`${true}`}>
             about me
           </HeaderBorder>
           <Text>
@@ -42,6 +42,7 @@ export const About = () => {
         <GridContainer>
           {Skills.map((skill) => (
             <SkillContainer
+              key={skill.title}
               className={
                 skill.title === "maintenance" ? classes.Maintenance : ""
               }
@@ -63,7 +64,7 @@ export const About = () => {
           width="15rem"
         />
         <FlexContainer className={classes.About} size="sm">
-          <HeaderBorder className={classes.Title} padding>
+          <HeaderBorder className={classes.Title} padding={`${true}`}>
             skills
           </HeaderBorder>
           <ProgramComp Programs={ProgramsUsing} title="using now:" />
