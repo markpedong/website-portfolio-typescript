@@ -1,7 +1,7 @@
 import { createStyles } from "@mantine/core";
 
 export const NavStyles = createStyles((theme) => ({
-  landingContainer: {
+  LandingContainer: {
     [theme.fn.smallerThan("md")]: {
       background:
         theme.colorScheme === "dark"
@@ -16,7 +16,7 @@ export const NavStyles = createStyles((theme) => ({
     },
   },
 
-  navbar: {
+  Navbar: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -26,7 +26,7 @@ export const NavStyles = createStyles((theme) => ({
     },
   },
 
-  dropdown: {
+  Dropdown: {
     position: "absolute",
     top: "76px",
     left: "0",
@@ -43,7 +43,7 @@ export const NavStyles = createStyles((theme) => ({
     },
   },
 
-  links: {
+  Links: {
     color: "white",
 
     [theme.fn.smallerThan("md")]: {
@@ -51,13 +51,13 @@ export const NavStyles = createStyles((theme) => ({
     },
   },
 
-  burger: {
+  Burger: {
     [theme.fn.largerThan("md")]: {
       display: "none",
     },
   },
 
-  landingContent: {
+  LandingContent: {
     paddingBlockStart: "5rem",
 
     [theme.fn.largerThan("md")]: {
@@ -72,7 +72,7 @@ export const NavStyles = createStyles((theme) => ({
     },
   },
 
-  landingTitle: {
+  LandingTitle: {
     backgroundColor: "transparent",
     fontWeight: "bold",
     color: theme.colorScheme === "dark" ? "white" : "black",
@@ -98,7 +98,7 @@ export const NavStyles = createStyles((theme) => ({
     },
   },
 
-  name: {
+  Name: {
     fontSize: "2.5rem",
 
     [theme.fn.smallerThan("xs")]: {

@@ -30,9 +30,9 @@ export const Landing = () => {
   const { classes } = NavStyles();
 
   return (
-    <Container fluid px="0" className={classes.landingContainer} id="home">
+    <Container fluid px="0" className={classes.LandingContainer} id="home">
       <Container size="md" px="0">
-        <Container fluid className={classes.navbar}>
+        <Container fluid className={classes.Navbar}>
           <MediaQuery
             smallerThan="md"
             styles={{
@@ -54,7 +54,7 @@ export const Landing = () => {
             <Image src={logodark} height="75px" width="75px" />
           </MediaQuery>
 
-          <Group className={classes.links}>
+          <Group className={classes.Links}>
             {NavLinks?.map((link, index) => (
               <Link key={index} to={link} smooth={true} duration={500}>
                 <WhiteText>{link}</WhiteText>
@@ -71,7 +71,7 @@ export const Landing = () => {
           </Group>
 
           <Burger
-            className={classes.burger}
+            className={classes.Burger}
             opened={opened}
             onClick={() => toggleOpened()}
             color="white"
@@ -85,7 +85,7 @@ export const Landing = () => {
             {(styles) => (
               <Container
                 fluid
-                className={classes.dropdown}
+                className={classes.Dropdown}
                 style={styles}
                 px="0"
               >
@@ -106,10 +106,10 @@ export const Landing = () => {
           </Transition>
         </Container>
       </Container>
-      <FlexContainer px="0" size="md" className={classes.landingContent}>
-        <Paper className={classes.landingTitle}>
+      <FlexContainer px="0" size="md" className={classes.LandingContent}>
+        <Paper className={classes.LandingTitle}>
           <Text style={{ fontSize: "1.5rem" }}>Hi, I am</Text>
-          <Text className={classes.name}>Mark Jesson Pedong</Text>
+          <Text className={classes.Name}>Mark Jesson Pedong</Text>
           <Text weight="500">Aspring Programmer</Text>
           <Group px="0" pt="1rem" direction="row">
             {SocialLinks?.map((link) => (

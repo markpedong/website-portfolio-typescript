@@ -22,12 +22,6 @@ export const AboutStyles = createStyles((theme) => ({
     },
   },
 
-  SkillsContainer: {
-    [theme.fn.smallerThan("md")]: {
-      width: "464px",
-    },
-  },
-
   About: {
     justifyContent: "center",
     flexDirection: "column",
