@@ -17,7 +17,7 @@ export const Portfolio = () => {
   const { classes } = ProjectStyles();
   return (
     <>
-      <Container fluid px={0} className={classes.Container}>
+      <Container fluid px={0} className={classes.Container} id="portfolio">
         <BackgroundImage src={PortfolioHeader} className={classes.BGImage}>
           <Center className={classes.Center}>
             <HeaderBorder
@@ -31,7 +31,7 @@ export const Portfolio = () => {
             </HeaderBorder>
           </Center>
         </BackgroundImage>
-        <Container size="xl" px="0">
+        <Container fluid px="0">
           <SimpleGrid
             cols={3}
             spacing={0}

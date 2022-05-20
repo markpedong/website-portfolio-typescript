@@ -31,7 +31,7 @@ import Electricity from "../Images/Electricity.jpg";
 import Item from "../Images/Item.jpg";
 import Recipe from "../Images/Recipe.jpg";
 
-export const NavLinks = ["Home", "About", "Portfolio", "Contact"];
+export const NavLinks = ["home", "about", "portfolio", "contact"];
 export const SocialLinks = [
   {
     icon: <FaGithubSquare size="2rem" />,

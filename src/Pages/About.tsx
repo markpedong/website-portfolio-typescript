@@ -24,7 +24,7 @@ export const About = () => {
   const { colorScheme } = useMantineColorScheme();
 
   return (
-    <Container fluid className={classes.MainBG}>
+    <Container fluid className={classes.MainBG} id="about">
       <Container className={classes.Container} size="md">
         <HeaderAndDescription title="about me" description={AboutDescription} />
         <GridContainer>

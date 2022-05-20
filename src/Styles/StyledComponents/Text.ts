@@ -6,6 +6,7 @@ type Props = { border: boolean; padding?: boolean };
 export const BlackText = styled(Text)`
   padding-block: 1rem;
   transition: all 0.2s ease;
+  text-transform: capitalize;
 
   &:hover {
     color: black;
@@ -18,6 +19,7 @@ export const WhiteText = styled(Text)`
   color: white;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-transform: capitalize;
   font-weight: 500;
 
   &:hover {

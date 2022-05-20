@@ -4,3 +4,4 @@ declare module "*.svg";
 declare module "numeral";
 declare module "react-slick";
 declare module "styled-components";
+declare module "react-scroll";

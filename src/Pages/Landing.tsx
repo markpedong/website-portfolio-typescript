@@ -10,9 +10,10 @@ import {
   Transition,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useBooleanToggle, useScrollIntoView } from "@mantine/hooks";
+import { useBooleanToggle } from "@mantine/hooks";
 import React from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { Link } from "react-scroll";
 import { NavLinks, SocialLinks } from "../Config/Variable";
 import logo from "../Images/logo.svg";
 import logodark from "../Images/logo_dark.svg";
@@ -29,7 +30,7 @@ export const Landing = () => {
   const { classes } = NavStyles();
 
   return (
-    <Container fluid px="0" className={classes.landingContainer}>
+    <Container fluid px="0" className={classes.landingContainer} id="home">
       <Container size="md" px="0">
         <Container fluid className={classes.navbar}>
           <MediaQuery
@@ -55,7 +56,9 @@ export const Landing = () => {
 
           <Group className={classes.links}>
             {NavLinks?.map((link, index) => (
-              <WhiteText key={index}>{link}</WhiteText>
+              <Link key={index} to={link} smooth={true} duration={500}>
+                <WhiteText>{link}</WhiteText>
+              </Link>
             ))}
             <ActionIcon
               variant="transparent"
@@ -87,7 +90,9 @@ export const Landing = () => {
                 px="0"
               >
                 {NavLinks?.map((link, index) => (
-                  <BlackText key={index}>{link}</BlackText>
+                  <Link key={index} to={link} smooth={true} duration={500}>
+                    <BlackText key={index}>{link}</BlackText>
+                  </Link>
                 ))}
                 <ActionIcon
                   variant="transparent"

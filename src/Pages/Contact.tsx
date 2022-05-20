@@ -7,7 +7,7 @@ import { ContactStyles } from "../Styles/Theme/Contact";
 export const Contact = () => {
   const { classes } = ContactStyles();
   return (
-    <Container className={classes.Container} fluid>
+    <Container className={classes.Container} fluid id="contact">
       <Container className={classes.MainContainer} size="md">
         <HeaderAndDescription
           title="contact"
