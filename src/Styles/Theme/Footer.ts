@@ -28,11 +28,11 @@ export const Footer = createStyles((theme) => ({
 
   ReadMore: {
     height: "100%",
-    marginTop: "2rem",
+    marginBottom: "2rem",
     textTransform: "uppercase",
     color: "white",
     border: "1px solid white",
-    padding: "1rem 2rem",
+    padding: "0rem 2rem",
     borderRadius: "5px",
     fontFamily: "Montserrat, sans-serif",
     backgroundColor: "transparent",

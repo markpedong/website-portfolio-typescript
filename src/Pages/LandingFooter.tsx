@@ -3,6 +3,7 @@ import React from "react";
 import avalanche from "../Images/avalanchelogo.svg";
 import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { Footer } from "../Styles/Theme/Footer";
+import { Link } from "react-scroll";
 
 export const LandingFooter = () => {
   const { classes } = Footer();
@@ -12,7 +13,7 @@ export const LandingFooter = () => {
       <FlexContainer size="lg">
         <FlexContainer fluid px="0" direction="column" position="start">
           <Text className={classes.TitleBackground}>background</Text>
-          <Text>
+          <Text mb="2rem">
             I wanted to become a Programmer for a long time but didn’t get a
             chance to do it for specific reasons. I taught myself how to use
             different programming languages such as HTML, CSS, and JavaScript. I
@@ -23,7 +24,9 @@ export const LandingFooter = () => {
             like to read science books and watch documentaries about the things
             that will add to my knowledge.
           </Text>
-          <Button className={classes.ReadMore}>read more</Button>
+          <Link to="about" smooth={true} duration={200}>
+            <Button className={classes.ReadMore}>read more</Button>
+          </Link>
         </FlexContainer>
         <Image
           src={avalanche}

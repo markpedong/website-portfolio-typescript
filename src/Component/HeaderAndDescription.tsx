@@ -1,4 +1,4 @@
-import { Image, Text, useMantineColorScheme } from "@mantine/core";
+import { Box, Image, Text, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { HeaderBorder } from "../Styles/StyledComponents/Text";
@@ -9,16 +9,21 @@ import divider_dark from "../Images/divider_dark.svg";
 type Props = {
   title: string;
   description: string;
+  style?: React.CSSProperties;
 };
 
-export const HeaderAndDescription = ({ title, description }: Props) => {
+export const HeaderAndDescription = ({ title, description, style }: Props) => {
   const { classes } = AboutStyles();
   const { colorScheme } = useMantineColorScheme();
 
   return (
     <>
       <FlexContainer className={classes.About} size="sm">
-        <HeaderBorder className={classes.Title} padding={`${true}`}>
+        <HeaderBorder
+          className={classes.Title}
+          padding={`${true}`}
+          style={style}
+        >
           {title}
         </HeaderBorder>
         <Text>{description}</Text>
