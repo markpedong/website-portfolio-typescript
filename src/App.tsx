@@ -6,6 +6,7 @@ import {
 import React, { useState } from "react";
 import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
+import { Footer } from "./Pages/Footer";
 import { Landing } from "./Pages/Landing";
 import { LandingFooter } from "./Pages/LandingFooter";
 import { Portfolio } from "./Pages/Portfolio";
@@ -46,6 +47,7 @@ export const App = () => {
           <About />
           <Portfolio />
           <Contact />
+          <Footer />
         </MantineProvider>
       </ColorSchemeProvider>
     </div>

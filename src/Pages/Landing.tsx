@@ -22,6 +22,8 @@ import picture992 from "../Images/mypicture@992.png";
 import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { BlackText, WhiteText } from "../Styles/StyledComponents/Text";
 import { NavStyles } from "../Styles/Theme/Landing";
+import { motion } from "framer-motion";
+import { SocialMediaLinks } from "../Component/SocialMediaLinks";
 
 export const Landing = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -111,18 +113,7 @@ export const Landing = () => {
           <Text style={{ fontSize: "1.5rem" }}>Hi, I am</Text>
           <Text className={classes.Name}>Mark Jesson Pedong</Text>
           <Text weight="500">Aspring Programmer</Text>
-          <Group px="0" pt="1rem" direction="row">
-            {SocialLinks?.map((link) => (
-              <Text
-                key={link.link}
-                component="a"
-                href={link.link}
-                target="_blank"
-              >
-                {link.icon}
-              </Text>
-            ))}
-          </Group>
+          <SocialMediaLinks />
         </Paper>
         <MediaQuery
           smallerThan="md"

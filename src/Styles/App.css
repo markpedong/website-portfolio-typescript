@@ -6,3 +6,9 @@
   padding: 0;
   margin: 0;
 }
+
+::placeholder {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
