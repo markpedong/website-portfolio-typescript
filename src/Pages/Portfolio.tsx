@@ -59,9 +59,9 @@ export const Portfolio = () => {
                   }}
                 >
                   <motion.div
-                    style={{ opacity: 0 }}
+                    className={classes.Portfolio}
                     whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <Text size="xs" style={{ fontStyle: "italic" }}>
                       {project.written}

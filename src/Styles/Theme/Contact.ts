@@ -13,8 +13,11 @@ export const ContactStyles = createStyles((theme) => ({
   },
 
   Input: {
-    borderLeft: "4px solid black",
-    borderBottom: "4px solid black",
+    color: theme.colorScheme === "dark" ? "white" : "black",
+    borderLeft: `4px solid ${theme.colorScheme === "dark" ? "white" : "black"}`,
+    borderBottom: `4px solid ${
+      theme.colorScheme === "dark" ? "white" : "black"
+    }`,
     marginBlockStart: "3rem",
     paddingLeft: "1rem",
     textTransform: "uppercase",
@@ -23,8 +26,9 @@ export const ContactStyles = createStyles((theme) => ({
   Submit: {
     marginBlock: "5rem",
     backgroundColor: "transparent",
-    color: "black",
-    borderInline: "3px solid black",
+    borderInline: `3px solid ${
+      theme.colorScheme === "dark" ? "white" : "black"
+    }`,
     borderRadius: "0px",
     padding: "1rem 3rem",
     fontSize: "1rem",
@@ -33,11 +37,12 @@ export const ContactStyles = createStyles((theme) => ({
     textTransform: "uppercase",
     letterSpacing: "5px",
     transition: "all 0.4s ease",
+    color: theme.colorScheme === "dark" ? "white" : "black",
 
     "&:hover": {
       padding: "1rem",
-      backgroundColor: "black",
-      color: "white",
+      backgroundColor: theme.colorScheme === "dark" ? "white" : "black",
+      color: theme.colorScheme === "dark" ? "black" : "white",
     },
   },
 }));

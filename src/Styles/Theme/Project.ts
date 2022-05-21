@@ -25,6 +25,10 @@ export const ProjectStyles = createStyles((theme) => ({
     border: "4px solid white",
   },
 
+  Portfolio: {
+    opacity: 1,
+  },
+
   TechStack: {
     justifyContent: "center",
     gap: "1rem",

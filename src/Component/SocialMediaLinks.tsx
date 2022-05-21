@@ -7,8 +7,8 @@ export const SocialMediaLinks = () => {
   return (
     <Group px="0" pt="1rem" direction="row">
       {SocialLinks?.map((link) => (
-        <motion.div whileHover={{ scale: 1.3 }}>
-          <Text component="a" key={link.link} href={link.link} target="_blank">
+        <motion.div whileHover={{ scale: 1.3 }} key={link.link}>
+          <Text component="a" href={link.link} target="_blank">
             {link.icon}
           </Text>
         </motion.div>
