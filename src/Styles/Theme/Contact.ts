@@ -14,13 +14,37 @@ export const ContactStyles = createStyles((theme) => ({
 
   Input: {
     color: theme.colorScheme === "dark" ? "white" : "black",
+    border: "none",
     borderLeft: `4px solid ${theme.colorScheme === "dark" ? "white" : "black"}`,
     borderBottom: `4px solid ${
       theme.colorScheme === "dark" ? "white" : "black"
     }`,
     marginBlockStart: "3rem",
-    paddingLeft: "1rem",
-    textTransform: "uppercase",
+    paddingBlock: "0.4rem",
+    paddingInline: "0.9rem",
+    width: "100%",
+    backgroundColor: "transparent",
+    fontWeight: 700,
+    fontFamily: "Inter",
+    fontSize: "1rem",
+    letterSpacing: "0.1rem",
+
+    "&:focus": {
+      outline: "none",
+    },
+
+    "::placeholder": {
+      fontFamily: "Montserrat, sans-serif",
+      letterSpacing: "0.15rem",
+      cursor: "auto",
+      color:
+        theme.colorScheme === "dark"
+          ? "rgba(255,255,255,0.5)"
+          : "rgba(0,0,0,0.5)",
+      fontSize: "0.8rem",
+      textAlign: "start",
+      fontWeight: 800,
+    },
   },
 
   Submit: {

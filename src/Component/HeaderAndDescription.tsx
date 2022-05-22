@@ -1,4 +1,4 @@
-import { Box, Image, Text, useMantineColorScheme } from "@mantine/core";
+import { Image, Text, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { HeaderBorder } from "../Styles/StyledComponents/Text";

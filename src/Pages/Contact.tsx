@@ -1,7 +1,8 @@
-import { Box, Button, Center, Container, Input } from "@mantine/core";
+import { Button, Center, Container } from "@mantine/core";
 import React from "react";
 import { HeaderAndDescription } from "../Component/HeaderAndDescription";
 import { ContactDescription } from "../Config/Text";
+import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { ContactStyles } from "../Styles/Theme/Contact";
 
 export const Contact = () => {
@@ -15,35 +16,43 @@ export const Contact = () => {
           description={ContactDescription}
         />
         <Container size="xs">
-          <Input
-            className={classes.Input}
-            variant="unstyled"
-            size="md"
-            placeholder="ENTER YOUR NAME*"
-          />
-          <Input
-            className={classes.Input}
-            variant="unstyled"
-            size="md"
-            placeholder="ENTER YOUR EMAIL*"
-          />
-          <Input
-            className={classes.Input}
-            variant="unstyled"
-            size="md"
-            placeholder="PHONE NUMBER"
-          />
-          <Input
-            className={classes.Input}
-            variant="unstyled"
-            placeholder="YOUR MESSAGE"
-            sx={(theme) => ({
-              blockSize: "10rem",
-            })}
-          />
-          <Center>
-            <Button className={classes.Submit}>Submit</Button>
-          </Center>
+          <form
+            name="contact-form"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="contact-form" />
+            <input
+              type="text"
+              placeholder="ENTER YOUR NAME*"
+              className={classes.Input}
+              name="name"
+            />
+            <input
+              type="text"
+              placeholder="ENTER YOUR EMAIL*"
+              className={classes.Input}
+              name="email"
+            />
+            <input
+              type="text"
+              placeholder="PHONE NUMBER"
+              className={classes.Input}
+              name="number"
+            />
+            <textarea
+              className={classes.Input}
+              style={{ height: "10rem" }}
+              placeholder="MESSAGE"
+              name="message"
+            ></textarea>
+            <Center>
+              <Button className={classes.Submit} type="submit">
+                Submit
+              </Button>
+            </Center>
+          </form>
         </Container>
       </Container>
     </Container>

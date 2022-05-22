@@ -14,7 +14,8 @@ import { useBooleanToggle } from "@mantine/hooks";
 import React from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Link } from "react-scroll";
-import { NavLinks, SocialLinks } from "../Config/Variable";
+import { SocialMediaLinks } from "../Component/SocialMediaLinks";
+import { NavLinks } from "../Config/Variable";
 import logo from "../Images/logo.svg";
 import logodark from "../Images/logo_dark.svg";
 import picture from "../Images/mypicture.png";
@@ -22,8 +23,6 @@ import picture992 from "../Images/mypicture@992.png";
 import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { BlackText, WhiteText } from "../Styles/StyledComponents/Text";
 import { NavStyles } from "../Styles/Theme/Landing";
-import { motion } from "framer-motion";
-import { SocialMediaLinks } from "../Component/SocialMediaLinks";
 
 export const Landing = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
