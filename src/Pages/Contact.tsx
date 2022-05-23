@@ -2,7 +2,6 @@ import { Button, Center, Container } from "@mantine/core";
 import React from "react";
 import { HeaderAndDescription } from "../Component/HeaderAndDescription";
 import { ContactDescription } from "../Config/Text";
-import { FlexContainer } from "../Styles/StyledComponents/Container";
 import { ContactStyles } from "../Styles/Theme/Contact";
 
 export const Contact = () => {

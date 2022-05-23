@@ -20,6 +20,8 @@ import git from "../Images/git.svg";
 import typescript from "../Images/typescript.svg";
 import mantine from "../Images/mantine.svg";
 import figma from "../Images/figma.svg";
+import node from "../Images/nodejs.svg";
+import express from "../Images/express.svg";
 import premierepro from "../Images/premierepro.svg";
 import photoshop from "../Images/photoshop.svg";
 import word from "../Images/word.svg";
@@ -118,6 +120,14 @@ export const Learning = [
   {
     title: "figma",
     logo: figma,
+  },
+  {
+    title: "node.js",
+    logo: node,
+  },
+  {
+    title: "express",
+    logo: express,
   },
 ];
 
