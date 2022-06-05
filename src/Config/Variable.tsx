@@ -19,7 +19,7 @@ import react from "../Images/react.svg";
 import git from "../Images/git.svg";
 import typescript from "../Images/typescript.svg";
 import mantine from "../Images/mantine.svg";
-import figma from "../Images/figma.svg";
+import redux from "../Images/redux.svg";
 import node from "../Images/nodejs.svg";
 import express from "../Images/express.svg";
 import premierepro from "../Images/premierepro.svg";
@@ -118,8 +118,8 @@ export const ProgramsUsing = [
 
 export const Learning = [
   {
-    title: "figma",
-    logo: figma,
+    title: "redux",
+    logo: redux,
   },
   {
     title: "node.js",
