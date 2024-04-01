@@ -1,0 +1,40 @@
+@import '@/styles/_helpers.scss';
+
+.navbarWrapper {
+    @apply flex justify-evenly mt-5;
+}
+
+.logoContainer {
+    @apply flex items-center gap-3;
+    color: var(--color-primary);
+
+    span {
+        font-size: toRem(20);
+    }
+
+    img {
+        width: toRem(40);
+        height: toRem(40);
+    }
+}
+
+.linksContainer {
+    @apply flex items-center justify-evenly gap-16;
+    color: var(--color-primary);
+
+    >span {
+        @apply select-none;
+        font-size: toRem(16);
+    }
+}
+
+.btnContainer {
+    @apply flex items-center justify-center gap-5;
+
+
+    > :last-child {
+        @apply py-[0.6rem] px-5 rounded-md cursor-pointer select-none;
+        border: toRem(2) solid var(--border-color);
+        color: var(--color-primary);
+    }
+}

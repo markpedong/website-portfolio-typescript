@@ -1,5 +1,21 @@
 :root {
     @apply m-0 p-0;
+
+    --color-primary: #1e1e1e;
+    --color-secondary: rgba(0, 0, 0, 0.5);
+    --white-color: rgb(255, 255, 255);
+    --bg-primary: #fdfdfd;
+    --border-color: #F1F1F1;
+
+    &.dark {
+        --color-primary: rgb(255, 255, 255);
+        --white-color: rgb(0, 0, 0);
+        --color-secondary: rgba(255, 255, 255, 0.5);
+        --bg-primary: rgba(20, 20, 20, 1);
+        --border-color: rgba(255, 255, 255, 0.2);
+
+    }
+
 }
 
 * {
