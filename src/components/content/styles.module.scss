@@ -1,17 +1,25 @@
 @import "@/styles/_helpers.scss";
 
 .mainContentWrapper {
-    @apply flex justify-between items-center my-[10rem];
+    @apply grid grid-cols-2 my-[10rem] gap-5;
+
+    @media screen and (max-width: 992px) {
+        @apply grid-cols-1;
+
+        .nameContainer {
+            @apply order-last;
+        }
+    }
 }
 
 .nameContainer {
-    @apply flex flex-col gap-5;
+    @apply flex flex-col gap-8;
 
     span:nth-of-type(1),
-    span:nth-of-type(2){
+    span:nth-of-type(2) {
         @apply flex items-center justify-start gap-3;
     }
-    
+
     span:nth-of-type(1) {
         @apply uppercase flex items-center justify-start gap-3;
         color: var(--color-secondary);
@@ -29,4 +37,28 @@
     span:nth-of-type(2) {
         font-size: toRem(35);
     }
+
+    span:nth-of-type(3) {
+        @apply opacity-50;
+        color: var(--color-primary);
+        font-size: toRem(14);
+        line-height: toRem(25);
+    }
+
+    div:nth-of-type(1) {
+        @apply flex gap-7 opacity-50;
+
+
+        >* {
+            @apply size-5 transition-transform transform hover:scale-110 active:scale-90;
+        }
+    }
+}
+
+.hover\:scale-110:hover {
+    @apply scale-110;
+}
+
+.active\:scale-90:active {
+    @apply scale-90;
 }
