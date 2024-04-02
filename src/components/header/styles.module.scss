@@ -1,6 +1,6 @@
 @import '@/styles/_helpers.scss';
 
-.mainWrapper {
+.headerWrapper {
     @apply uppercase flex items-center justify-start gap-3;
     color: var(--color-secondary);
     font-size: toRem(12);

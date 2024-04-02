@@ -11,7 +11,7 @@ type Props = {
 
 const Header: FC<Props> = ({ title }) => {
 	return (
-		<div className={classNames(inter.className, styles.mainWrapper)}>
+		<div className={classNames(inter.className, styles.headerWrapper)}>
 			<p>-</p>
 			<span>{title}</span>
 		</div>

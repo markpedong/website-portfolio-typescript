@@ -1,2 +1,9 @@
 @import '@/styles/_helpers.scss';
 
+.titleWrapper {
+    @apply flex flex-col items-center justify-center;
+}
+
+.title {
+    font-size: toRem(35);
+}
