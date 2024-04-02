@@ -20,34 +20,19 @@
         @apply flex items-center justify-start gap-3;
     }
 
-    span:nth-of-type(1) {
-        @apply uppercase flex items-center justify-start gap-3;
-        color: var(--color-secondary);
-        font-size: toRem(12);
-        line-height: toRem(12);
-        letter-spacing: toRem(7.5);
-
-        p {
-            font-size: toRem(20);
-            line-height: toRem(20);
-            color: var(--color-primary);
-        }
-    }
-
-    span:nth-of-type(2) {
+    .title {
         font-size: toRem(35);
     }
 
-    span:nth-of-type(3) {
-        @apply opacity-50;
+    span:nth-of-type(2) {
+        @apply opacity-50 flex items-center justify-start gap-3;
         color: var(--color-primary);
         font-size: toRem(14);
         line-height: toRem(25);
     }
 
-    div:nth-of-type(1) {
+    div:nth-of-type(2) {
         @apply flex gap-7 opacity-50;
-
 
         >* {
             @apply size-5 transition-transform transform hover:scale-110 active:scale-90;

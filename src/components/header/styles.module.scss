@@ -1,0 +1,15 @@
+@import '@/styles/_helpers.scss';
+
+.mainWrapper {
+    @apply uppercase flex items-center justify-start gap-3;
+    color: var(--color-secondary);
+    font-size: toRem(12);
+    line-height: toRem(12);
+    letter-spacing: toRem(7.5);
+
+    p {
+        font-size: toRem(20);
+        line-height: toRem(20);
+        color: var(--color-primary);
+    }
+}
