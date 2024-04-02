@@ -1,4 +1,8 @@
 .mainWrapper {
     @apply max-w-7xl mx-auto p-3;
     background-color: var(--bg-primary);
+
+    @media screen and (max-width: 992px) {
+        @apply px-6;
+    }
 }

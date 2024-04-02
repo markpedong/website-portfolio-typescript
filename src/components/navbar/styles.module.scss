@@ -1,7 +1,11 @@
 @import '@/styles/_helpers.scss';
 
 .navbarWrapper {
-    @apply flex justify-evenly mt-5;
+    @apply flex justify-evenly my-5;
+
+    @media screen and (max-width: 992px) {
+        @apply justify-between;
+    }
 }
 
 .logoContainer {
@@ -28,6 +32,16 @@
     }
 }
 
+.navlinks{
+    @apply flex flex-col items-center gap-8 pt-10;
+    color: var(--color-primary);
+
+    >span {
+        @apply select-none;
+        font-size: toRem(16);
+    }
+}
+
 .btnContainer {
     @apply flex items-center justify-center gap-5;
 
@@ -36,5 +50,20 @@
         @apply py-[0.6rem] px-5 rounded-md cursor-pointer select-none;
         border: toRem(2) solid var(--border-color);
         color: var(--color-primary);
+    }
+}
+
+.linksContainer,
+.btnContainer {
+    @media screen and (max-width: 992px) {
+        @apply hidden;
+    }
+}
+
+.navBtnWrapper {
+    @apply flex items-center justify-center;
+
+    @media screen and (min-width: 993px) {
+        @apply hidden;
     }
 }
