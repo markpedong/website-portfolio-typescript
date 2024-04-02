@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import Header from '../header'
+import Image from 'next/image'
 
 const inter = Inter({ weight: '400', subsets: ['latin'] })
 const jakarta = Plus_Jakarta_Sans({ weight: '700', subsets: ['latin'] })
@@ -13,11 +14,11 @@ const Content = () => {
 			<div className={styles.nameContainer}>
 				<Header title="My name is" />
 				<span className={classNames(jakarta.className, styles.title)}>
-					Lorem, <p style={{ color: '#7E74F1' }}>ipsum.</p>
+					Mark <p style={{ color: '#7E74F1' }}>Pedong.</p>
 				</span>
 				<span className={inter.className}>
-					Creative front-end developer with more than +2 years of experience in enterprise companies and
-					startups. Proficient in Sass, NextJS and JavaScript. Passionate about Golang.
+					Creative front-end developer with more than +2 years of experience in enterprise companies and startups.
+					Proficient in Sass, NextJS and JavaScript. Passionate about Golang.
 				</span>
 				<div>
 					<FaInstagram />
@@ -26,7 +27,15 @@ const Content = () => {
 					<FaLinkedin />
 				</div>
 			</div>
-			<div>2</div>
+			<div className={styles.imageContainer}>
+				<div>
+					<Image src={'/assets/self.png'} alt="self" height={400} width={200} />
+				</div>
+				<div></div>
+				<div>
+					<Image src={'/assets/lines.svg'} alt="lines" height={200} width={50} />
+				</div>
+			</div>
 		</div>
 	)
 }

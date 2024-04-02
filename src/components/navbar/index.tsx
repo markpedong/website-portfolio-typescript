@@ -7,10 +7,18 @@ import classNames from 'classnames'
 import { motion } from 'framer-motion'
 import { Inter, Poppins } from 'next/font/google'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { GoMoon, GoSun } from 'react-icons/go'
 import styles from './styles.module.scss'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import {
+	Sheet,
+	SheetClose,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger
+} from '@/components/ui/sheet'
 import { MdMenu } from 'react-icons/md'
 
 const poppins = Poppins({ weight: '600', subsets: ['latin'] })
@@ -19,10 +27,26 @@ const inter = Inter({ weight: '400', subsets: ['latin'] })
 const Navbar = () => {
 	const dispatch = useAppDispatch()
 	const { darkMode } = useAppSelector(state => state.boolean)
+	const [open, setOpen] = useState(false)
 
 	useEffect(() => {
 		document.documentElement.classList.toggle('dark', darkMode)
 	}, [darkMode])
+
+	useEffect(() => {
+		const handleResize = () => {
+			const isOverBreakpoint = window.matchMedia('(min-width: 993px)').matches
+			if (isOverBreakpoint) {
+				setOpen(false)
+			}
+		}
+
+		window.addEventListener('resize', handleResize)
+
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [])
 
 	return (
 		<div className={styles.navbarWrapper}>
@@ -46,20 +70,15 @@ const Navbar = () => {
 				<motion.span whileTap={scaleSize}>Resume</motion.span>
 			</div>
 			<div className={styles.navBtnWrapper}>
-				<Sheet>
+				<Sheet onOpenChange={q => setOpen(q)} open={open}>
 					<SheetTrigger>
 						<MdMenu size="20" />
 					</SheetTrigger>
-					<SheetContent>
+					<SheetContent className={styles.sheetContent}>
 						<SheetHeader>
 							<SheetTitle>
 								<div className={styles.logoContainer}>
-									<Image
-										src={`/assets/${darkMode ? 'logo' : 'logo-dark'}.png`}
-										alt="logo"
-										width={100}
-										height={100}
-									/>
+									<Image src={`/assets/${darkMode ? 'logo' : 'logo-dark'}.png`} alt="logo" width={100} height={100} />
 									<span className={poppins.className}>Mark P.</span>
 								</div>
 							</SheetTitle>
@@ -69,6 +88,12 @@ const Navbar = () => {
 									<motion.span whileTap={scaleSize}>Portfolios</motion.span>
 									<motion.span whileTap={scaleSize}>Experience</motion.span>
 									<motion.span whileTap={scaleSize}>Blog</motion.span>
+								</div>
+								<div className={classNames(styles.btnContainer, styles.mobile)}>
+									<motion.span whileTap={scaleSize} onClick={() => dispatch(setDarkMode())}>
+										{darkMode ? <GoSun color="white" size={20} /> : <GoMoon size={20} />}
+									</motion.span>
+									<motion.span whileTap={scaleSize}>Resume</motion.span>
 								</div>
 							</SheetDescription>
 						</SheetHeader>

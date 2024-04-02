@@ -2,10 +2,6 @@
 
 .navbarWrapper {
     @apply flex justify-between my-5;
-
-    @media screen and (max-width: 992px) {
-        @apply justify-between;
-    }
 }
 
 .logoContainer {
@@ -32,7 +28,7 @@
     }
 }
 
-.navlinks{
+.navlinks {
     @apply flex flex-col items-center gap-8 pt-10;
     color: var(--color-primary);
 
@@ -53,17 +49,41 @@
     }
 }
 
-.linksContainer,
-.btnContainer {
-    @media screen and (max-width: 992px) {
-        @apply hidden;
-    }
-}
+
 
 .navBtnWrapper {
     @apply flex items-center justify-center;
 
-    @media screen and (min-width: 993px) {
+
+}
+
+.sheetContent {
+    @apply z-[9999];
+}
+
+@media screen and (max-width: 992px) {
+
+    .linksContainer,
+    .btnContainer {
         @apply hidden;
     }
+
+    .navbarWrapper {
+        @apply justify-between;
+    }
+
+    .btnContainer {
+        @apply justify-between
+    }
+
+    .mobile {
+        @apply flex mt-[5rem];
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .navBtnWrapper {
+        @apply hidden;
+    }
+
 }

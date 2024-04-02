@@ -1,15 +1,7 @@
 @import "@/styles/_helpers.scss";
 
 .mainContentWrapper {
-    @apply grid grid-cols-2 my-[10rem] gap-5;
-
-    @media screen and (max-width: 992px) {
-        @apply grid-cols-1;
-
-        .nameContainer {
-            @apply order-last;
-        }
-    }
+    @apply grid grid-cols-2 my-[13rem] gap-5;
 }
 
 .nameContainer {
@@ -46,4 +38,42 @@
 
 .active\:scale-90:active {
     @apply scale-90;
+}
+
+.imageContainer {
+    @apply justify-self-end relative;
+
+
+    div:first-of-type {
+        @apply bg-[#EAE6FE] h-[20rem] flex items-end w-[17rem] rounded-2xl z-10 absolute top-0;
+
+        img {
+            @apply object-contain object-bottom;
+        }
+    }
+
+    div:nth-of-type(2) {
+        @apply bg-[#7E74F1] h-[20rem] w-[17rem] rounded-2xl rotate-[-9.55deg];
+    }
+
+    div:nth-of-type(3) {
+        img {
+            @apply absolute h-[13rem] w-[10rem] top-0 right-0 z-[100] rounded-2xl;
+        }
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .mainContentWrapper {
+        @apply grid-cols-1 my-[7rem];
+    }
+
+    .nameContainer {
+        @apply order-last items-center text-center;
+    }
+
+    .imageContainer {
+        @apply justify-self-center;
+    }
 }
