@@ -31,10 +31,10 @@ const Navbar = () => {
 				<span className={poppins.className}>Mark P.</span>
 			</div>
 			<div className={classNames(styles.linksContainer, inter.className)}>
-				<span>Services</span>
-				<span>Portfolios</span>
-				<span>Experience</span>
-				<span>Blog</span>
+				<motion.span whileTap={scaleSize}>Services</motion.span>
+				<motion.span whileTap={scaleSize}>Portfolios</motion.span>
+				<motion.span whileTap={scaleSize}>Experience</motion.span>
+				<motion.span whileTap={scaleSize}>Blog</motion.span>
 				{/* <span>
 					<HiOutlineEllipsisHorizontal />
 				</span> */}
@@ -65,10 +65,10 @@ const Navbar = () => {
 							</SheetTitle>
 							<SheetDescription>
 								<div className={classNames(styles.navlinks, inter.className)}>
-									<span>Services</span>
-									<span>Portfolios</span>
-									<span>Experience</span>
-									<span>Blog</span>
+									<motion.span whileTap={scaleSize}>Services</motion.span>
+									<motion.span whileTap={scaleSize}>Portfolios</motion.span>
+									<motion.span whileTap={scaleSize}>Experience</motion.span>
+									<motion.span whileTap={scaleSize}>Blog</motion.span>
 								</div>
 							</SheetDescription>
 						</SheetHeader>
