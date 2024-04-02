@@ -13,12 +13,12 @@
     color: var(--color-primary);
 
     span {
-        font-size: toRem(20);
+        font-size: toRem(16);
     }
 
     img {
-        width: toRem(40);
-        height: toRem(40);
+        width: toRem(30);
+        height: toRem(30);
     }
 }
 
@@ -28,7 +28,7 @@
 
     >span {
         @apply select-none;
-        font-size: toRem(16);
+        font-size: toRem(14);
     }
 }
 
@@ -38,18 +38,18 @@
 
     >span {
         @apply select-none;
-        font-size: toRem(16);
+        font-size: toRem(14);
     }
 }
 
 .btnContainer {
     @apply flex items-center justify-center gap-5;
 
-
     > :last-child {
-        @apply py-[0.6rem] px-5 rounded-md cursor-pointer select-none;
+        @apply py-[0.3rem] px-5 rounded-md cursor-pointer select-none;
         border: toRem(2) solid var(--border-color);
         color: var(--color-primary);
+        font-size: toRem(14);
     }
 }
 

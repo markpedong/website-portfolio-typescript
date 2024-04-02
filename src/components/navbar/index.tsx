@@ -41,7 +41,7 @@ const Navbar = () => {
 			</div>
 			<div className={styles.btnContainer}>
 				<motion.span whileTap={scaleSize} onClick={() => dispatch(setDarkMode())}>
-					{darkMode ? <GoSun color="white" /> : <GoMoon />}
+					{darkMode ? <GoSun color="white" size={20} /> : <GoMoon size={20} />}
 				</motion.span>
 				<motion.span whileTap={scaleSize}>Resume</motion.span>
 			</div>
