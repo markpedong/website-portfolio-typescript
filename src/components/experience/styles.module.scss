@@ -1,0 +1,6 @@
+@import "@/styles/_helpers.scss";
+
+.experienceContainer{
+    @apply grid;
+    grid-template-columns: 1fr 3fr; 
+}
