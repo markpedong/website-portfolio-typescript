@@ -1,5 +1,10 @@
 @import '@/styles/_helpers.scss';
 
+.specialtyWrapper {
+    @apply py-[10rem] flex flex-col items-center justify-center;
+    background-color: var(--bg-secondary)
+}
+
 .titleWrapper {
     @apply flex flex-col items-center justify-center;
 }
@@ -9,12 +14,12 @@
 }
 
 .contentWrapper {
-    @apply grid gap-[5rem] pt-[4.5rem];
-    grid-template-columns: repeat(auto-fill, minmax(toRem(300), 1fr));
+    @apply flex gap-[5rem] pt-[4.5rem] flex-wrap justify-center;
 }
 
 .cspecialtyContainer {
     @apply flex flex-col items-center text-center gap-[1rem] bg-[#FFFFFF] rounded-lg py-[3rem] px-[3rem];
+    max-width: toRem(300);
 
     div:first-of-type {
         @apply bg-[#F5F3FE] p-3 rounded-lg;

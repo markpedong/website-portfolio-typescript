@@ -8,13 +8,17 @@ import Experience from '@/components/experience'
 
 const App = () => {
 	return (
-		<div className={styles.mainWrapper}>
-			<Navbar />
-			<Content />
+		<>
+			<div className={styles.mainWrapper}>
+				<Navbar />
+				<Content />
+			</div>
 			<Specialty />
-			<Portfolio />
-			<Experience/>
-		</div>
+			<div className={styles.mainWrapper}>
+				<Portfolio />
+				<Experience />
+			</div>
+		</>
 	)
 }
 
