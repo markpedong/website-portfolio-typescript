@@ -7,3 +7,52 @@
 .title {
     font-size: toRem(35);
 }
+
+.contentWrapper {
+    @apply grid gap-[5rem] pt-[4.5rem];
+    grid-template-columns: repeat(auto-fill, minmax(toRem(300), 1fr));
+}
+
+.cspecialtyContainer {
+    @apply flex flex-col items-center text-center gap-[1rem] bg-[#FFFFFF] rounded-lg py-[3rem] px-[3rem];
+
+    div:first-of-type {
+        @apply bg-[#F5F3FE] p-3 rounded-lg;
+    }
+
+    div:nth-of-type(2) {
+        color: #232E35;
+        font-size: toRem(14);
+    }
+
+    div:last-of-type {
+        color: #232E35;
+        font-size: toRem(12);
+    }
+}
+
+
+@media screen and (max-width:1083px) {
+    .contentWrapper {
+        @apply gap-[3rem];
+        grid-template-columns: repeat(auto-fill, minmax(toRem(250), 1fr));
+    }
+}
+
+@media screen and (max-width:992px) {
+    .contentWrapper {
+        @apply gap-[3rem];
+        grid-template-columns: repeat(auto-fill, minmax(toRem(300), 1fr));
+    }
+}
+
+@media screen and (max-width:695px) {
+    .contentWrapper {
+        @apply gap-[3rem];
+        grid-template-columns: repeat(auto-fill, minmax(toRem(250), 1fr));
+    }
+
+    .cspecialtyContainer {
+        @apply p-[2rem];
+    }
+}
