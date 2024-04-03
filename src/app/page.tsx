@@ -17,7 +17,9 @@ const App = () => {
 			<div className={styles.mainWrapper}>
 				<Portfolio />
 			</div>
-			<Experience />
+			<div className={styles.experienceWrapper}>
+				<Experience />
+			</div>
 		</>
 	)
 }

@@ -6,3 +6,8 @@
         @apply px-6;
     }
 }
+
+.experienceWrapper {
+    @apply py-[10rem];
+    background-color: var(--bg-secondary);
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import Header from '../header'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
@@ -30,10 +30,6 @@ const PortfolioHeader = () => {
 
 const Portfolio = () => {
 	const [hoveredItem, setHoveredItem] = useState(null)
-
-	useEffect(() => {
-		setHoveredItem(1)
-	}, [])
 
 	return (
 		<div className={styles.portfolioWrapper}>
