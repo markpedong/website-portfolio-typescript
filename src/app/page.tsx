@@ -3,6 +3,7 @@ import styles from '@/styles/styles.module.scss'
 import Navbar from '../components/navbar'
 import Content from '@/components/content'
 import Specialty from '@/components/specialty'
+import Portfolio from '@/components/portfolio'
 
 const App = () => {
 	return (
@@ -10,6 +11,7 @@ const App = () => {
 			<Navbar />
 			<Content />
 			<Specialty />
+			<Portfolio />
 		</div>
 	)
 }

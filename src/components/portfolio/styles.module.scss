@@ -1,0 +1,42 @@
+@import "@/styles/_helpers.scss";
+
+.portfolioWrapper {
+    @apply mt-[7rem];
+}
+
+.headerContainer {
+    @apply flex justify-between items-center;
+
+    span:first-of-type {
+        @apply mt-[1rem];
+        font-size: toRem(25);
+        line-height: toRem(35)
+    }
+}
+
+.arrowContainer {
+    @apply flex items-center gap-[2rem];
+
+    div {
+        @apply bg-[#EAE6FE] text-white p-3 rounded-2xl transition-transform transform hover:scale-110 active:scale-90;
+    }
+}
+
+.hover\:scale-110:hover {
+    @apply scale-110;
+}
+
+.active\:scale-90:active {
+    @apply scale-90;
+}
+
+.cardContainer{
+    @apply flex aspect-square items-center justify-center h-[25rem];
+}
+
+.activeCard{
+    @apply bg-red-500;
+}
+.extraContainer {
+    @apply w-full h-[10rem] bg-white text-black rounded-b-lg absolute left-0  bottom-0;
+}
