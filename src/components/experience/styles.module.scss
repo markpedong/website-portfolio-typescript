@@ -1,6 +1,73 @@
 @import "@/styles/_helpers.scss";
 
-.experienceContainer{
+.experienceWrapper {
+    @apply max-w-7xl mx-auto;
+    background-color: var(--bg-secondary);
+}
+
+.experienceContainer {
     @apply grid;
-    grid-template-columns: 1fr 3fr; 
+    grid-template-columns: 1fr 3fr;
+}
+
+.leftContainer,
+.rightContainer {
+    @apply pt-[1rem];
+}
+
+.rightContainer {
+    @apply pl-[10rem]
+}
+
+.btnContainer {
+    @apply pt-[3rem]
+}
+
+.header {
+    font-size: toRem(25);
+}
+
+.btn {
+    @apply flex justify-between items-center p-[1rem] my-[1rem] bg-white rounded-sm;
+    color: var(--purple);
+}
+
+.textContainer {
+    @apply flex flex-col gap-[1rem];
+}
+
+.title {
+    font-size: toRem(16);
+    color: var(--color-tertiary);
+}
+
+.location,
+.duration {
+    font-size: toRem(13);
+    color: var(--color-fourth);
+}
+
+.techContainer {
+    @apply flex items-center justify-start gap-3;
+
+    span {
+        @apply text-[#656D72] px-2 py-1 rounded-sm;
+        border: toRem(1) solid #F1F1F1;
+        font-size: toRem(12);
+
+    }
+}
+
+.descriptionContainer {
+    @apply flex flex-col gap-4;
+
+    span {
+        @apply flex gap-4;
+        color: var(--color-fifth);
+        font-size: toRem(14);
+
+        .hypen {
+            color: var(--hypen);
+        }
+    }
 }

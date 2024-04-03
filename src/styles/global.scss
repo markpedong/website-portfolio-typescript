@@ -7,6 +7,10 @@
 
   --color-primary: #1e1e1e;
   --color-secondary: #656D72;
+  --color-tertiary: #232E35;
+  --color-fourth: #656D72;
+  --color-fifth: #656D72;
+  --hypen: #D9D9D9;
   --white-color: rgb(255, 255, 255);
   --bg-primary: #fdfdfd;
   --bg-secondary: #FBFBFB;
@@ -16,6 +20,10 @@
   &.dark {
     --color-primary: rgb(255, 255, 255);
     --color-secondary: #656D72;
+    --color-tertiary: #FFFFFF;
+    --color-fourth: #F1F1F1;
+    --color-fifth: #D9D9D9;
+    --hypen: #f1f1f1;
     --white-color: rgb(0, 0, 0);
     --bg-primary: rgba(20, 20, 20, 1);
     --bg-secondary: #1E1E1E;
