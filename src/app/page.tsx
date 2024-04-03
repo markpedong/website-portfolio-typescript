@@ -16,8 +16,8 @@ const App = () => {
 			<Specialty />
 			<div className={styles.mainWrapper}>
 				<Portfolio />
-				<Experience />
 			</div>
+			<Experience />
 		</>
 	)
 }
