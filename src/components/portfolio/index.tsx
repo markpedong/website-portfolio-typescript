@@ -41,27 +41,26 @@ const Portfolio = () => {
 				<CarouselContent className="mt-[5rem]">
 					{[1, 2, 3, 4, 5, 6].map((item, index) => (
 						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-14">
-							<div className={"relative w-full"}>
+							<div className={'relative w-full'}>
 								<Card className={hoveredItem === item && styles.activeCard}>
 									<CardContent
 										className={styles.cardContainer}
 										onMouseEnter={() => setHoveredItem(item)}
 										onMouseLeave={() => setHoveredItem(null)}
 									>
-										<Skeleton />
+										{hoveredItem === item && (
+											<motion.div
+												initial={{ opacity: 0, y: 50 }}
+												animate={{ opacity: 1, y: 0 }}
+												exit={{ opacity: 0, y: 50 }}
+												transition={{ duration: 0.2 }}
+												className={styles.extraContainer}
+											>
+												Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, excepturi.
+											</motion.div>
+										)}
 									</CardContent>
 								</Card>
-								{hoveredItem === item && (
-									<motion.div
-										initial={{ opacity: 0, y: 50 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: 50 }}
-										transition={{ duration: 0.2 }}
-										className={styles.extraContainer}
-									>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, excepturi.
-									</motion.div>
-								)}
 							</div>
 						</CarouselItem>
 					))}
