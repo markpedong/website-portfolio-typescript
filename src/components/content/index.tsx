@@ -1,19 +1,16 @@
 import classNames from 'classnames'
 import styles from './styles.module.scss'
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import Header from '../header'
 import Image from 'next/image'
-
-const inter = Inter({ weight: '400', subsets: ['latin'] })
-const jakarta = Plus_Jakarta_Sans({ weight: '700', subsets: ['latin'] })
+import { inter, jakartaB } from '../../../public/fonts'
 
 const Content = () => {
 	return (
 		<div className={styles.mainContentWrapper}>
 			<div className={styles.nameContainer}>
 				<Header title="My name is" />
-				<span className={classNames(jakarta.className, styles.title)}>
+				<span className={classNames(jakartaB.className, styles.title)}>
 					Mark <p style={{ color: '#7E74F1' }}>Pedong.</p>
 				</span>
 				<span className={inter.className}>

@@ -1,23 +1,21 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import Header from '../header'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
 import { Card, CardContent } from '../ui/card'
 import { motion } from 'framer-motion'
-import { Skeleton } from '../ui/skeleton'
 import classNames from 'classnames'
-
-const jakarta = Plus_Jakarta_Sans({ weight: '700', subsets: ['latin'] })
+import { jakartaB, jakartaM } from '../../../public/fonts'
+import { IoMdLink } from 'react-icons/io'
 
 const PortfolioHeader = () => {
 	const { scrollNext, scrollPrev } = useCarousel()
 	return (
 		<div className={styles.headerContainer}>
-			<span className={jakarta.className}>Featured Portfolios</span>
+			<span className={jakartaB.className}>Featured Portfolios</span>
 			<div className={styles.arrowContainer}>
 				<div>
 					<FaChevronLeft onClick={scrollPrev} />
@@ -32,6 +30,10 @@ const PortfolioHeader = () => {
 
 const Portfolio = () => {
 	const [hoveredItem, setHoveredItem] = useState(null)
+
+	useEffect(() => {
+		setHoveredItem(1)
+	}, [])
 
 	return (
 		<div className={styles.portfolioWrapper}>
@@ -56,7 +58,12 @@ const Portfolio = () => {
 												transition={{ duration: 0.2 }}
 												className={styles.extraContainer}
 											>
-												Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, excepturi.
+												<span className={classNames(styles.title, jakartaM.className)}>Agency Website</span>
+												<div className={styles.techContainer}>
+													<span>WordPress</span>
+													<span>React</span>
+													<IoMdLink color="#656D72" />
+												</div>
 											</motion.div>
 										)}
 									</CardContent>

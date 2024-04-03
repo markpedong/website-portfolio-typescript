@@ -1,15 +1,11 @@
 import styles from './styles.module.scss'
 import Header from '../header'
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import classNames from 'classnames'
 import { RiVipCrownLine } from 'react-icons/ri'
 import React from 'react'
 import { GoStack } from 'react-icons/go'
 import { HiOutlineGlobeAlt } from 'react-icons/hi'
-
-const jakarta = Plus_Jakarta_Sans({ weight: '700', subsets: ['latin'] })
-const jakartaM = Plus_Jakarta_Sans({ weight: '500', subsets: ['latin'] })
-const inter = Inter({ weight: '400', subsets: ['latin'] })
+import { inter, jakartaB, jakartaM } from '../../../public/fonts'
 
 type Props = { title: string; description: string; logo: React.ReactNode }
 const CSpecialty = ({ description, logo, title }: Props) => {
@@ -27,7 +23,7 @@ const Specialty = () => {
 		<div className={styles.specialtyWrapper}>
 			<div className={styles.titleWrapper}>
 				<Header title="services" />
-				<span className={classNames(styles.title, jakarta.className)}>Specialized In</span>
+				<span className={classNames(styles.title, jakartaB.className)}>Specialized In</span>
 			</div>
 			<div className={styles.contentWrapper}>
 				<CSpecialty
