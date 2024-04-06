@@ -7,7 +7,7 @@ import { FaAngleRight } from 'react-icons/fa6'
 import { AnimatePresence, motion } from 'framer-motion'
 import { scaleSize } from '@/constants'
 import classNames from 'classnames'
-import { inter, interM, jakartaM } from '../../../public/fonts'
+import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
 import { Separator } from '../ui/separator'
 
 const Experience = () => {
@@ -29,7 +29,7 @@ const Experience = () => {
 			<Header title="career path" />
 			<div className={styles.experienceContainer}>
 				<div className={styles.leftContainer}>
-					<span className={styles.header}>Work Experiences</span>
+					<span className={classNames(styles.header, jakartaB.className)}>Work Experiences</span>
 					<div className={styles.btnContainer}>
 						{['apple', 'google', 'amazon']?.map(w => (
 							<motion.div

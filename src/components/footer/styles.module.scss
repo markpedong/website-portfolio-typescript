@@ -1,0 +1,19 @@
+@import "@/styles/_helpers.scss";
+
+.footerWrapper {
+    @apply flex items-center justify-center flex-col py-[4.5rem] gap-5;
+
+    .iconContainer {
+        @apply flex gap-8;
+
+        svg {
+            @apply size-5;
+            color: var(--color-secondary);
+        }
+    }
+
+    .text {
+        font-size: toRem(12);
+        color: var(--color-secondary);
+    }
+}

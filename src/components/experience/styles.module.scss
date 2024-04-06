@@ -71,3 +71,21 @@
         }
     }
 }
+
+@media screen and (max-width: 576px) {
+    .experienceContainer {
+        @apply grid-cols-1;
+    }
+
+    .rightContainer {
+        @apply pl-0
+    }
+
+    .btnContainer {
+        @apply flex gap-2 flex-wrap;
+
+        .btn {
+            @apply p-[0.7rem] my-[0.7rem]
+        }
+    }
+}

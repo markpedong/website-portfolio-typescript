@@ -7,7 +7,7 @@
     }
 }
 
-.experienceWrapper {
-    @apply py-[10rem];
+.wrapperWithBG {
+    @apply py-[10rem] px-[1rem];
     background-color: var(--bg-secondary);
 }

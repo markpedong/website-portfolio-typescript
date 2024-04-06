@@ -5,6 +5,11 @@ import Content from '@/components/content'
 import Specialty from '@/components/specialty'
 import Portfolio from '@/components/portfolio'
 import Experience from '@/components/experience'
+import Blogs from '@/components/blogs'
+import Testimonials from '@/components/testimonials'
+import Education from '@/components/education'
+import Contact from '@/components/contact'
+import Footer from '@/components/footer'
 
 const App = () => {
 	return (
@@ -17,9 +22,18 @@ const App = () => {
 			<div className={styles.mainWrapper}>
 				<Portfolio />
 			</div>
-			<div className={styles.experienceWrapper}>
+			<div className={styles.wrapperWithBG}>
 				<Experience />
 			</div>
+			<Blogs />
+			<div className={styles.wrapperWithBG}>
+				<Testimonials />
+			</div>
+			<Education />
+			<div className={styles.wrapperWithBG}>
+				<Contact />
+			</div>
+			<Footer />
 		</>
 	)
 }

@@ -1,0 +1,126 @@
+@import "@/styles/_helpers.scss";
+
+.educationWrapper {
+    @apply max-w-7xl mx-auto px-4 py-[10rem];
+    background-color: var(--bg-secondary);
+}
+
+.educationContainer {
+    @apply grid pt-[3rem];
+    grid-template-columns: 2fr 3fr;
+}
+
+.leftContainer,
+.rightContainer {
+    @apply pt-[1rem];
+}
+
+.leftContainer {
+    @apply pl-[1rem];
+}
+
+.header {
+    font-size: toRem(25);
+}
+
+.btn {
+    @apply flex flex-col justify-center items-start p-[1rem] mb-[1rem];
+    color: var(--color-primary);
+
+    &:last-of-type {
+
+        .school::before {
+            visibility: hidden;
+
+        }
+    }
+}
+
+.description {
+    color: var(--color-secondary);
+    font-size: toRem(14)
+}
+
+.school,
+.year {
+    font-size: toRem(14);
+}
+
+.school {
+    @apply relative;
+    line-height: toRem(14);
+
+    &::after {
+        @apply rounded-full absolute left-[-2rem] top-[0.1rem] size-[0.85rem] bg-[#F1F1F1];
+        content: '';
+    }
+
+    &::before {
+        @apply absolute left-[-1.6rem] top-[0.1rem] h-[8rem] w-[0.1rem] bg-[#F1F1F1];
+        content: '';
+    }
+}
+
+.course {
+    @apply pb-[0.8rem];
+    font-size: toRem(12);
+    color: var(--color-secondary);
+}
+
+.progressContainer {
+    @apply pt-[4rem] mr-[2rem];
+
+    .progress {
+        @apply pb-[2rem];
+
+        span:first-of-type {
+            font-size: toRem(14);
+        }
+
+        .progressBar {
+            @apply bg-[#F5F3FE] mt-[0.5rem];
+
+            div:first-of-type {
+                @apply bg-[#7E74F1];
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .educationContainer {
+        @apply grid-cols-1 pt-[1rem];
+    }
+
+    .leftContainer {
+        @apply pb-[3rem] flex flex-nowrap;
+    }
+
+    .btn {
+        @apply pr-[1rem];
+
+        .school {
+            &::after {
+                @apply left-[-1.4rem];
+                content: '';
+            }
+
+            &::before {
+                @apply left-[-1rem];
+                content: '';
+            }
+        }
+
+        &:last-of-type {
+            .school::before {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .leftContainer {
+        @apply flex-wrap;
+    }
+}

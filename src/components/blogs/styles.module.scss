@@ -1,0 +1,54 @@
+@import '@/styles/_helpers.scss';
+
+.blogsWrapper {
+    @apply py-[10rem] flex flex-col items-center justify-center px-[1rem];
+    background-color: var(--bg-secondary)
+}
+
+.titleWrapper {
+    @apply flex flex-col items-center justify-center;
+}
+
+.title {
+    font-size: toRem(25);
+}
+
+.contentWrapper {
+    @apply flex gap-[5rem] pt-[4.5rem] flex-wrap justify-center;
+}
+
+.blogContainer {
+    @apply flex flex-col rounded-b-lg w-[19rem];
+}
+
+.imgContainer {
+    @apply bg-red-500 h-48 w-auto rounded-t-lg;
+}
+
+.dataContainer {
+    @apply flex flex-col py-3 px-4 gap-5;
+    border: toRem(2) solid var(--border-color);
+    background-color: var(--bg-secondary);
+
+    .title {
+        color: var(--color-primary);
+        font-size: toRem(14);
+    }
+
+    .date {
+        @apply bg-[#FBFBFB] text-[#656D72] w-fit py-1 px-2 rounded-sm;
+        font-size: toRem(10);
+    }
+
+    .description {
+        color: var(--color-fourth);
+        font-size: toRem(11);
+    }
+
+    .btn {
+        @apply text-center cursor-pointer select-none;
+        color: var(--color-fourth);
+        font-size: toRem(11);
+    }
+
+}

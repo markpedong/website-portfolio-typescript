@@ -1,0 +1,38 @@
+@import "@/styles/_helpers.scss";
+
+.header {
+    @apply mt-[1rem];
+    font-size: toRem(25);
+}
+
+.testimonialContainer {
+    @apply px-4 pt-[5rem] pb-5 relative flex flex-col rounded-md;
+    background-color: var(--bg-primary);
+
+    .imageContainer {
+        @apply absolute bg-red-500 top-0 left-[50%] rounded-full;
+        transform: translate(-50%, -50%);
+
+        img {
+            @apply size-[5rem];
+        }
+    }
+
+    .description {
+        color: var(--color-tertiary);
+        font-size: toRem(14);
+    }
+
+    .author {
+        @apply pt-[2rem];
+        color: var(--color-tertiary);
+        font-size: toRem(13);
+    }
+
+    .work {
+        @apply w-fit px-[0.65rem] py-[0.2rem] rounded-sm;
+        background-color: var(--bg-secondary);
+        color: var(--color-primary);
+        font-size: toRem(11);
+    }
+}
