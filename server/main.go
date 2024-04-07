@@ -13,4 +13,5 @@ func main() {
 	r := gin.New()
 
 	r.Use(CorsMiddleware())
+	r.Run()
 }
