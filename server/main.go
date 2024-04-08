@@ -2,11 +2,15 @@ package main
 
 import (
 	"log"
+	"portfolio/database"
 	"portfolio/routes"
 
 	"github.com/gin-gonic/gin"
 )
 
+func init() {
+	database.DBSetup()
+}
 func CorsMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 
