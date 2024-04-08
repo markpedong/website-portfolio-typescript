@@ -33,4 +33,16 @@ func GetInformation(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "", helpers.DataHelper(user))
 }
 
-func UpdateInformation(ctx *gin.Context) {}
+func UpdateInformation(ctx *gin.Context) {
+	var user models.Users
+	if err := helpers.BindValidateJSON(ctx, &user); err != nil {
+		return
+	}
+
+	if err := database.DB.Updates(&user).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "")
+}

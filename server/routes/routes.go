@@ -9,7 +9,7 @@ import (
 func CreateRoutes(r *gin.Engine) {
 	self := r.Group("/info")
 	{
-		self.GET("/details", controllers.GetInformation)
+		self.GET("/getDetails", controllers.GetInformation)
 		self.POST("/updateDetails", controllers.UpdateInformation)
 	}
 
