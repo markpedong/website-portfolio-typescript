@@ -15,6 +15,7 @@ func CreateRoutes(r *gin.Engine) {
 
 	links := r.Group("/links")
 	{
+		links.POST("/addLinks", controllers.AddLinks)
 		links.GET("/getLinks", controllers.GetLinks)
 		links.POST("/updateLinks", controllers.UpdateLinks)
 		links.DELETE("/deleteLinks", controllers.DeleteLinks)

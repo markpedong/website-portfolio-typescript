@@ -14,3 +14,8 @@ type Users struct {
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
+
+type Links struct {
+	ID   string `json:"id" gorm:"primaryKey"`
+	Link string `json:"link" validate:"required"`
+}
