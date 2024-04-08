@@ -1,4 +1,4 @@
-module website-portfolio/server
+module portfolio
 
 go 1.21.6
 
