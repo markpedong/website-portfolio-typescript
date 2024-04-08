@@ -1,7 +1,36 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+	"portfolio/database"
+	"portfolio/helpers"
+	"portfolio/models"
+
+	"github.com/gin-gonic/gin"
+)
+
+// func AddInformation(ctx *gin.Context) {
+// 	var user models.Users
+// 	if err := helpers.BindValidateJSON(ctx, &user); err != nil {
+// 		return
+// 	}
+// 	user.ID = helpers.NewUUID()
+// 	if err := database.DB.Create(&user).Error; err != nil {
+// 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+// 		return
+// 	}
+
+// 	helpers.JSONResponse(ctx, "", helpers.DataHelper(user))
+// }
 
 func GetInformation(ctx *gin.Context) {
+	var user models.Users
+	if err := database.DB.First(&user).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(user))
 }
+
+func UpdateInformation(ctx *gin.Context) {}

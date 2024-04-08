@@ -6,6 +6,7 @@ import (
 	"portfolio/routes"
 
 	"github.com/gin-gonic/gin"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func init() {
