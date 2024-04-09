@@ -22,12 +22,14 @@ func AddBlogs(ctx *gin.Context) {
 	}
 
 	newBlogItem := models.Blogs{
-		ID:          helpers.NewUUID(),
-		Title:       body.Title,
-		Date:        body.Date,
-		Description: body.Description,
-		Link:        body.Link,
-		Image:       body.Image,
+		ID: helpers.NewUUID(),
+		BlogsPayload: models.BlogsPayload{
+			Title:       body.Title,
+			Date:        body.Date,
+			Description: body.Description,
+			Link:        body.Link,
+			Image:       body.Image,
+		},
 	}
 	if err := database.DB.Create(&newBlogItem).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
@@ -50,12 +52,8 @@ func GetBlogs(ctx *gin.Context) {
 
 func UpdateBlogs(ctx *gin.Context) {
 	var blogs struct {
-		ID          string `json:"id"`
-		Title       string `json:"title"  validate:"required"`
-		Date        int    `json:"date" validate:"required"`
-		Description string `json:"description" validate:"required"`
-		Link        string `json:"ink"`
-		Image       string `json:"image" validate:"required"`
+		models.BlogsPayload
+		ID string `json:"id"`
 	}
 	if err := helpers.BindValidateJSON(ctx, &blogs); err != nil {
 		return

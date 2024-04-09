@@ -58,27 +58,57 @@ type Portfolios struct {
 }
 
 type Blogs struct {
-	ID          string `json:"id" gorm:"primaryKey"`
-	Title       string `json:"title"  validate:"required"`
-	Date        int    `json:"date" validate:"required"`
-	Description string `json:"description" validate:"required"`
-	Link        string `json:"ink"`
-	Image       string `json:"image" validate:"required"`
+	BlogsPayload
+	ID        string                `json:"id" gorm:"primaryKey"`
+	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt soft_delete.DeletedAt `json:"-"`
 }
 
 type Education struct {
-	ID          string   `json:"id" gorm:"primaryKey"`
-	School      string   `json:"school" validate:"required"`
-	Course      string   `json:"course" validate:"required"`
-	Started     string   `json:"started" validate:"required"`
-	Ended       string   `json:"ended" validate:"required"`
-	Description string   `json:"description" validate:"required"`
-	Skills      []Skills `json:"skills" gorm:"foreignKey:EducationID"`
+	ID          string                `json:"id" gorm:"primaryKey"`
+	School      string                `json:"school" validate:"required"`
+	Course      string                `json:"course" validate:"required"`
+	Started     string                `json:"started" validate:"required"`
+	Ended       string                `json:"ended" validate:"required"`
+	Description string                `json:"description" validate:"required"`
+	Skills      []Skills              `json:"skills"`
+	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 
 type Skills struct {
-	ID          string `json:"id" gorm:"primaryKey"`
-	EducationID string `json:"education_id" validate:"required"`
-	Name        string `json:"name" validate:"required"`
-	Percentage  int    `json:"percentage" validate:"required"`
+	ID           string                `json:"id" gorm:"primaryKey"`
+	EducationID  string                `json:"education_id" validate:"required"`
+	ExperienceID string                `json:"experience_id" validate:"required"`
+	Name         string                `json:"name" validate:"required"`
+	Percentage   int                   `json:"percentage" validate:"required"`
+	CreatedAt    int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt    int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt    soft_delete.DeletedAt `json:"-"`
+}
+
+type Experiences struct {
+	ID        string                `json:"id" gorm:"primaryKey"`
+	Company   string                `json:"company"  validate:"required"`
+	Title     string                `json:"title" validate:"required"`
+	Location  string                `json:"location" validate:"required"`
+	Started   string                `json:"started" validate:"required"`
+	Ended     string                `json:"ended" validate:"required"`
+	Skills    []Skills              `json:"skills" gorm:"foreignKey:ExperienceID"`
+	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt soft_delete.DeletedAt `json:"-"`
+}
+
+type Testimonials struct {
+	ID          string                `json:"id" gorm:"primaryKey"`
+	Author      string                `json:"author" validate:"required"`
+	Description string                `json:"description" validate:"required"`
+	Image       string                `json:"image"`
+	Job         string                `json:"job"`
+	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
