@@ -77,6 +77,22 @@ func EditEducations(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
-func DeleteEducations(ctx *gin.Context) {}
+
+func DeleteEducations(ctx *gin.Context) {
+	var body struct {
+		ID string `json:"id"`
+	}
+	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
+		return
+	}
+
+	var currService models.Education
+	if err := database.DB.First(&currService, "id = ?", body.ID).Delete(&currService).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "")
+}
 
 func UpdateSkills(ctx *gin.Context) {}

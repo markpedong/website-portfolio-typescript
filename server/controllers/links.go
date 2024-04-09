@@ -64,11 +64,11 @@ func DeleteLinks(ctx *gin.Context) {
 	var links struct {
 		ID string `json:"id"`
 	}
-	if err := helpers.BindValidateJSON(ctx, links); err != nil {
+	if err := helpers.BindValidateJSON(ctx, &links); err != nil {
 		return
 	}
 
-	if err := database.DB.Delete(&links, "id = ?", links.ID).Error; err != nil {
+	if err := database.DB.Delete(&models.Links{}, "id = ?", links.ID).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
