@@ -23,6 +23,7 @@ func CreateRoutes(r *gin.Engine) {
 
 	services := r.Group("/services")
 	{
+		services.POST("/addServices", controllers.AddServices)
 		services.GET("/getServices", controllers.GetServices)
 		services.POST("/updateServices", controllers.UpdateServices)
 		services.DELETE("/deleteServices", controllers.DeleteServices)

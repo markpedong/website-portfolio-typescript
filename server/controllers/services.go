@@ -1,7 +1,77 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+	"portfolio/database"
+	"portfolio/helpers"
+	"portfolio/models"
 
-func GetServices(ctx *gin.Context)    {}
-func UpdateServices(ctx *gin.Context) {}
-func DeleteServices(ctx *gin.Context) {}
+	"github.com/gin-gonic/gin"
+)
+
+func AddServices(ctx *gin.Context) {
+	var service models.Services
+	if err := helpers.BindValidateJSON(ctx, &service); err != nil {
+		return
+	}
+
+	service.ID = helpers.NewUUID()
+	if err := database.DB.Create(&service).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "")
+}
+
+func GetServices(ctx *gin.Context) {
+	var services []models.Services
+	if err := database.DB.Find(&services).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(services))
+}
+
+func UpdateServices(ctx *gin.Context) {
+	var services struct {
+		ID          string `json:"id"`
+		Title       string `json:"title"`
+		Description string `json:"description"`
+		Logo        string `json:"logo"`
+	}
+	if err := helpers.BindValidateJSON(ctx, &services); err != nil {
+		return
+	}
+
+	var currService models.Services
+	if err := database.DB.First(&currService, "id = ?", services.ID).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	if err := database.DB.Model(&currService).Updates(services).Save(&currService).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "")
+}
+
+func DeleteServices(ctx *gin.Context) {
+	var body struct {
+		ID string `json:"id"`
+	}
+	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
+		return
+	}
+
+	var currService models.Services
+	if err := database.DB.First(&currService, "id = ?", body.ID).Delete(&currService).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "")
+}

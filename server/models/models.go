@@ -16,6 +16,19 @@ type Users struct {
 }
 
 type Links struct {
-	ID   string `json:"id" gorm:"primaryKey"`
-	Link string `json:"link" validate:"required"`
+	ID        string                `json:"id" gorm:"primaryKey"`
+	Link      string                `json:"link" validate:"required"`
+	CreatedAt int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int                   `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt soft_delete.DeletedAt `json:"-"`
+}
+
+type Services struct {
+	ID          string                `json:"id" gorm:"primaryKey"`
+	Title       string                `json:"title"`
+	Description string                `json:"description"`
+	Logo        string                `json:"logo"`
+	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }

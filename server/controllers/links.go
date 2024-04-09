@@ -28,6 +28,7 @@ func AddLinks(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
+
 func GetLinks(ctx *gin.Context) {
 	var links []models.Links
 	if err := database.DB.Find(&links).Error; err != nil {
@@ -37,6 +38,7 @@ func GetLinks(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "", helpers.DataHelper(links))
 }
+
 func UpdateLinks(ctx *gin.Context) {
 	var links struct {
 		ID      string `json:"id"`
@@ -57,6 +59,7 @@ func UpdateLinks(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
+
 func DeleteLinks(ctx *gin.Context) {
 	var links struct {
 		ID string `json:"id"`
