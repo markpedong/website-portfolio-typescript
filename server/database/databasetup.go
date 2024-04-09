@@ -24,7 +24,7 @@ func DBSetup() {
 		return
 	}
 
-	err = DB.AutoMigrate(&models.Users{}, &models.Links{}, &models.Services{}, &models.Messages{})
+	err = DB.AutoMigrate(&models.Users{}, &models.Links{}, &models.Services{}, &models.Messages{}, &models.Portfolios{})
 	if err != nil {
 		log.Fatal(err.Error())
 		return

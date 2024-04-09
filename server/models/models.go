@@ -1,6 +1,9 @@
 package models
 
-import "gorm.io/plugin/soft_delete"
+import (
+	"github.com/lib/pq"
+	"gorm.io/plugin/soft_delete"
+)
 
 type Users struct {
 	ID          string                `json:"id" gorm:"primaryKey"`
@@ -38,6 +41,17 @@ type Messages struct {
 	Name      string                `json:"name"`
 	Email     string                `json:"email"`
 	Message   string                `json:"message"`
+	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt soft_delete.DeletedAt `json:"-"`
+}
+
+type Portfolios struct {
+	ID        string                `json:"id" gorm:"primaryKey"`
+	Title     string                `json:"title"  validate:"required"`
+	Tech      pq.StringArray        `json:"tech" gorm:"type:text[]" validate:"required"`
+	Link      string                `json:"link" validate:"required"`
+	Image     string                `json:"image" validate:"required"`
 	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`
