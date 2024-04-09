@@ -56,3 +56,12 @@ type Portfolios struct {
 	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`
 }
+
+type Blogs struct {
+	ID          string `json:"id" gorm:"primaryKey"`
+	Title       string `json:"title"  validate:"required"`
+	Date        int    `json:"date" validate:"required"`
+	Description string `json:"description" validate:"required"`
+	Link        string `json:"ink"`
+	Image       string `json:"image" validate:"required"`
+}
