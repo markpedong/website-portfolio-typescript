@@ -65,3 +65,20 @@ type Blogs struct {
 	Link        string `json:"ink"`
 	Image       string `json:"image" validate:"required"`
 }
+
+type Education struct {
+	ID          string   `json:"id" gorm:"primaryKey"`
+	School      string   `json:"school" validate:"required"`
+	Course      string   `json:"course" validate:"required"`
+	Started     string   `json:"started" validate:"required"`
+	Ended       string   `json:"ended" validate:"required"`
+	Description string   `json:"description" validate:"required"`
+	Skills      []Skills `json:"skills" gorm:"foreignKey:EducationID"`
+}
+
+type Skills struct {
+	ID          string `json:"id" gorm:"primaryKey"`
+	EducationID string `json:"education_id" validate:"required"`
+	Name        string `json:"name" validate:"required"`
+	Percentage  int    `json:"percentage" validate:"required"`
+}
