@@ -32,3 +32,13 @@ type Services struct {
 	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
+
+type Messages struct {
+	ID        string                `json:"id" gorm:"primaryKey"`
+	Name      string                `json:"name"`
+	Email     string                `json:"email"`
+	Message   string                `json:"message"`
+	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt soft_delete.DeletedAt `json:"-"`
+}
