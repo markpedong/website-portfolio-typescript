@@ -1,16 +1,17 @@
+import Root from '@/pages/root';
+import '@/styles/global.module.scss';
+import { ConfigProvider } from 'antd';
+import enUS from 'antd/locale/en_US';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+	<React.StrictMode>
+		<ConfigProvider locale={enUS}>
+			<BrowserRouter>
+				<Root />
+			</BrowserRouter>
+		</ConfigProvider>
+	</React.StrictMode>
 );
