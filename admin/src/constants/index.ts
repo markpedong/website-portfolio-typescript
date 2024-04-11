@@ -1,4 +1,4 @@
-import { ModalFormProps, ProTableProps } from '@ant-design/pro-components';
+import { ModalFormProps, ProFormProps, ProTableProps } from '@ant-design/pro-components'
 
 export const PRO_TABLE_PROPS: ProTableProps<any, any> = {
 	options: false,
@@ -20,7 +20,7 @@ export const PRO_TABLE_PROPS: ProTableProps<any, any> = {
 		defaultPageSize: 20,
 		showSizeChanger: true
 	}
-};
+}
 
 export const MODAL_FORM_PROPS: ModalFormProps = {
 	labelCol: { flex: '110px' },
@@ -34,4 +34,12 @@ export const MODAL_FORM_PROPS: ModalFormProps = {
 	autoFocusFirstInput: true,
 	preserve: false,
 	size: 'large'
-};
+}
+
+export const FORM_PROPS: ProFormProps = {
+	labelCol: { flex: '80px' },
+	layout: 'horizontal',
+	wrapperCol: { flex: 1 },
+	preserve: false,
+	size: 'middle'
+}
