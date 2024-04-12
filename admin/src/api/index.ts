@@ -16,4 +16,13 @@ export type TDetailsItem = {
 export const getDetails = () => get<TDetailsItem>('/info/getDetails')
 
 // /links/getLinks
-export const getLinks = () => get('/links/getLinks')
+export type TLinksItem = {
+	created_at: number
+	id: string
+	link: string
+	updated_at: number
+}
+export const getLinks = () => get<TLinksItem[]>('/links/getLinks')
+
+// /links/addLinks
+export const addLinks = params => post('/links/addLinks', params)

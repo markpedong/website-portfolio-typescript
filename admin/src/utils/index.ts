@@ -5,10 +5,13 @@ export const formatNumber = (num: number, format: string = '0,0') => {
 }
 
 export const ignoreFindDOMNodeError = () => {
-	const oldWarn = console.warn
-	console.warn = (message, ...optionalParams) => {
-		if (!message.includes('findDOMNode is deprecated in StrictMode')) {
-			oldWarn(message, ...optionalParams)
+	// eslint-disable-next-line
+	const consoleError = console.error.bind(console)
+	// eslint-disable-next-line
+	console.error = (errObj, ...args) => {
+		if (typeof errObj === 'string' && args.includes('findDOMNode')) {
+			return
 		}
+		consoleError(errObj, ...args)
 	}
 }

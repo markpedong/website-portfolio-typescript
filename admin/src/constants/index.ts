@@ -1,4 +1,14 @@
 import { ModalFormProps, ProFormProps, ProTableProps } from '@ant-design/pro-components'
+import { Rule } from 'antd/es/form'
+
+export const INPUT_LINK: Rule = {
+	validator: (_, value) => {
+		if (!value || /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/.test(value)) {
+			return Promise.resolve()
+		}
+		return Promise.reject('Please enter a valid link starting with http:// or https://')
+	}
+}
 
 export const PRO_TABLE_PROPS: ProTableProps<any, any> = {
 	options: false,
