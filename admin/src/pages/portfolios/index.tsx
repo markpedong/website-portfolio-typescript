@@ -54,12 +54,14 @@ const Portfolio = () => {
 				title={isEdit ? 'Edit Portfolio' : 'Add Portfolio'}
 				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button type="primary">Add</Button>}
 				initialValues={isEdit ? record : {}}
+				labelCol={{ flex: '110px' }}
 			>
-				<ProFormText label="Title" rules={[{ required: true }]} />
-				<ProFormText label="Description" rules={[{ required: true }]} />
+				<ProFormText label="Title" name="title" rules={[{ required: true }]} />
+				<ProFormText label="Description" name="description" rules={[{ required: true }]} />
 				<ProFormSelect
 					label="Tech Stack"
-					fieldProps={{ maxLength: 5, mode: 'tags' }}
+					name="tech_stack"
+					fieldProps={{ mode: 'tags', maxCount: 5 }}
 					rules={[{ required: true }]}
 				/>
 				<ProFormUploadButton
@@ -108,7 +110,12 @@ const Portfolio = () => {
 
 	return (
 		<div>
-			<ProTable {...PRO_TABLE_PROPS} columns={columns} request={fetchData} />
+			<ProTable
+				{...PRO_TABLE_PROPS}
+				columns={columns}
+				request={fetchData}
+				toolBarRender={() => [renderAddEditPortfolio('ADD')]}
+			/>
 		</div>
 	)
 }
