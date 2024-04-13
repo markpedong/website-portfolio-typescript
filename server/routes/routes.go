@@ -10,6 +10,7 @@ func CreateRoutes(r *gin.Engine) {
 	self := r.Group("/info")
 	{
 		self.GET("/getDetails", controllers.GetInformation)
+		self.POST("/addDetails", controllers.AddInformation)
 		self.POST("/updateDetails", controllers.UpdateInformation)
 	}
 
@@ -18,7 +19,7 @@ func CreateRoutes(r *gin.Engine) {
 		links.POST("/addLinks", controllers.AddLinks)
 		links.GET("/getLinks", controllers.GetLinks)
 		links.POST("/updateLinks", controllers.UpdateLinks)
-		links.DELETE("/deleteLinks", controllers.DeleteLinks)
+		links.POST("/deleteLinks", controllers.DeleteLinks)
 	}
 
 	services := r.Group("/services")

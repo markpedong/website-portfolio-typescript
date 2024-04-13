@@ -15,14 +15,27 @@ export type TDetailsItem = {
 
 export const getDetails = () => get<TDetailsItem>('/info/getDetails')
 
+// /info/addDetails
+export const addDetails = (params) => post<TDetailsItem>('/info/addDetails', params)
+
+// /info/updateDetails
+export const updateDetails = (params) => post<TDetailsItem>('/info/updateDetails', params)
+
 // /links/getLinks
 export type TLinksItem = {
 	created_at: number
 	id: string
 	link: string
 	updated_at: number
+	type: string
 }
 export const getLinks = () => get<TLinksItem[]>('/links/getLinks')
 
 // /links/addLinks
 export const addLinks = params => post('/links/addLinks', params)
+
+// /links/deleteLinks
+export const updateLinks = params => post('/links/updateLinks', params)
+
+// /links/deleteLinks
+export const deleteLinks = params => post('/links/deleteLinks', params)

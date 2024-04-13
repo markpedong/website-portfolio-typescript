@@ -2,9 +2,9 @@ import logo from '@/assets/logo.png';
 import logoDark from '@/assets/logo-dark.png';
 import { MODAL_FORM_PROPS } from '@/constants';
 import menus from '@/pages/menus';
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { DownOutlined } from '@ant-design/icons';
 import { ActionType, ModalForm, ProFormText, ProLayout } from '@ant-design/pro-components';
-import { Dropdown, Space, Switch, Typography } from 'antd';
+import { Dropdown, Switch, Typography } from 'antd';
 import { cloneDeep } from 'lodash';
 import { FC, useRef } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -63,7 +63,7 @@ const App: FC = () => {
 			headerTitleRender={() => (
 				<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 					<img src={darkMode ? logoDark : logo} />
-					<h1>M.Pedong</h1>
+					<h1>M</h1>
 				</div>
 			)}
 			route={{ routes: cloneDeep(menus) }}

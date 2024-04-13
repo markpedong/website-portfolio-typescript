@@ -10,8 +10,8 @@ import (
 
 var Validate = validator.New()
 
-func ErrJSONResponse(ctx *gin.Context, status int, message string) {
-	ctx.AbortWithStatusJSON(status, gin.H{
+func ErrJSONResponse(ctx *gin.Context, status int, message string, jsonData ...map[string]interface{}) {
+	ctx.JSON(http.StatusOK, gin.H{
 		"message": message,
 		"success": false,
 		"status":  status,

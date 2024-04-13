@@ -10,6 +10,11 @@ export const INPUT_LINK: Rule = {
 	}
 }
 
+export const INPUT_EMAIL: Rule = {
+	"type": "email",
+	message: "Please enter a valid Email"
+}
+
 export const PRO_TABLE_PROPS: ProTableProps<any, any> = {
 	options: false,
 	scroll: { x: 1200 },

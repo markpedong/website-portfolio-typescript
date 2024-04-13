@@ -7,16 +7,16 @@ import { ActionType, ProFormInstance } from '@ant-design/pro-components'
 import { ApiResponse } from '@/api/http'
 
 export const afterModalformFinish = (
-	actionRef: MutableRefObject<ActionType | undefined>,
-	res: ApiResponse<any>,
-	formRef?: MutableRefObject<ProFormInstance>
+	actionRef?: MutableRefObject<ActionType | undefined>,
+	res?: ApiResponse<any>,
+	formRef?: MutableRefObject<ProFormInstance | undefined>
 ) => {
 	if (actionRef) {
 		actionRef?.current?.reload()
 	}
 
 	if (formRef) {
-		formRef?.current?.resetFields()
+		formRef?.current?.setFieldsValue(res?.data.data)
 	}
 
 	if (res?.data?.success) {
@@ -50,7 +50,7 @@ export const AntdConfigProvider = ({ children }: { children: React.ReactNode }) 
 			locale={enUS}
 			theme={{
 				algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-				token: { colorPrimary: 'red', fontFamily: 'Inter' }
+				token: { colorPrimary: 'red', fontFamily: 'Poppins' }
 			}}
 		>
 			{children}

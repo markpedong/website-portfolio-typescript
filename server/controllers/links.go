@@ -11,7 +11,8 @@ import (
 
 func AddLinks(ctx *gin.Context) {
 	var body struct {
-		Link string `json:"link"`
+		Link string `json:"link" validate:"required"`
+		Type string `json:"type" validate:"required"`
 	}
 	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
 		return
@@ -20,6 +21,7 @@ func AddLinks(ctx *gin.Context) {
 	newLink := models.Links{
 		ID:   helpers.NewUUID(),
 		Link: body.Link,
+		Type: body.Type,
 	}
 	if err := database.DB.Create(&newLink).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
@@ -41,8 +43,8 @@ func GetLinks(ctx *gin.Context) {
 
 func UpdateLinks(ctx *gin.Context) {
 	var links struct {
-		ID      string `json:"id"`
-		NewLink string `json:"new_link"`
+		ID      string `json:"id" validate:"required"`
+		NewLink string `json:"new_link" validate:"required"`
 	}
 	if err := helpers.BindValidateJSON(ctx, &links); err != nil {
 		return

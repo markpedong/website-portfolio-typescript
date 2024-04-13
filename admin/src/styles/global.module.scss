@@ -1,12 +1,13 @@
-@import url("../assets/fonts/inter.css");
+@import url("../assets/fonts/inter/inter.css");
+@import url("../assets/fonts/poppins/stylesheet.css");
 
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: "Inter";
+	font-family: "Poppins";
 }
 
 :root {
-	font-family: "Inter", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
