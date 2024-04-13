@@ -24,14 +24,8 @@ instance.interceptors.response.use(response => {
 })
 
 instance.interceptors.request.use(
-	config => {
-		console.log("REQUEST", config)
-		return config
-	},
-	error => {
-		console.log('Request Error:', error)
-		return Promise.reject(error)
-	}
+	config => config,
+	error => Promise.reject(error)
 )
 
 const upload = async <T>(url: string, data): Promise<ApiResponse<{ data: T }>> => {

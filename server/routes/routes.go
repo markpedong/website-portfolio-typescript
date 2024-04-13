@@ -13,11 +13,14 @@ func CreateRoutes(r *gin.Engine) {
 		api.POST("/uploadImage", controllers.UploadImage)
 	}
 
-	self := r.Group("/info")
+	website := r.Group("/info")
 	{
-		self.GET("/getDetails", controllers.GetInformation)
-		self.POST("/addDetails", controllers.AddInformation)
-		self.POST("/updateDetails", controllers.UpdateInformation)
+		website.GET("/getDetails", controllers.GetInformation)
+		website.POST("/addDetails", controllers.AddInformation)
+		website.POST("/updateDetails", controllers.UpdateInformation)
+		website.POST("/addWebsiteDetails", controllers.AddWebsiteDetails)
+		website.GET("/getWebsiteDetails", controllers.GetWebsiteDetails)
+		website.POST("/updateWebsiteDetails", controllers.UpdateWebsiteDetails)
 	}
 
 	links := r.Group("/links")
@@ -25,6 +28,7 @@ func CreateRoutes(r *gin.Engine) {
 		links.POST("/addLinks", controllers.AddLinks)
 		links.GET("/getLinks", controllers.GetLinks)
 		links.POST("/updateLinks", controllers.UpdateLinks)
+		links.POST("/updateLinkStatus", controllers.UpdateLinkStatus)
 		links.POST("/deleteLinks", controllers.DeleteLinks)
 	}
 

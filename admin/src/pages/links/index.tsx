@@ -1,9 +1,10 @@
-import { TLinksItem, addLinks, deleteLinks, getLinks, updateLinks } from '@/api'
+import { TLinksItem, addLinks, deleteLinks, getLinks, updateLinks, updateLinkStatus } from '@/api'
+import { GLOBAL_STATUS } from '@/api/constants'
 import { INPUT_LINK, MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
 import { ActionType, ModalForm, ProColumns, ProFormSelect, ProFormText, ProTable } from '@ant-design/pro-components'
-import { Button, Popconfirm, Space, Typography } from 'antd'
+import { Button, Popconfirm, Space, Switch, Typography } from 'antd'
 import React, { useRef, useState } from 'react'
 import { FaGithubAlt, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 
@@ -14,12 +15,12 @@ const Links = () => {
 		{
 			title: 'Link',
 			dataIndex: 'link',
-			align: 'center'
+			align: 'left'
 		},
 		{
 			title: 'Type',
 			dataIndex: 'type',
-			align: 'center'
+			align: 'left'
 		},
 		{
 			title: 'Updated',
@@ -35,9 +36,11 @@ const Links = () => {
 		},
 		{
 			title: 'Operator',
+			align: 'center',
 			render: (_, record) => {
 				return (
-					<Space>
+					<Space align="center">
+						{renderSwitch(record)}
 						{renderAddEditLinks('EDIT', record)}
 						{renderDeleteLink(record)}
 					</Space>
@@ -45,6 +48,21 @@ const Links = () => {
 			}
 		}
 	]
+
+	const renderSwitch = (record: TLinksItem) => {
+		return (
+			<Switch
+				unCheckedChildren="OFF"
+				checkedChildren="ON"
+				checked={record?.status === GLOBAL_STATUS.ON}
+				onChange={async () => {
+					const res = await updateLinkStatus({ id: record?.id })
+
+					return afterModalformFinish(actionRef, res)
+				}}
+			/>
+		)
+	}
 
 	const renderTitle = (icon: React.ReactNode, title: string) => (
 		<Space align="center">
@@ -112,8 +130,8 @@ const Links = () => {
 
 					if (isEdit) {
 						res = await updateLinks({
-							new_link: params.link
-							// id: record?.id
+							new_link: params.link,
+							id: record?.id
 						})
 					} else {
 						res = await addLinks(params)

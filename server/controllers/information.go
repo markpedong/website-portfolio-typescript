@@ -32,7 +32,7 @@ func AddInformation(ctx *gin.Context) {
 func GetInformation(ctx *gin.Context) {
 	var user models.Users
 	if err := database.DB.First(&user).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusOK, err.Error())
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"portfolio/constants"
 	"portfolio/database"
 	"portfolio/helpers"
 	"portfolio/models"
@@ -19,9 +20,10 @@ func AddLinks(ctx *gin.Context) {
 	}
 
 	newLink := models.Links{
-		ID:   helpers.NewUUID(),
-		Link: body.Link,
-		Type: body.Type,
+		ID:     helpers.NewUUID(),
+		Link:   body.Link,
+		Type:   body.Type,
+		Status: constants.OFF,
 	}
 	if err := database.DB.Create(&newLink).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
@@ -33,7 +35,7 @@ func AddLinks(ctx *gin.Context) {
 
 func GetLinks(ctx *gin.Context) {
 	var links []models.Links
-	if err := database.DB.Find(&links).Error; err != nil {
+	if err := database.DB.Order("created_at DESC").Find(&links).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -76,4 +78,26 @@ func DeleteLinks(ctx *gin.Context) {
 	}
 
 	helpers.JSONResponse(ctx, "", helpers.DataHelper(links))
+}
+
+func UpdateLinkStatus(ctx *gin.Context) {
+	var body struct {
+		ID string `json:"id" validate:"required"`
+	}
+	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
+		return
+	}
+
+	var currLink models.Links
+	if err := database.DB.First(&currLink, "id = ?", body.ID).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	if err := database.DB.Save(&currLink).Exec("UPDATE links SET status = 1 - status WHERE id = ?", body.ID).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "")
 }

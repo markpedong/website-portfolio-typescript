@@ -1,5 +1,19 @@
 import { get, post, upload } from '@/api/http'
 import type { GetProp, UploadProps } from 'antd'
+import { GLOBAL_STATUS } from './constants'
+
+// /info/addWebsiteDetails
+export type TWebsiteItem = {
+	id: string
+	status: number
+}
+export const addWebsiteDetails = params => post('/info/addWebsiteDetails', params)
+
+// /info/getWebsiteDetails
+export const getWebsiteDetails = () => get<TWebsiteItem>('/info/getWebsiteDetails')
+
+// /info/updateWebsiteDetails
+export const updateWebsiteDetails = params => post('/info/updateWebsiteDetails', params)
 
 //info/getDetails
 export type TDetailsItem = {
@@ -29,6 +43,7 @@ export type TLinksItem = {
 	link: string
 	updated_at: number
 	type: string
+	status: GLOBAL_STATUS
 }
 export const getLinks = () => get<TLinksItem[]>('/links/getLinks')
 
@@ -40,6 +55,9 @@ export const updateLinks = params => post('/links/updateLinks', params)
 
 // /links/deleteLinks
 export const deleteLinks = params => post('/links/deleteLinks', params)
+
+// /links/updateLinkStatus
+export const updateLinkStatus = params => post('/links/updateLinkStatus', params)
 
 // /services/getServices
 export type TServiceItem = {

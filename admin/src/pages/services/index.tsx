@@ -1,4 +1,4 @@
-import { TServiceItem, addServices, deleteServices, getServices, updateServices } from '@/api'
+import { TServiceItem, addServices, deleteServices, getServices, updateServices, uploadImage } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
@@ -112,14 +112,16 @@ const Services = () => {
 					fieldProps={{
 						accept: 'image/*',
 						listType: 'picture-card',
-						fileList: imgUrl ? [{ uid: '-1', name: 'image.png', status: 'done', url: imgUrl }] : [],
+						fileList: imgUrl ? [{ uid: '-1', name: 'image', status: 'done', url: imgUrl }] : [],
 						beforeUpload: BeforeUpload,
 						multiple: false,
 						maxCount: 1,
-						action: '/api/uploadImage',
-						onChange: async e => {
-							setImgUrl(e?.file?.response?.data?.url)
-						}
+						customRequest: async e => {
+							const res = await uploadImage(e?.file)
+
+							setImgUrl(res?.data.data?.url)
+						},
+						onRemove: () => setImgUrl('')
 					}}
 				/>
 			</ModalForm>

@@ -22,6 +22,7 @@ type Links struct {
 	ID        string                `json:"id" gorm:"primaryKey"`
 	Link      string                `json:"link" validate:"required"`
 	Type      string                `json:"type" validate:"required"`
+	Status    int                   `json:"status" validate:"required"`
 	CreatedAt int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`
@@ -112,4 +113,9 @@ type Testimonials struct {
 	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
+}
+
+type Website struct {
+	ID     string `json:"id" gorm:"primaryKey"`
+	Status int    `json:"status"`
 }
