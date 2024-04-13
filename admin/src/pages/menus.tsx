@@ -1,7 +1,9 @@
 import Information from './information'
 import { IoIosColorPalette, IoIosInformationCircle, IoIosLink } from 'react-icons/io'
+import { MdOutlineMiscellaneousServices } from "react-icons/md";
 import Theme from './theme'
 import Links from './links'
+import Services from './services';
 
 export default [
 	{
@@ -21,5 +23,11 @@ export default [
 		name: 'Links',
 		element: <Links />,
 		icon: <IoIosLink />
+	},
+	{
+		path: '/service',
+		name: 'Services',
+		element: <Services />,
+		icon: <MdOutlineMiscellaneousServices />
 	}
 ]

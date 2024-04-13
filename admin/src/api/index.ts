@@ -16,10 +16,12 @@ export type TDetailsItem = {
 export const getDetails = () => get<TDetailsItem>('/info/getDetails')
 
 // /info/addDetails
-export const addDetails = (params) => post<TDetailsItem>('/info/addDetails', params)
+export const addDetails = params =>
+	post<TDetailsItem>('/info/addDetails', params)
 
 // /info/updateDetails
-export const updateDetails = (params) => post<TDetailsItem>('/info/updateDetails', params)
+export const updateDetails = params =>
+	post<TDetailsItem>('/info/updateDetails', params)
 
 // /links/getLinks
 export type TLinksItem = {
@@ -39,3 +41,14 @@ export const updateLinks = params => post('/links/updateLinks', params)
 
 // /links/deleteLinks
 export const deleteLinks = params => post('/links/deleteLinks', params)
+
+// /services/getServices
+export type TServiceItem = {
+	id: string
+	title: string
+	description: string
+	logo: string
+	created_at: number
+	updated_at: number
+}
+export const getServices = () => get<TServiceItem[]>('/services/getServices')

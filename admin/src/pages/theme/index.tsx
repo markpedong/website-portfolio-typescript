@@ -1,9 +1,6 @@
 import { ColorPicker, Space } from 'antd'
-import React from 'react'
 
-type Props = {}
-
-const Theme = (props: Props) => {
+const Theme = () => {
 	return (
 		<Space direction="vertical">
 			<ColorPicker

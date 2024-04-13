@@ -1,5 +1,5 @@
-import { PageHeader, ProCard } from '@ant-design/pro-components';
-import { Button, Carousel, Descriptions, Row, Statistic, Tabs, Tag } from 'antd';
+import { PageHeader } from '@ant-design/pro-components';
+import { Button, Descriptions, Statistic, Tabs } from 'antd';
 import { FC } from 'react';
 
 const { TabPane } = Tabs;
