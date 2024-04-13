@@ -1,4 +1,4 @@
-import { TPortfolioItem, deletePortfolios, getPortfolios } from '@/api'
+import { TPortfolioItem, deletePortfolios, getPortfolios, uploadImage } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
@@ -95,10 +95,12 @@ const Portfolio = () => {
 						beforeUpload: BeforeUpload,
 						multiple: false,
 						maxCount: 1,
-						action: '/api/uploadImage',
-						onChange: async e => {
-							setImgUrl(e?.file?.response?.data?.url)
-						}
+						customRequest: async e => {
+							const res = await uploadImage(e?.file)
+
+							setImgUrl(res?.data.data?.url)
+						},
+						onRemove: () => setImgUrl('')
 					}}
 				/>
 			</ModalForm>
