@@ -1,7 +1,7 @@
 import { FileType, TServiceItem, addServices, deleteServices, getServices, updateServices } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
-import { afterModalformFinish } from '@/utils/antd'
+import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
 import {
 	ActionType,
 	ModalForm,
@@ -75,18 +75,6 @@ const Services = () => {
 		)
 	}
 
-	const beforeUpload = (file: FileType) => {
-		const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
-		if (!isJpgOrPng) {
-			message.error('You can only upload JPG/PNG file!')
-		}
-		const isLt2M = file.size / 1024 / 1024 < 2
-		if (!isLt2M) {
-			message.error('Image must smaller than 2MB!')
-		}
-		return isJpgOrPng && isLt2M
-	}
-
 	const renderAddEditService = (type: 'EDIT' | 'ADD', record?: TServiceItem) => {
 		const isEdit = type === 'EDIT'
 
@@ -125,7 +113,7 @@ const Services = () => {
 						accept: 'image/*',
 						listType: 'picture-card',
 						fileList: imgUrl ? [{ uid: '-1', name: 'image.png', status: 'done', url: imgUrl }] : [],
-						beforeUpload: beforeUpload,
+						beforeUpload: BeforeUpload,
 						multiple: false,
 						maxCount: 1,
 						action: '/api/uploadImage',

@@ -1,11 +1,20 @@
 import { TPortfolioItem, deletePortfolios, getPortfolios } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
-import { afterModalformFinish } from '@/utils/antd'
-import { ActionType, ModalForm, ProColumns, ProFormText, ProTable } from '@ant-design/pro-components'
+import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
+import {
+	ActionType,
+	ModalForm,
+	ProColumns,
+	ProFormSelect,
+	ProFormText,
+	ProFormUploadButton,
+	ProTable
+} from '@ant-design/pro-components'
 import { Button, Popconfirm, Space, Tag, Typography } from 'antd'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const Portfolio = () => {
+	const [imgUrl, setImgUrl] = useState('')
 	const actionRef = useRef<ActionType>()
 	const columns: ProColumns<TPortfolioItem>[] = [
 		{
@@ -44,8 +53,32 @@ const Portfolio = () => {
 				{...MODAL_FORM_PROPS}
 				title={isEdit ? 'Edit Portfolio' : 'Add Portfolio'}
 				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button>Add</Button>}
+				initialValues={isEdit ? record : {}}
 			>
-				<ProFormText label="Title" />
+				<ProFormText label="Title" rules={[{ required: true }]} />
+				<ProFormText label="Description" rules={[{ required: true }]} />
+				<ProFormSelect
+					label="Tech Stack"
+					fieldProps={{ maxLength: 5, mode: 'tags' }}
+					rules={[{ required: true }]}
+				/>
+				<ProFormUploadButton
+					label="Image"
+					name="image"
+					rules={[{ required: true }]}
+					fieldProps={{
+						accept: 'image/*',
+						listType: 'picture-card',
+						fileList: imgUrl ? [{ uid: '-1', name: 'image.png', status: 'done', url: imgUrl }] : [],
+						beforeUpload: BeforeUpload,
+						multiple: false,
+						maxCount: 1,
+						action: '/api/uploadImage',
+						onChange: async e => {
+							setImgUrl(e?.file?.response?.data?.url)
+						}
+					}}
+				/>
 			</ModalForm>
 		)
 	}

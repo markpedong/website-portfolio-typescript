@@ -5,6 +5,7 @@ import React, { MutableRefObject } from 'react'
 import enUS from 'antd/locale/en_US'
 import { ActionType, ProFormInstance } from '@ant-design/pro-components'
 import { ApiResponse } from '@/api/http'
+import { FileType } from '@/api'
 
 export const afterModalformFinish = (
 	actionRef?: MutableRefObject<ActionType | undefined>,
@@ -54,4 +55,16 @@ export const AntdConfigProvider = ({ children }: { children: React.ReactNode }) 
 			{children}
 		</ConfigProvider>
 	)
+}
+
+export const BeforeUpload = (file: FileType) => {
+	const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
+	if (!isJpgOrPng) {
+		message.error('You can only upload JPG/PNG file!')
+	}
+	const isLt2M = file.size / 1024 / 1024 < 2
+	if (!isLt2M) {
+		message.error('Image must smaller than 2MB!')
+	}
+	return isJpgOrPng && isLt2M
 }
