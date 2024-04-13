@@ -7,6 +7,12 @@ import (
 )
 
 func CreateRoutes(r *gin.Engine) {
+	api := r.Group("/api")
+	// api.Use(middleware.Authentication)
+	{
+		api.POST("/uploadImage", controllers.UploadImage)
+	}
+
 	self := r.Group("/info")
 	{
 		self.GET("/getDetails", controllers.GetInformation)

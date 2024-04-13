@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"portfolio/cloudinary"
 	"portfolio/database"
 	"portfolio/routes"
 
@@ -18,6 +19,7 @@ func CorsMiddleware() gin.HandlerFunc {
 	}
 }
 func main() {
+	cloudinary.Init()
 	r := gin.New()
 
 	r.Use(CorsMiddleware())

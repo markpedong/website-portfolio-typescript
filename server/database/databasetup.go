@@ -15,7 +15,7 @@ var DB *gorm.DB
 
 func DBSetup() {
 	var err error
-	DB, err = gorm.Open(postgres.Open(os.Getenv("DB_DSN")),
+	DB, err = gorm.Open(postgres.Open(os.Getenv("DB_DSN_LOCAL")),
 		&gorm.Config{
 			NamingStrategy: schema.NamingStrategy{SingularTable: true},
 		})
