@@ -10,13 +10,19 @@ import {
 	ProFormUploadButton,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Popconfirm, Space, Tag, Typography } from 'antd'
+import { Button, Image, Popconfirm, Space, Tag, Typography } from 'antd'
 import { useRef, useState } from 'react'
 
 const Portfolio = () => {
 	const [imgUrl, setImgUrl] = useState('')
 	const actionRef = useRef<ActionType>()
 	const columns: ProColumns<TPortfolioItem>[] = [
+        {
+			title: 'Image',
+			align: 'center',
+			search: false,
+			render: (_, record) => <Image src={record?.image} alt="logo" width={60} height={60} />
+		},
 		{
 			title: 'Title',
 			align: 'center',
