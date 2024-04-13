@@ -52,7 +52,7 @@ const Portfolio = () => {
 			<ModalForm
 				{...MODAL_FORM_PROPS}
 				title={isEdit ? 'Edit Portfolio' : 'Add Portfolio'}
-				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button>Add</Button>}
+				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button type="primary">Add</Button>}
 				initialValues={isEdit ? record : {}}
 			>
 				<ProFormText label="Title" rules={[{ required: true }]} />
