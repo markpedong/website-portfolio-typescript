@@ -11,7 +11,7 @@ import {
 	ProFormUploadButton,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Image, Popconfirm, Space, Typography, UploadFile, message } from 'antd'
+import { Button, Image, Popconfirm, Space, Typography, message } from 'antd'
 import { useRef, useState } from 'react'
 
 const Services = () => {

@@ -71,3 +71,24 @@ export type TUploadImage = {
 export type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0]
 
 export const uploadImage = params => upload<TUploadImage>('/api/uploadImage', params)
+
+// /portfolios/addPortfolios
+export const addPortfolios = params => post('/portfolios/addPortfolios', params)
+
+// /portfolios/editPortfolios
+export const editPortfolios = params => post('/portfolios/editPortfolios', params)
+
+// /portfolios/deletePortfolios
+export const deletePortfolios = params => post('/portfolios/deletePortfolios', params)
+
+// /portfolios/getPortfolios
+export type TPortfolioItem = {
+	id: string
+	title: string
+	tech: string[]
+	link: string
+	image: string
+	created_at: number
+	updated_at: number
+}
+export const getPortfolios = () => get<TPortfolioItem[]>('/portfolios/getPortfolios')

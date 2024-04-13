@@ -1,9 +1,11 @@
 import Information from './information'
 import { IoIosColorPalette, IoIosInformationCircle, IoIosLink } from 'react-icons/io'
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
+import { AiFillProject } from "react-icons/ai";
 import Theme from './theme'
 import Links from './links'
 import Services from './services';
+import Portfolio from './portfolios';
 
 export default [
 	{
@@ -29,5 +31,11 @@ export default [
 		name: 'Services',
 		element: <Services />,
 		icon: <MdOutlineMiscellaneousServices />
+	},
+	{
+		path: '/portfolio',
+		name: 'Portfolio',
+		element: <Portfolio />,
+		icon: <AiFillProject />
 	}
 ]

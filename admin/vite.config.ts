@@ -20,6 +20,9 @@ export default defineConfig({
 			},
 			'/services': {
 				target: 'http://localhost:8080'
+			},
+			'/portfolios': {
+				target: 'http://localhost:8080'
 			}
 		}
 	},
