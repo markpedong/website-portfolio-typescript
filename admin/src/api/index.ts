@@ -92,3 +92,26 @@ export type TPortfolioItem = {
 	updated_at: number
 }
 export const getPortfolios = () => get<TPortfolioItem[]>('/portfolios/getPortfolios')
+
+// /experiences/addExperiences
+export const addExperiences = params => post('/experiences/addExperiences', params)
+
+// /experiences/editExperiences
+export const editExperiences = params => post('/experiences/editExperiences', params)
+
+// /experiences/deleteExperiences
+export const deleteExperiences = params => post('/experiences/deleteExperiences', params)
+
+// /experiences/getExperiences
+export type TExperienceItem = {
+	id: string
+	company: string
+	title: string
+	location: string
+	started: string
+	ended: string
+	skills: string[]
+	created_at: number
+	updated_at: number
+}
+export const getExperiences = () => get<TPortfolioItem[]>('/experiences/getExperiences')

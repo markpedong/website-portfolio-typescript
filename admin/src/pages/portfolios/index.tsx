@@ -1,5 +1,6 @@
 import { TPortfolioItem, deletePortfolios, getPortfolios } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
+import { dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
 import {
 	ActionType,
@@ -17,7 +18,7 @@ const Portfolio = () => {
 	const [imgUrl, setImgUrl] = useState('')
 	const actionRef = useRef<ActionType>()
 	const columns: ProColumns<TPortfolioItem>[] = [
-        {
+		{
 			title: 'Image',
 			align: 'center',
 			search: false,
@@ -29,7 +30,7 @@ const Portfolio = () => {
 			dataIndex: 'title'
 		},
 		{
-			title: 'Tech',
+			title: 'Tech Stack',
 			align: 'center',
 			render: (_, record) => record?.tech?.map(q => <Tag>{q}</Tag>)
 		},
@@ -39,8 +40,21 @@ const Portfolio = () => {
 			dataIndex: 'link'
 		},
 		{
+			title: 'Updated',
+			dataIndex: 'updated_at',
+			align: 'center',
+			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
+		},
+		{
+			title: 'Created',
+			dataIndex: 'created-at',
+			align: 'center',
+			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
+		},
+		{
 			title: 'Operator',
 			align: 'center',
+			search: false,
 			render: (_, record) => {
 				return (
 					<Space>
@@ -118,9 +132,11 @@ const Portfolio = () => {
 		<div>
 			<ProTable
 				{...PRO_TABLE_PROPS}
+				rowKey="id"
 				columns={columns}
 				request={fetchData}
 				toolBarRender={() => [renderAddEditPortfolio('ADD')]}
+				scroll={{ x: 650 }}
 			/>
 		</div>
 	)

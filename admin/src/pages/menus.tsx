@@ -6,6 +6,8 @@ import Theme from './theme'
 import Links from './links'
 import Services from './services';
 import Portfolio from './portfolios';
+import Experience from './experience';
+import { FaPhoenixFramework } from "react-icons/fa6";
 
 export default [
 	{
@@ -37,5 +39,11 @@ export default [
 		name: 'Portfolio',
 		element: <Portfolio />,
 		icon: <AiFillProject />
+	},
+	{
+		path: '/experience',
+		name: 'Experience',
+		element: <Experience />,
+		icon: <FaPhoenixFramework />
 	}
 ]
