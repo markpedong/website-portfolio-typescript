@@ -1,4 +1,4 @@
-import { FileType, TServiceItem, addServices, deleteServices, getServices, updateServices } from '@/api'
+import { TServiceItem, addServices, deleteServices, getServices, updateServices } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
@@ -11,7 +11,7 @@ import {
 	ProFormUploadButton,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Image, Popconfirm, Space, Typography, message } from 'antd'
+import { Button, Image, Popconfirm, Space, Typography } from 'antd'
 import { useRef, useState } from 'react'
 
 const Services = () => {
