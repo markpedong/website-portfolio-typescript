@@ -1,4 +1,5 @@
-import { get, post } from '@/api/http'
+import { get, post, upload } from '@/api/http'
+import type { GetProp, UploadProps } from 'antd'
 
 //info/getDetails
 export type TDetailsItem = {
@@ -16,12 +17,10 @@ export type TDetailsItem = {
 export const getDetails = () => get<TDetailsItem>('/info/getDetails')
 
 // /info/addDetails
-export const addDetails = params =>
-	post<TDetailsItem>('/info/addDetails', params)
+export const addDetails = params => post<TDetailsItem>('/info/addDetails', params)
 
 // /info/updateDetails
-export const updateDetails = params =>
-	post<TDetailsItem>('/info/updateDetails', params)
+export const updateDetails = params => post<TDetailsItem>('/info/updateDetails', params)
 
 // /links/getLinks
 export type TLinksItem = {
@@ -52,3 +51,23 @@ export type TServiceItem = {
 	updated_at: number
 }
 export const getServices = () => get<TServiceItem[]>('/services/getServices')
+
+// /services/updateServices
+export const updateServices = params => post('/services/updateServices', params)
+
+// /services/addServices
+export const addServices = params => post('/services/addServices', params)
+
+// /services/deleteServices
+export const deleteServices = params => post('/services/deleteServices', params)
+
+// /api/uploadImage
+export type TUploadImage = {
+	url: string
+	fileName: string
+	size: number
+}
+
+export type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0]
+
+export const uploadImage = params => upload<TUploadImage>('/api/uploadImage', params)

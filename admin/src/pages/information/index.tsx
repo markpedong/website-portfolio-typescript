@@ -38,7 +38,6 @@ const Information = () => {
 				onFinish={async params => {
 					let res
 
-					console.log(init)
 					if (!!!init?.id) {
 						res = await addDetails(params)
 					} else {

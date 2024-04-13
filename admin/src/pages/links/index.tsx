@@ -100,7 +100,7 @@ const Links = () => {
 				initialValues={isEdit ? record : {}}
 				trigger={
 					isEdit ? (
-						<Typography.Link type="warning">Edit</Typography.Link>
+						<Typography.Link>Edit</Typography.Link>
 					) : (
 						<Button type="primary" disabled={existingTypes?.length === 4}>
 							Add Link
@@ -112,8 +112,8 @@ const Links = () => {
 
 					if (isEdit) {
 						res = await updateLinks({
-							new_link: params.link,
-							id: record?.id
+							new_link: params.link
+							// id: record?.id
 						})
 					} else {
 						res = await addLinks(params)

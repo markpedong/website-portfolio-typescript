@@ -9,10 +9,16 @@ export default defineConfig({
 	server: {
 		port: 3001,
 		proxy: {
+			'/api': {
+				target: 'http://localhost:8080'
+			},
 			'/info': {
 				target: 'http://localhost:8080'
 			},
 			'/links': {
+				target: 'http://localhost:8080'
+			},
+			'/services': {
 				target: 'http://localhost:8080'
 			}
 		}

@@ -36,10 +36,10 @@ func GetServices(ctx *gin.Context) {
 
 func UpdateServices(ctx *gin.Context) {
 	var services struct {
-		ID          string `json:"id"`
-		Title       string `json:"title"`
-		Description string `json:"description"`
-		Logo        string `json:"logo"`
+		ID          string `json:"id" validate:"required"`
+		Title       string `json:"title" validate:"required"`
+		Description string `json:"description" validate:"required"`
+		Logo        string `json:"logo" validate:"required"`
 	}
 	if err := helpers.BindValidateJSON(ctx, &services); err != nil {
 		return

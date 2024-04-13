@@ -21,8 +21,6 @@ export const afterModalformFinish = (
 
 	if (res?.data?.success) {
 		message.success(res?.data?.message)
-	} else {
-		message.error(res?.data?.message)
 	}
 
 	return !!res?.data?.success
