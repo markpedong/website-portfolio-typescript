@@ -1,4 +1,5 @@
-import { TExperienceItem, addExperiences, deleteExperiences, getExperiences, updateExperiences } from '@/api'
+import { TExperienceItem, addExperiences, deleteExperiences, getExperiences, toggleExperienceStatus, updateExperiences } from '@/api'
+import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
@@ -13,7 +14,7 @@ import {
 	ProFormText,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Popconfirm, Space, Tag, Typography } from 'antd'
+import { Button, Popconfirm, Space, Switch, Tag, Typography } from 'antd'
 import { useRef } from 'react'
 
 const Experience = () => {
@@ -74,12 +75,28 @@ const Experience = () => {
 			align: 'center',
 			render: (_, record) => (
 				<Space>
+					{renderSwitch(record)}
 					{renderAddEditExperience('EDIT', record)}
 					{renderDeleteExperience(record)}
 				</Space>
 			)
 		}
 	]
+
+	const renderSwitch = (record: TExperienceItem) => {
+		return (
+			<Switch
+				unCheckedChildren="OFF"
+				checkedChildren="ON"
+				checked={record?.status === GLOBAL_STATUS.ON}
+				onChange={async () => {
+					const res = await toggleExperienceStatus({ id: record?.id })
+
+					return afterModalformFinish(actionRef, res)
+				}}
+			/>
+		)
+	}
 
 	const renderAddEditExperience = (type: 'ADD' | 'EDIT', record?: TExperienceItem) => {
 		const isEdit = type === 'EDIT'
@@ -187,7 +204,7 @@ const Experience = () => {
 				actionRef={actionRef}
 				request={fetchData}
 				toolBarRender={() => [renderAddEditExperience('ADD')]}
-				scroll={{ x: 650 }}
+				scroll={{ x: 950 }}
 			/>
 		</div>
 	)

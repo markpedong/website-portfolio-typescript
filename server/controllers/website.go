@@ -21,7 +21,6 @@ func AddWebsiteDetails(ctx *gin.Context) {
 	}
 
 	website.ID = helpers.NewUUID()
-	website.Status = 0
 	if err := database.DB.Create(&website).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return

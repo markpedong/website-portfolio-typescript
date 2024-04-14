@@ -28,7 +28,7 @@ func CreateRoutes(r *gin.Engine) {
 		links.POST("/addLinks", controllers.AddLinks)
 		links.GET("/getLinks", controllers.GetLinks)
 		links.POST("/updateLinks", controllers.UpdateLinks)
-		links.POST("/updateLinkStatus", controllers.ToggleLinkStatus)
+		links.POST("/toggleLinkStatus", controllers.ToggleLinkStatus)
 		links.POST("/deleteLinks", controllers.DeleteLinks)
 	}
 
@@ -38,7 +38,7 @@ func CreateRoutes(r *gin.Engine) {
 		services.GET("/getServices", controllers.GetServices)
 		services.POST("/updateServices", controllers.UpdateServices)
 		services.POST("/deleteServices", controllers.DeleteServices)
-		services.POST("/updateServicesStatus", controllers.ToggleServiceStatus)
+		services.POST("/toggleServiceStatus", controllers.ToggleServiceStatus)
 	}
 
 	portfolio := r.Group("/portfolios")
@@ -47,6 +47,7 @@ func CreateRoutes(r *gin.Engine) {
 		portfolio.GET("/getPortfolios", controllers.GetPortfolios)
 		portfolio.POST("/updatePortfolios", controllers.UpdatePortfolios)
 		portfolio.POST("/deletePortfolios", controllers.DeletePortfolios)
+		portfolio.POST("/togglePortfolioStatus", controllers.TogglePortfolioStatus)
 	}
 
 	experience := r.Group("/experiences")
@@ -55,6 +56,7 @@ func CreateRoutes(r *gin.Engine) {
 		experience.GET("/getExperiences", controllers.GetExperiences)
 		experience.POST("/updateExperiences", controllers.UpdateExperiences)
 		experience.POST("/deleteExperiences", controllers.DeleteExperiences)
+		experience.POST("/toggleExperienceStatus", controllers.ToggleExperienceStatus)
 	}
 
 	blogs := r.Group("/blogs")

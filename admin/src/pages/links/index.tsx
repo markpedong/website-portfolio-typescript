@@ -1,4 +1,4 @@
-import { TLinksItem, addLinks, deleteLinks, getLinks, updateLinks, updateLinkStatus } from '@/api'
+import { TLinksItem, addLinks, deleteLinks, getLinks, toggleLinkStatus, updateLinks } from '@/api'
 import { GLOBAL_STATUS } from '@/api/constants'
 import { INPUT_LINK, MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
@@ -56,7 +56,7 @@ const Links = () => {
 				checkedChildren="ON"
 				checked={record?.status === GLOBAL_STATUS.ON}
 				onChange={async () => {
-					const res = await updateLinkStatus({ id: record?.id })
+					const res = await toggleLinkStatus({ id: record?.id })
 
 					return afterModalformFinish(actionRef, res)
 				}}

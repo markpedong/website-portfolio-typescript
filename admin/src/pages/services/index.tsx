@@ -1,4 +1,5 @@
-import { TServiceItem, addServices, deleteServices, getServices, updateServices, uploadImage } from '@/api'
+import { TServiceItem, addServices, deleteServices, getServices, updateServices, toggleServiceStatus, uploadImage } from '@/api'
+import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
@@ -11,7 +12,7 @@ import {
 	ProFormUploadButton,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Image, Popconfirm, Space, Typography } from 'antd'
+import { Button, Image, Popconfirm, Space, Switch, Typography } from 'antd'
 import { useRef, useState } from 'react'
 
 const Services = () => {
@@ -52,6 +53,7 @@ const Services = () => {
 			render: (_, record) => {
 				return (
 					<Space>
+						{renderSwitch(record)}
 						{renderAddEditService('EDIT', record)}
 						{renderDeleteLink(record)}
 					</Space>
@@ -59,6 +61,21 @@ const Services = () => {
 			}
 		}
 	]
+
+	const renderSwitch = (record: TServiceItem) => {
+		return (
+			<Switch
+				unCheckedChildren="OFF"
+				checkedChildren="ON"
+				checked={record?.status === GLOBAL_STATUS.ON}
+				onChange={async () => {
+					const res = await toggleServiceStatus({ id: record?.id })
+
+					return afterModalformFinish(actionRef, res)
+				}}
+			/>
+		)
+	}
 
 	const renderDeleteLink = (record: TServiceItem) => {
 		return (

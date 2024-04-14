@@ -1,4 +1,5 @@
-import { TPortfolioItem, addPortfolios, deletePortfolios, getPortfolios, updatePortfolios, uploadImage } from '@/api'
+import { TPortfolioItem, addPortfolios, deletePortfolios, getPortfolios, togglePortfolioStatus, updatePortfolios, uploadImage } from '@/api'
+import { GLOBAL_STATUS } from '@/api/constants'
 import { INPUT_LINK, MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
@@ -11,7 +12,7 @@ import {
 	ProFormUploadButton,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Image, Popconfirm, Space, Tag, Typography } from 'antd'
+import { Button, Image, Popconfirm, Space, Switch, Tag, Typography } from 'antd'
 import { useRef, useState } from 'react'
 
 const Portfolio = () => {
@@ -58,6 +59,7 @@ const Portfolio = () => {
 			render: (_, record) => {
 				return (
 					<Space>
+						{renderSwitch(record)}
 						{renderAddEditPortfolio('EDIT', record)}
 						{renderDeletePortfolio(record)}
 					</Space>
@@ -65,6 +67,21 @@ const Portfolio = () => {
 			}
 		}
 	]
+
+	const renderSwitch = (record: TPortfolioItem) => {
+		return (
+			<Switch
+				unCheckedChildren="OFF"
+				checkedChildren="ON"
+				checked={record?.status === GLOBAL_STATUS.ON}
+				onChange={async () => {
+					const res = await togglePortfolioStatus({ id: record?.id })
+
+					return afterModalformFinish(actionRef, res)
+				}}
+			/>
+		)
+	}
 
 	const renderAddEditPortfolio = (type: 'ADD' | 'EDIT', record?: TPortfolioItem) => {
 		const isEdit = type === 'EDIT'

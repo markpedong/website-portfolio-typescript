@@ -56,8 +56,8 @@ export const updateLinks = params => post('/links/updateLinks', params)
 // /links/deleteLinks
 export const deleteLinks = params => post('/links/deleteLinks', params)
 
-// /links/updateLinkStatus
-export const updateLinkStatus = params => post('/links/updateLinkStatus', params)
+// /links/toggleLinkStatus
+export const toggleLinkStatus = params => post('/links/toggleLinkStatus', params)
 
 // /services/getServices
 export type TServiceItem = {
@@ -65,6 +65,7 @@ export type TServiceItem = {
 	title: string
 	description: string
 	logo: string
+	status: GLOBAL_STATUS
 	created_at: number
 	updated_at: number
 }
@@ -78,6 +79,9 @@ export const addServices = params => post('/services/addServices', params)
 
 // /services/deleteServices
 export const deleteServices = params => post('/services/deleteServices', params)
+
+// /services/toggleServiceStatus
+export const toggleServiceStatus = params => post('/services/toggleServiceStatus', params)
 
 // /api/uploadImage
 export type TUploadImage = {
@@ -96,6 +100,9 @@ export const addPortfolios = params => post('/portfolios/addPortfolios', params)
 // /portfolios/updatePortfolios
 export const updatePortfolios = params => post('/portfolios/updatePortfolios', params)
 
+// /portfolios/togglePortfolioStatus
+export const togglePortfolioStatus = params => post('/portfolios/togglePortfolioStatus', params)
+
 // /portfolios/deletePortfolios
 export const deletePortfolios = params => post('/portfolios/deletePortfolios', params)
 
@@ -106,6 +113,7 @@ export type TPortfolioItem = {
 	tech: string[]
 	link: string
 	image: string
+	status: GLOBAL_STATUS
 	created_at: number
 	updated_at: number
 }
@@ -129,7 +137,11 @@ export type TExperienceItem = {
 	started: string
 	ended: string
 	skills: { id: string; name: string; percentage: number }[]
+	status: GLOBAL_STATUS
 	created_at: number
 	updated_at: number
 }
 export const getExperiences = () => get<TPortfolioItem[]>('/experiences/getExperiences')
+
+// /experiences/toggleExperienceStatus
+export const toggleExperienceStatus = params => post('/experiences/toggleExperienceStatus', params)

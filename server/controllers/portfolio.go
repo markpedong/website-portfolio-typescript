@@ -87,3 +87,8 @@ func DeletePortfolios(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
+
+func TogglePortfolioStatus(ctx *gin.Context) {
+	var portfolio models.Portfolios
+	ToggleModelStatus(ctx, &portfolio)
+}
