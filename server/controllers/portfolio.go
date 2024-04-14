@@ -16,6 +16,9 @@ func AddPortfolios(ctx *gin.Context) {
 		Link  string   `json:"link"`
 		Image string   `json:"image"`
 	}
+	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
+		return
+	}
 
 	newPortfolio := models.Portfolios{
 		ID:    helpers.NewUUID(),
@@ -44,8 +47,8 @@ func GetPortfolios(ctx *gin.Context) {
 
 func UpdatePortfolios(ctx *gin.Context) {
 	var portfolio struct {
-		ID    string   `json:"id"`
-		Title string   `json:"title"  validate:"required"`
+		ID    string   `json:"id" validate:"required"`
+		Title string   `json:"title" validate:"required"`
 		Tech  []string `json:"tech" validate:"required"`
 		Link  string   `json:"link" validate:"required"`
 		Image string   `json:"image" validate:"required"`
@@ -60,7 +63,12 @@ func UpdatePortfolios(ctx *gin.Context) {
 		return
 	}
 
-	if err := database.DB.Model(&currPortfolio).Updates(portfolio).Save(&currPortfolio).Error; err != nil {
+	currPortfolio.Title = portfolio.Title
+	currPortfolio.Link = portfolio.Link
+	currPortfolio.Image = portfolio.Image
+	currPortfolio.Tech = portfolio.Tech
+
+	if err := database.DB.Save(&currPortfolio).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -77,7 +85,7 @@ func DeletePortfolios(ctx *gin.Context) {
 	}
 
 	var currPortfolio models.Portfolios
-	if err := database.DB.First(&currPortfolio, "id = ?", body.ID).Delete(&currPortfolio).Error; err != nil {
+	if err := database.DB.Delete(&currPortfolio, "id = ?", body.ID).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}

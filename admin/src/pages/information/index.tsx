@@ -53,9 +53,13 @@ const Information = () => {
 					let res
 
 					if (!!!websiteInit?.id) {
-						res = await addWebsiteDetails(params)
+						res = await addWebsiteDetails({ ...params, status: params.status ? 1 : 0 })
 					} else {
-						res = await updateWebsiteDetails({ ...params, id: websiteInit?.id, status: params.status ? 1 : 0 })
+						res = await updateWebsiteDetails({
+							...params,
+							id: websiteInit?.id,
+							status: params.status ? 1 : 0
+						})
 					}
 
 					setTimeout(() => {
@@ -108,7 +112,13 @@ const Information = () => {
 					name="last_name"
 					colProps={{ span: 12 }}
 				/>
-				<ProFormText {...INPUT_TRIM} rules={[{ required: true }]} label="Phone" name="phone" colProps={{ span: 12 }} />
+				<ProFormText
+					{...INPUT_TRIM}
+					rules={[{ required: true }]}
+					label="Phone"
+					name="phone"
+					colProps={{ span: 12 }}
+				/>
 				<ProFormText
 					{...INPUT_TRIM}
 					rules={[INPUT_EMAIL, { required: true }]}

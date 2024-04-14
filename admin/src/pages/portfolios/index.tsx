@@ -1,6 +1,6 @@
-import { TPortfolioItem, deletePortfolios, getPortfolios, uploadImage } from '@/api'
-import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
-import { dateTimeFormatter } from '@/utils'
+import { TPortfolioItem, addPortfolios, deletePortfolios, getPortfolios, updatePortfolios, uploadImage } from '@/api'
+import { INPUT_LINK, MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
+import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
 import {
 	ActionType,
@@ -32,7 +32,7 @@ const Portfolio = () => {
 		{
 			title: 'Tech Stack',
 			align: 'center',
-			render: (_, record) => record?.tech?.map(q => <Tag>{q}</Tag>)
+			render: (_, record) => record?.tech?.map(q => <Tag key={q}>{q}</Tag>)
 		},
 		{
 			title: 'Link',
@@ -58,7 +58,7 @@ const Portfolio = () => {
 			render: (_, record) => {
 				return (
 					<Space>
-						{renderAddEditPortfolio('EDIT')}
+						{renderAddEditPortfolio('EDIT', record)}
 						{renderDeletePortfolio(record)}
 					</Space>
 				)
@@ -72,15 +72,32 @@ const Portfolio = () => {
 			<ModalForm
 				{...MODAL_FORM_PROPS}
 				title={isEdit ? 'Edit Portfolio' : 'Add Portfolio'}
-				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button type="primary">Add</Button>}
+				trigger={
+					isEdit ? (
+						<Typography.Link onClick={() => setImgUrl(record?.image!)}>Edit</Typography.Link>
+					) : (
+						<Button type="primary">Add</Button>
+					)
+				}
 				initialValues={isEdit ? record : {}}
 				labelCol={{ flex: '110px' }}
+				onFinish={async params => {
+					let res
+
+					if (isEdit) {
+						res = await updatePortfolios({ ...params, image: imgUrl, id: record?.id })
+					} else {
+						res = await addPortfolios({ ...params, image: imgUrl })
+					}
+
+					return afterModalformFinish(actionRef, res)
+				}}
 			>
 				<ProFormText label="Title" name="title" rules={[{ required: true }]} />
-				<ProFormText label="Description" name="description" rules={[{ required: true }]} />
+				<ProFormText {...INPUT_TRIM} label="Link" name="link" rules={[INPUT_LINK, { required: true }]} />
 				<ProFormSelect
 					label="Tech Stack"
-					name="tech_stack"
+					name="tech"
 					fieldProps={{ mode: 'tags', maxCount: 5 }}
 					rules={[{ required: true }]}
 				/>
@@ -135,10 +152,11 @@ const Portfolio = () => {
 			<ProTable
 				{...PRO_TABLE_PROPS}
 				rowKey="id"
+				actionRef={actionRef}
 				columns={columns}
 				request={fetchData}
 				toolBarRender={() => [renderAddEditPortfolio('ADD')]}
-				scroll={{ x: 650 }}
+				scroll={{ x: 1100 }}
 			/>
 		</div>
 	)

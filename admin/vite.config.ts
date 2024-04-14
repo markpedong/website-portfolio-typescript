@@ -23,6 +23,9 @@ export default defineConfig({
 			},
 			'/portfolios': {
 				target: 'http://localhost:8080'
+			},
+			'/experiences': {
+				target: 'http://localhost:8080'
 			}
 		}
 	},

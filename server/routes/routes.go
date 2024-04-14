@@ -44,8 +44,8 @@ func CreateRoutes(r *gin.Engine) {
 	{
 		portfolio.POST("/addPortfolios", controllers.AddPortfolios)
 		portfolio.GET("/getPortfolios", controllers.GetPortfolios)
-		portfolio.POST("/updatePortfolio", controllers.UpdatePortfolios)
-		portfolio.DELETE("/deletePortfolio", controllers.DeletePortfolios)
+		portfolio.POST("/updatePortfolios", controllers.UpdatePortfolios)
+		portfolio.POST("/deletePortfolios", controllers.DeletePortfolios)
 	}
 
 	experience := r.Group("/experiences")

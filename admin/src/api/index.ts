@@ -93,8 +93,8 @@ export const uploadImage = params => upload<TUploadImage>('/api/uploadImage', pa
 // /portfolios/addPortfolios
 export const addPortfolios = params => post('/portfolios/addPortfolios', params)
 
-// /portfolios/editPortfolios
-export const editPortfolios = params => post('/portfolios/editPortfolios', params)
+// /portfolios/updatePortfolios
+export const updatePortfolios = params => post('/portfolios/updatePortfolios', params)
 
 // /portfolios/deletePortfolios
 export const deletePortfolios = params => post('/portfolios/deletePortfolios', params)
