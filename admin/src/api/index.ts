@@ -171,3 +171,17 @@ export const deleteBlogs = params => post('/blogs/deleteBlogs', params)
 
 // /blogs/toggleBlogStatus
 export const toggleBlogStatus = params => post('/blogs/toggleBlogStatus', params)
+
+// /messages/getMessages
+export type TMessageItem = {
+	id: string
+	name: string
+	email: string
+	message: string
+	created_at: number
+	updated_at: number
+}
+export const getMessages = () => get<TMessageItem[]>('/messages/getMessages')
+
+// /messages/addMessages
+export const addMessages = params => post('/messages/addMessages', params)

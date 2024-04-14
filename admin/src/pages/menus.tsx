@@ -7,8 +7,9 @@ import Links from './links'
 import Services from './services'
 import Portfolio from './portfolios'
 import Experience from './experience'
-import { FaBlog, FaPhoenixFramework } from 'react-icons/fa6'
+import { FaBlog, FaMessage, FaPhoenixFramework } from 'react-icons/fa6'
 import Blogs from './blogs'
+import Messages from './messages'
 
 export default [
 	{
@@ -24,10 +25,10 @@ export default [
 		icon: <FaBlog />
 	},
 	{
-		path: '/theme',
-		name: 'Theme',
-		element: <Theme />,
-		icon: <IoIosColorPalette />
+		path: '/experience',
+		name: 'Experience',
+		element: <Experience />,
+		icon: <FaPhoenixFramework />
 	},
 	{
 		path: '/link',
@@ -36,10 +37,10 @@ export default [
 		icon: <IoIosLink />
 	},
 	{
-		path: '/service',
-		name: 'Services',
-		element: <Services />,
-		icon: <MdOutlineMiscellaneousServices />
+		path: '/message',
+		name: 'Messages',
+		element: <Messages />,
+		icon: <FaMessage />
 	},
 	{
 		path: '/portfolio',
@@ -48,9 +49,15 @@ export default [
 		icon: <AiFillProject />
 	},
 	{
-		path: '/experience',
-		name: 'Experience',
-		element: <Experience />,
-		icon: <FaPhoenixFramework />
+		path: '/service',
+		name: 'Services',
+		element: <Services />,
+		icon: <MdOutlineMiscellaneousServices />
+	},
+	{
+		path: '/theme',
+		name: 'Theme',
+		element: <Theme />,
+		icon: <IoIosColorPalette />
 	}
 ]

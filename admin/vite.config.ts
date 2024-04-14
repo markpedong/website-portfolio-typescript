@@ -21,6 +21,9 @@ export default defineConfig({
 			'/links': {
 				target: 'http://localhost:8080'
 			},
+			'/messages': {
+				target: 'http://localhost:8080'
+			},
 			'/services': {
 				target: 'http://localhost:8080'
 			},
