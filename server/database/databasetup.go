@@ -34,6 +34,7 @@ func DBSetup() {
 		&models.Education{},
 		&models.Experiences{},
 		&models.ExpSkill{},
+		&models.EduSkill{},
 		&models.Testimonials{},
 		&models.Website{},
 	)
