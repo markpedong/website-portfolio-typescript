@@ -45,7 +45,7 @@ func UpdateInformation(ctx *gin.Context) {
 		return
 	}
 
-	if err := database.DB.Updates(&user).Save(&user).Error; err != nil {
+	if err := database.DB.Updates(&user).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}

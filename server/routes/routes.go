@@ -11,6 +11,8 @@ func CreateRoutes(r *gin.Engine) {
 	// api.Use(middleware.Authentication)
 	{
 		api.POST("/uploadImage", controllers.UploadImage)
+		// add public endpoints that will be called by our client
+		// add login function and wrap everything in middleware.
 	}
 
 	website := r.Group("/info")
