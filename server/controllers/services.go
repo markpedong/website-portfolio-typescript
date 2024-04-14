@@ -24,16 +24,6 @@ func AddServices(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
-func GetServices(ctx *gin.Context) {
-	var services []models.Services
-	if err := database.DB.Find(&services).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(services))
-}
-
 func UpdateServices(ctx *gin.Context) {
 	var services struct {
 		ID          string `json:"id" validate:"required"`
@@ -59,19 +49,17 @@ func UpdateServices(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
+func GetServices(ctx *gin.Context) {
+	var services []models.Services
+	GetTableByModel(ctx, &services)
+}
+
 func DeleteServices(ctx *gin.Context) {
-	var body struct {
-		ID string `json:"id"`
-	}
-	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
-		return
-	}
+	var services models.Services
+	DeleteModelByID(ctx, &services)
+}
 
-	var currService models.Services
-	if err := database.DB.First(&currService, "id = ?", body.ID).Delete(&currService).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "")
+func ToggleServiceStatus(ctx *gin.Context) {
+	var service models.Services
+	ToggleModelStatus(ctx, &service)
 }

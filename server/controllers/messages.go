@@ -11,12 +11,7 @@ import (
 
 func GetMessages(ctx *gin.Context) {
 	var msgs []models.Messages
-	if err := database.DB.Find(&msgs).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(msgs))
+	GetTableByModel(ctx, &msgs)
 }
 
 func AddMessages(ctx *gin.Context) {

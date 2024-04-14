@@ -30,16 +30,6 @@ func AddTestimonials(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
-func GetTestimonials(ctx *gin.Context) {
-	var testimonials []models.Testimonials
-	if err := database.DB.Find(&testimonials).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(testimonials))
-}
-
 func EditTestimonials(ctx *gin.Context) {
 	var body struct {
 		models.Testimonials
@@ -61,19 +51,18 @@ func EditTestimonials(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
+
+func GetTestimonials(ctx *gin.Context) {
+	var testimonials []models.Testimonials
+	GetTableByModel(ctx, &testimonials)
+}
+
 func DeleteTestimonials(ctx *gin.Context) {
-	var body struct {
-		ID string `json:"id"`
-	}
-	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
-		return
-	}
+	var testimonials models.Testimonials
+	DeleteModelByID(ctx, &testimonials)
+}
 
-	var currTestimonials models.Testimonials
-	if err := database.DB.First(&currTestimonials, "id = ?", body.ID).Delete(&currTestimonials).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "")
+func ToggleTestimonialsStatus(ctx *gin.Context) {
+	var service models.Testimonials
+	ToggleModelStatus(ctx, &service)
 }

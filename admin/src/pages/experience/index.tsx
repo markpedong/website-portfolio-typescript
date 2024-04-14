@@ -1,8 +1,18 @@
-import { TExperienceItem, deleteExperiences, getExperiences } from '@/api'
+import { TExperienceItem, addExperiences, deleteExperiences, getExperiences, updateExperiences } from '@/api'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
-import { dateTimeFormatter } from '@/utils'
+import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
-import { ActionType, ModalForm, ProColumns, ProFormText, ProTable } from '@ant-design/pro-components'
+import {
+	ActionType,
+	ModalForm,
+	ProColumns,
+	ProForm,
+	ProFormDatePicker,
+	ProFormList,
+	ProFormSlider,
+	ProFormText,
+	ProTable
+} from '@ant-design/pro-components'
 import { Button, Popconfirm, Space, Tag, Typography } from 'antd'
 import { useRef } from 'react'
 
@@ -37,7 +47,15 @@ const Experience = () => {
 		{
 			title: 'Tech Stack',
 			align: 'center',
-			render: (_, record) => record?.skills?.map(q => <Tag>{q}</Tag>)
+			render: (_, record) => (
+				<Space direction="vertical" align="center">
+					{record?.skills?.map(q => (
+						<Tag key={q?.id}>
+							{q?.name}-{q?.percentage}
+						</Tag>
+					))}
+				</Space>
+			)
 		},
 		{
 			title: 'Updated',
@@ -56,7 +74,7 @@ const Experience = () => {
 			align: 'center',
 			render: (_, record) => (
 				<Space>
-					{renderAddEditExperience('ADD')}
+					{renderAddEditExperience('EDIT', record)}
 					{renderDeleteExperience(record)}
 				</Space>
 			)
@@ -69,9 +87,71 @@ const Experience = () => {
 			<ModalForm
 				{...MODAL_FORM_PROPS}
 				initialValues={isEdit ? record : {}}
+				title={isEdit ? 'Edit Experience' : 'Add Experience'}
 				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button type="primary">ADD</Button>}
+				grid
+				layout="inline"
+				rowProps={{
+					gutter: [0, 25]
+				}}
+				onFinish={async params => {
+					let res
+
+					if (isEdit) {
+						res = await updateExperiences({ ...params, id: record?.id })
+					} else {
+						res = await addExperiences(params)
+					}
+
+					return afterModalformFinish(actionRef, res)
+				}}
 			>
+				<ProFormText label="Title" name="title" rules={[{ required: true }]} />
 				<ProFormText label="Company" name="company" rules={[{ required: true }]} />
+				<ProFormText label="Location" name="location" rules={[{ required: true }]} />
+				<ProFormDatePicker
+					colProps={{ span: 12 }}
+					label="Started"
+					name="started"
+					rules={[{ required: true }]}
+					width={250}
+				/>
+				<ProFormDatePicker
+					colProps={{ span: 12 }}
+					label="Ended"
+					name="ended"
+					rules={[{ required: true }]}
+					width={250}
+				/>
+				<ProFormList
+					name="skills"
+					label="Tech Stack"
+					creatorButtonProps={{
+						position: 'bottom',
+						creatorButtonText: 'Add Skill'
+					}}
+					copyIconProps={false}
+					max={5}
+					alwaysShowItemLabel
+				>
+					<ProForm.Group style={{ marginBottom: '1rem' }}>
+						<ProFormText
+							{...INPUT_TRIM}
+							name="name"
+							label="Technology"
+							colProps={{ span: 12 }}
+							labelCol={{ flex: '120px' }}
+							rules={[{ required: true }]}
+						/>
+						<ProFormSlider
+							name="percentage"
+							label="Percentage"
+							colProps={{ span: 12 }}
+							labelCol={{ flex: '120px' }}
+							rules={[{ required: true }]}
+						/>
+					</ProForm.Group>
+				</ProFormList>
 			</ModalForm>
 		)
 	}

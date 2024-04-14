@@ -68,37 +68,33 @@ type Blogs struct {
 }
 
 type Education struct {
-	ID          string                `json:"id" gorm:"primaryKey"`
-	School      string                `json:"school" validate:"required"`
-	Course      string                `json:"course" validate:"required"`
-	Started     string                `json:"started" validate:"required"`
-	Ended       string                `json:"ended" validate:"required"`
-	Description string                `json:"description" validate:"required"`
-	Skills      []Skills              `json:"skills"`
-	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
-	DeletedAt   soft_delete.DeletedAt `json:"-"`
+	ID          string `json:"id" gorm:"primaryKey"`
+	School      string `json:"school" validate:"required"`
+	Course      string `json:"course" validate:"required"`
+	Started     string `json:"started" validate:"required"`
+	Ended       string `json:"ended" validate:"required"`
+	Description string `json:"description" validate:"required"`
+	// Skills      []ExpSkill            `json:"skills"  gorm:"foreignKey:ExperienceID"`
+	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt soft_delete.DeletedAt `json:"-"`
 }
 
-type Skills struct {
-	ID           string                `json:"id" gorm:"primaryKey"`
-	EducationID  string                `json:"education_id" validate:"required"`
-	ExperienceID string                `json:"experience_id" validate:"required"`
-	Name         string                `json:"name" validate:"required"`
-	Percentage   int                   `json:"percentage" validate:"required"`
-	CreatedAt    int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt    int64                 `json:"updated_at" gorm:"autoUpdateTime"`
-	DeletedAt    soft_delete.DeletedAt `json:"-"`
+type ExpSkill struct {
+	ID           string `json:"id" gorm:"primaryKey"`
+	ExperienceID string `json:"experience_id"`
+	Name         string `json:"name"`
+	Percentage   int    `json:"percentage"`
 }
 
 type Experiences struct {
-	ID        string                `json:"id" gorm:"primaryKey"`
+	ID        string                `json:"id" gorm:"primaryKey" validate:"required"`
 	Company   string                `json:"company"  validate:"required"`
 	Title     string                `json:"title" validate:"required"`
 	Location  string                `json:"location" validate:"required"`
 	Started   string                `json:"started" validate:"required"`
 	Ended     string                `json:"ended" validate:"required"`
-	Skills    []Skills              `json:"skills" gorm:"foreignKey:ExperienceID"`
+	Skills    []ExpSkill            `json:"skills" gorm:"foreignKey:ExperienceID"`
 	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`

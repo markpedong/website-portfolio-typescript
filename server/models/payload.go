@@ -1,26 +1,25 @@
 package models
 
 type EducationPayload struct {
-	School      string         `json:"school" validate:"required"`
-	Course      string         `json:"course" validate:"required"`
-	Started     string         `json:"started" validate:"required"`
-	Ended       string         `json:"ended" validate:"required"`
-	Description string         `json:"description" validate:"required"`
-	Skills      []SkillPayload `json:"skills"`
+	School      string `json:"school" validate:"required"`
+	Course      string `json:"course" validate:"required"`
+	Started     string `json:"started" validate:"required"`
+	Ended       string `json:"ended" validate:"required"`
+	Description string `json:"description" validate:"required"`
 }
 
-type SkillPayload struct {
-	Name       string `json:"name" validate:"required"`
-	Percentage int    `json:"percentage" validate:"required"`
+type ExpSkillPayload struct {
+	Name       string `json:"name"`
+	Percentage int    `json:"percentage"`
 }
 
 type ExperiencePayload struct {
-	Company  string   `json:"company"  validate:"required"`
-	Title    string   `json:"title" validate:"required"`
-	Location string   `json:"location" validate:"required"`
-	Started  string   `json:"started" validate:"required"`
-	Ended    string   `json:"ended" validate:"required"`
-	Skills   []Skills `json:"skills" gorm:"foreignKey:ExperienceID"`
+	Company  string            `json:"company"  validate:"required"`
+	Title    string            `json:"title" validate:"required"`
+	Location string            `json:"location" validate:"required"`
+	Started  string            `json:"started" validate:"required"`
+	Ended    string            `json:"ended" validate:"required"`
+	Skills   []ExpSkillPayload `json:"skills"`
 }
 
 type BlogsPayload struct {

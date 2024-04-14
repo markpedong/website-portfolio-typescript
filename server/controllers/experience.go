@@ -23,15 +23,16 @@ func AddExperiences(ctx *gin.Context) {
 		Started:  body.Started,
 		Ended:    body.Ended,
 	}
-	newSkills := []models.Skills{}
+
+	var newSkills []models.ExpSkill
 	for _, v := range body.Skills {
-		newSkill := models.Skills{
+		newSkill := models.ExpSkill{
 			ID:           helpers.NewUUID(),
-			EducationID:  "-",
 			ExperienceID: newExperience.ID,
 			Name:         v.Name,
 			Percentage:   v.Percentage,
 		}
+
 		newSkills = append(newSkills, newSkill)
 	}
 
@@ -44,64 +45,68 @@ func AddExperiences(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
-func GetExperiences(ctx *gin.Context) {
-	var experiences []models.Experiences
-
-	if err := database.DB.Find(&experiences).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(experiences))
-}
-
 func UpdateExperiences(ctx *gin.Context) {
-	var body struct {
-		models.ExperiencePayload
-		ID string `json:"id" validate:"required"`
-	}
-
-	var currExperience models.Experiences
-	if err := database.DB.First(&currExperience, "id = ?", body.ID).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+	var body models.Experiences
+	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusBadRequest, "Invalid request payload")
 		return
 	}
 
-	var newSkills []models.Skills
+	tx := database.DB.Begin()
+	defer func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+		}
+	}()
+
 	for _, v := range body.Skills {
-		newSkill := models.Skills{
-			ID:           helpers.NewUUID(),
-			ExperienceID: currExperience.ID,
-			EducationID:  "-",
+		skill := models.ExpSkill{
+			ExperienceID: body.ID,
 			Name:         v.Name,
 			Percentage:   v.Percentage,
 		}
 
-		newSkills = append(newSkills, newSkill)
+		if v.ID != "" {
+			if err := tx.Model(&models.ExpSkill{}).Where("id = ?", v.ID).Updates(&skill).Error; err != nil {
+				tx.Rollback()
+				helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, "Failed to update skill")
+				return
+			}
+		} else {
+			skill.ID = helpers.NewUUID()
+			if err := tx.Create(&skill).Error; err != nil {
+				tx.Rollback()
+				helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, "Failed to create skill")
+				return
+			}
+		}
 	}
-	currExperience.Skills = newSkills
 
-	if err := database.DB.Model(&currExperience).Updates(body).Save(&currExperience).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+	if err := tx.Save(&body).Error; err != nil {
+		tx.Rollback()
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, "Failed to update experience")
+		return
+	}
+
+	if err := tx.Commit().Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, "Failed to commit transaction")
 		return
 	}
 
 	helpers.JSONResponse(ctx, "")
-
 }
+
+func GetExperiences(ctx *gin.Context) {
+	var experiences []models.Experiences
+	GetTableByModel(ctx, &experiences, "Skills")
+}
+
 func DeleteExperiences(ctx *gin.Context) {
-	var body struct {
-		ID string `json:"id"`
-	}
-	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
-		return
-	}
+	var experience models.Experiences
+	DeleteModelByID(ctx, &experience)
+}
 
-	var currExperience models.Experiences
-	if err := database.DB.First(&currExperience, "id = ?", body.ID).Delete(&currExperience).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "")
+func ToggleExperienceStatus(ctx *gin.Context) {
+	var experience models.Experiences
+	ToggleModelStatus(ctx, &experience)
 }

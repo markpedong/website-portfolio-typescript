@@ -37,12 +37,7 @@ func AddPortfolios(ctx *gin.Context) {
 
 func GetPortfolios(ctx *gin.Context) {
 	var portfolios []models.Portfolios
-	if err := database.DB.Find(&portfolios).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(portfolios))
+	GetTableByModel(ctx, &portfolios)
 }
 
 func UpdatePortfolios(ctx *gin.Context) {

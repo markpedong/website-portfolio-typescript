@@ -39,17 +39,6 @@ func AddBlogs(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
-func GetBlogs(ctx *gin.Context) {
-	var blogs []models.Blogs
-	if err := database.DB.Find(&blogs).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(blogs))
-
-}
-
 func UpdateBlogs(ctx *gin.Context) {
 	var blogs struct {
 		models.BlogsPayload
@@ -73,19 +62,17 @@ func UpdateBlogs(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
+func GetBlogs(ctx *gin.Context) {
+	var blogs []models.Blogs
+	GetTableByModel(ctx, &blogs)
+}
+
 func DeleteBlogs(ctx *gin.Context) {
-	var body struct {
-		ID string `json:"id"`
-	}
-	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
-		return
-	}
+	var blogs models.Blogs
+	DeleteModelByID(ctx, &blogs)
+}
 
-	var currService models.Blogs
-	if err := database.DB.First(&currService, "id = ?", body.ID).Delete(&currService).Error; err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	helpers.JSONResponse(ctx, "")
+func ToggleBlogsStatus(ctx *gin.Context) {
+	var blogs models.Blogs
+	ToggleModelStatus(ctx, &blogs)
 }

@@ -31,8 +31,9 @@ func DBSetup() {
 		&models.Messages{},
 		&models.Portfolios{},
 		&models.Blogs{},
-		&models.Experiences{},
 		&models.Education{},
+		&models.Experiences{},
+		&models.ExpSkill{},
 		&models.Testimonials{},
 		&models.Website{},
 	)

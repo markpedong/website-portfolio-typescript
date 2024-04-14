@@ -114,8 +114,8 @@ export const getPortfolios = () => get<TPortfolioItem[]>('/portfolios/getPortfol
 // /experiences/addExperiences
 export const addExperiences = params => post('/experiences/addExperiences', params)
 
-// /experiences/editExperiences
-export const editExperiences = params => post('/experiences/editExperiences', params)
+// /experiences/updateExperiences
+export const updateExperiences = params => post('/experiences/updateExperiences', params)
 
 // /experiences/deleteExperiences
 export const deleteExperiences = params => post('/experiences/deleteExperiences', params)
@@ -128,7 +128,7 @@ export type TExperienceItem = {
 	location: string
 	started: string
 	ended: string
-	skills: string[]
+	skills: { id: string; name: string; percentage: number }[]
 	created_at: number
 	updated_at: number
 }
