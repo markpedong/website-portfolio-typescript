@@ -1,6 +1,7 @@
 import { TExperienceItem, addExperiences, deleteExperiences, getExperiences, toggleExperienceStatus, updateExperiences } from '@/api'
 import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
+import { capFrstLtr, randomColorGenerator } from '@/constants/helper'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
 import {
@@ -51,8 +52,8 @@ const Experience = () => {
 			render: (_, record) => (
 				<Space direction="vertical" align="center">
 					{record?.skills?.map(q => (
-						<Tag key={q?.id}>
-							{q?.name}-{q?.percentage}
+						<Tag key={q?.id} color={`#${randomColorGenerator()}`}>
+							{capFrstLtr(q?.name)} - {q?.percentage}%
 						</Tag>
 					))}
 				</Space>
@@ -60,13 +61,11 @@ const Experience = () => {
 		},
 		{
 			title: 'Updated',
-			dataIndex: 'updated_at',
 			align: 'center',
 			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
 		},
 		{
 			title: 'Created',
-			dataIndex: 'created-at',
 			align: 'center',
 			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
 		},
@@ -175,7 +174,7 @@ const Experience = () => {
 	const renderDeleteExperience = (record: TExperienceItem) => {
 		return (
 			<Popconfirm
-				title="Delete this Portfolio?"
+				title="Delete this Experience?"
 				onConfirm={async () => {
 					const res = await deleteExperiences({ id: record?.id })
 

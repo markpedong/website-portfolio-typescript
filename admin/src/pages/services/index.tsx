@@ -1,4 +1,12 @@
-import { TServiceItem, addServices, deleteServices, getServices, updateServices, toggleServiceStatus, uploadImage } from '@/api'
+import {
+	TServiceItem,
+	addServices,
+	deleteServices,
+	getServices,
+	updateServices,
+	toggleServiceStatus,
+	uploadImage
+} from '@/api'
 import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
@@ -37,13 +45,11 @@ const Services = () => {
 		},
 		{
 			title: 'Updated',
-			dataIndex: 'updated_at',
 			align: 'center',
 			render: (_, q) => dateTimeFormatter(q?.updated_at, 'MM-DD-YYYY HH:MM:ss')
 		},
 		{
 			title: 'Created',
-			dataIndex: 'created-at',
 			align: 'center',
 			render: (_, q) => dateTimeFormatter(q?.created_at, 'MM-DD-YYYY HH:MM:ss')
 		},

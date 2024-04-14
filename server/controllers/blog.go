@@ -12,9 +12,9 @@ import (
 func AddBlogs(ctx *gin.Context) {
 	var body struct {
 		Title       string `json:"title"  validate:"required"`
-		Date        int    `json:"date" validate:"required"`
+		Date        string `json:"date" validate:"required"`
 		Description string `json:"description" validate:"required"`
-		Link        string `json:"ink"`
+		Link        string `json:"link"`
 		Image       string `json:"image" validate:"required"`
 	}
 	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
@@ -22,14 +22,12 @@ func AddBlogs(ctx *gin.Context) {
 	}
 
 	newBlogItem := models.Blogs{
-		ID: helpers.NewUUID(),
-		BlogsPayload: models.BlogsPayload{
-			Title:       body.Title,
-			Date:        body.Date,
-			Description: body.Description,
-			Link:        body.Link,
-			Image:       body.Image,
-		},
+		ID:          helpers.NewUUID(),
+		Title:       body.Title,
+		Date:        body.Date,
+		Description: body.Description,
+		Link:        body.Link,
+		Image:       body.Image,
 	}
 	if err := database.DB.Create(&newBlogItem).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
@@ -72,7 +70,7 @@ func DeleteBlogs(ctx *gin.Context) {
 	DeleteModelByID(ctx, &blogs)
 }
 
-func ToggleBlogsStatus(ctx *gin.Context) {
+func ToggleBlogStatus(ctx *gin.Context) {
 	var blogs models.Blogs
 	ToggleModelStatus(ctx, &blogs)
 }

@@ -24,13 +24,11 @@ const Links = () => {
 		},
 		{
 			title: 'Updated',
-			dataIndex: 'updated_at',
 			align: 'center',
 			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
 		},
 		{
 			title: 'Created',
-			dataIndex: 'created-at',
 			align: 'center',
 			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
 		},

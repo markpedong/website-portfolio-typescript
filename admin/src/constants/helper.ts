@@ -1,3 +1,5 @@
+import numeral from "numeral"
+
 export const clearUserData = () => {
 	const cookies = document.cookie.split(';')
 
@@ -19,3 +21,12 @@ export const clearUserData = () => {
 	localStorage.clear()
 	sessionStorage.clear()
 }
+
+export const randomColorGenerator = () => Math.floor(Math.random() * 16777215).toString(16)
+
+export const capFrstLtr = (str: string) => str?.charAt(0).toUpperCase() + str?.slice(1)
+
+export const numSuffix = (n: number) => numeral(n).format('0.0a')
+
+export const numComma = (n: number) => numeral(n).format('0,0')
+

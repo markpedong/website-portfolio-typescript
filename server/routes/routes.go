@@ -64,7 +64,8 @@ func CreateRoutes(r *gin.Engine) {
 		blogs.POST("/addBlogs", controllers.AddBlogs)
 		blogs.GET("/getBlogs", controllers.GetBlogs)
 		blogs.POST("/updateBlogs", controllers.UpdateBlogs)
-		blogs.DELETE("/deleteBlogs", controllers.DeleteBlogs)
+		blogs.POST("/toggleBlogStatus", controllers.ToggleBlogStatus)
+		blogs.POST("/deleteBlogs", controllers.DeleteBlogs)
 	}
 
 	testimonials := r.Group("/testimonials")

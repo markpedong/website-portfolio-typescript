@@ -62,11 +62,16 @@ type Portfolios struct {
 }
 
 type Blogs struct {
-	BlogsPayload
-	ID        string                `json:"id" gorm:"primaryKey"`
-	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
-	DeletedAt soft_delete.DeletedAt `json:"-"`
+	ID          string                `json:"id" gorm:"primaryKey"`
+	Title       string                `json:"title"  validate:"required"`
+	Date        string                `json:"date" validate:"required"`
+	Description string                `json:"description" validate:"required"`
+	Link        string                `json:"link" validate:"required"`
+	Image       string                `json:"image" validate:"required"`
+	Status      int                   `json:"status" gorm:"default:0"`
+	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 
 type Education struct {

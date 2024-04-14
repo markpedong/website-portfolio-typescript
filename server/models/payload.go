@@ -24,7 +24,7 @@ type ExperiencePayload struct {
 
 type BlogsPayload struct {
 	Title       string `json:"title"  validate:"required"`
-	Date        int    `json:"date" validate:"required"`
+	Date        string `json:"date" validate:"required"`
 	Description string `json:"description" validate:"required"`
 	Link        string `json:"link" validate:"required"`
 	Image       string `json:"image" validate:"required"`

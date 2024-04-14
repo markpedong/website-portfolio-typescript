@@ -12,6 +12,9 @@ export default defineConfig({
 			'/api': {
 				target: 'http://localhost:8080'
 			},
+			'/blogs': {
+				target: 'http://localhost:8080'
+			},
 			'/info': {
 				target: 'http://localhost:8080'
 			},

@@ -145,3 +145,29 @@ export const getExperiences = () => get<TPortfolioItem[]>('/experiences/getExper
 
 // /experiences/toggleExperienceStatus
 export const toggleExperienceStatus = params => post('/experiences/toggleExperienceStatus', params)
+
+// /blogs/getBlogs
+export type TBlogsItem = {
+	title: string
+	date: string
+	description: string
+	link: string
+	image: string
+	id: string
+	status: GLOBAL_STATUS
+	created_at: number
+	updated_at: number
+}
+export const getBlogs = () => get<TBlogsItem[]>('/blogs/getBlogs')
+
+// /blogs/addBlogs
+export const addBlogs = params => post('/blogs/addBlogs', params)
+
+// /blogs/updateBlogs
+export const updateBlogs = params => post('/blogs/updateBlogs', params)
+
+// /blogs/deleteBlogs
+export const deleteBlogs = params => post('/blogs/deleteBlogs', params)
+
+// /blogs/toggleBlogStatus
+export const toggleBlogStatus = params => post('/blogs/toggleBlogStatus', params)

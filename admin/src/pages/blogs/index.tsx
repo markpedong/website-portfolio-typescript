@@ -1,38 +1,29 @@
-import {
-	TPortfolioItem,
-	addPortfolios,
-	deletePortfolios,
-	getPortfolios,
-	togglePortfolioStatus,
-	updatePortfolios,
-	uploadImage
-} from '@/api'
+import { TBlogsItem, addBlogs, deleteBlogs, getBlogs, toggleBlogStatus, updateBlogs, uploadImage } from '@/api'
 import { GLOBAL_STATUS } from '@/api/constants'
 import { INPUT_LINK, MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
-import { capFrstLtr, randomColorGenerator } from '@/constants/helper'
 import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
 import { BeforeUpload, afterModalformFinish } from '@/utils/antd'
 import {
 	ActionType,
 	ModalForm,
 	ProColumns,
-	ProFormSelect,
+	ProFormDatePicker,
 	ProFormText,
+	ProFormTextArea,
 	ProFormUploadButton,
 	ProTable
 } from '@ant-design/pro-components'
-import { Button, Image, Popconfirm, Space, Switch, Tag, Typography } from 'antd'
+import { Button, Image, Popconfirm, Space, Switch, Typography } from 'antd'
 import { useRef, useState } from 'react'
 
-const Portfolio = () => {
+const Blogs = () => {
 	const [imgUrl, setImgUrl] = useState('')
 	const actionRef = useRef<ActionType>()
-	const columns: ProColumns<TPortfolioItem>[] = [
+	const columns: ProColumns<TBlogsItem>[] = [
 		{
 			title: 'Image',
 			align: 'center',
-			search: false,
-			render: (_, record) => <Image src={record?.image} alt="logo" width={60} height={60} />
+			render: (_, record) => <Image src={record?.image} alt="image" width={60} height={60} />
 		},
 		{
 			title: 'Title',
@@ -40,14 +31,9 @@ const Portfolio = () => {
 			dataIndex: 'title'
 		},
 		{
-			title: 'Tech Stack',
+			title: 'Description',
 			align: 'center',
-			render: (_, record) =>
-				record?.tech?.map(q => (
-					<Tag color={`#${randomColorGenerator()}`} key={q}>
-						{capFrstLtr(q)}
-					</Tag>
-				))
+			dataIndex: 'description'
 		},
 		{
 			title: 'Link',
@@ -67,27 +53,24 @@ const Portfolio = () => {
 		{
 			title: 'Operator',
 			align: 'center',
-			search: false,
-			render: (_, record) => {
-				return (
-					<Space>
-						{renderSwitch(record)}
-						{renderAddEditPortfolio('EDIT', record)}
-						{renderDeletePortfolio(record)}
-					</Space>
-				)
-			}
+			render: (_, record) => (
+				<Space>
+					{renderSwitch(record)}
+					{renderAddEditBlogs('EDIT', record)}
+					{renderDeleteBlogs(record)}
+				</Space>
+			)
 		}
 	]
 
-	const renderSwitch = (record: TPortfolioItem) => {
+	const renderSwitch = (record: TBlogsItem) => {
 		return (
 			<Switch
 				unCheckedChildren="OFF"
 				checkedChildren="ON"
 				checked={record?.status === GLOBAL_STATUS.ON}
 				onChange={async () => {
-					const res = await togglePortfolioStatus({ id: record?.id })
+					const res = await toggleBlogStatus({ id: record?.id })
 
 					return afterModalformFinish(actionRef, res)
 				}}
@@ -95,28 +78,32 @@ const Portfolio = () => {
 		)
 	}
 
-	const renderAddEditPortfolio = (type: 'ADD' | 'EDIT', record?: TPortfolioItem) => {
+	const renderAddEditBlogs = (type: 'ADD' | 'EDIT', record?: TBlogsItem) => {
 		const isEdit = type === 'EDIT'
 		return (
 			<ModalForm
 				{...MODAL_FORM_PROPS}
-				title={isEdit ? 'Edit Portfolio' : 'Add Portfolio'}
+				initialValues={isEdit ? record : {}}
+				title={isEdit ? 'Edit Blogs' : 'Add Blogs'}
 				trigger={
 					isEdit ? (
 						<Typography.Link onClick={() => setImgUrl(record?.image!)}>Edit</Typography.Link>
 					) : (
-						<Button type="primary">Add</Button>
+						<Button type="primary">ADD</Button>
 					)
 				}
-				initialValues={isEdit ? record : {}}
-				labelCol={{ flex: '110px' }}
+				grid
+				layout="inline"
+				rowProps={{
+					gutter: [0, 25]
+				}}
 				onFinish={async params => {
 					let res
 
 					if (isEdit) {
-						res = await updatePortfolios({ ...params, image: imgUrl, id: record?.id })
+						res = await updateBlogs({ ...params, image: imgUrl, id: record?.id })
 					} else {
-						res = await addPortfolios({ ...params, image: imgUrl })
+						res = await addBlogs({ ...params, image: imgUrl })
 					}
 
 					return afterModalformFinish(actionRef, res)
@@ -124,12 +111,8 @@ const Portfolio = () => {
 			>
 				<ProFormText label="Title" name="title" rules={[{ required: true }]} />
 				<ProFormText {...INPUT_TRIM} label="Link" name="link" rules={[INPUT_LINK, { required: true }]} />
-				<ProFormSelect
-					label="Tech Stack"
-					name="tech"
-					fieldProps={{ mode: 'tags', maxCount: 5 }}
-					rules={[{ required: true }]}
-				/>
+				<ProFormDatePicker rules={[{ required: true }]} label="Date Written" name="date" />
+				<ProFormTextArea label="Description" name="description" rules={[{ required: true }]} />
 				<ProFormUploadButton
 					label="Image"
 					name="image"
@@ -152,13 +135,12 @@ const Portfolio = () => {
 			</ModalForm>
 		)
 	}
-
-	const renderDeletePortfolio = (record: TPortfolioItem) => {
+	const renderDeleteBlogs = (record: TBlogsItem) => {
 		return (
 			<Popconfirm
-				title="Delete this Portfolio?"
+				title="Delete this Blog?"
 				onConfirm={async () => {
-					const res = await deletePortfolios({ id: record?.id })
+					const res = await deleteBlogs({ id: record?.id })
 
 					return afterModalformFinish(actionRef, res)
 				}}
@@ -169,7 +151,7 @@ const Portfolio = () => {
 	}
 
 	const fetchData = async () => {
-		const res = await getPortfolios()
+		const res = await getBlogs()
 
 		return {
 			data: res?.data.data
@@ -181,14 +163,14 @@ const Portfolio = () => {
 			<ProTable
 				{...PRO_TABLE_PROPS}
 				rowKey="id"
-				actionRef={actionRef}
 				columns={columns}
+				actionRef={actionRef}
 				request={fetchData}
-				toolBarRender={() => [renderAddEditPortfolio('ADD')]}
-				scroll={{ x: 1100 }}
+				toolBarRender={() => [renderAddEditBlogs('ADD')]}
+				scroll={{ x: 950 }}
 			/>
 		</div>
 	)
 }
 
-export default Portfolio
+export default Blogs
