@@ -10,6 +10,8 @@ import Experience from './experience'
 import { FaBlog, FaMessage, FaPhoenixFramework } from 'react-icons/fa6'
 import Blogs from './blogs'
 import Messages from './messages'
+import Testimonials from './testimonials'
+import { BsRecord } from 'react-icons/bs'
 
 export default [
 	{
@@ -53,6 +55,12 @@ export default [
 		name: 'Services',
 		element: <Services />,
 		icon: <MdOutlineMiscellaneousServices />
+	},
+	{
+		path: '/testimonial',
+		name: 'Testimonials',
+		element: <Testimonials />,
+		icon: <BsRecord />
 	},
 	{
 		path: '/theme',

@@ -32,6 +32,9 @@ export default defineConfig({
 			},
 			'/experiences': {
 				target: 'http://localhost:8080'
+			},
+			'/testimonials': {
+				target: 'http://localhost:8080'
 			}
 		}
 	},
