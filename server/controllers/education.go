@@ -10,20 +10,33 @@ import (
 )
 
 func AddEducations(ctx *gin.Context) {
-	var education models.EducationPayload
-	if err := helpers.BindValidateJSON(ctx, &education); err != nil {
+	var body models.EducationPayload
+	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
 		return
 	}
 
 	newEducation := models.Education{
 		ID:          helpers.NewUUID(),
-		School:      education.School,
-		Course:      education.Course,
-		Started:     education.Started,
-		Ended:       education.Ended,
-		Description: education.Description,
+		School:      body.School,
+		Course:      body.Course,
+		Started:     body.Started,
+		Ended:       body.Ended,
+		Description: body.Description,
 	}
 
+	var newSkills []models.EduSkill
+	for _, v := range body.Skills {
+		newSkill := models.EduSkill{
+			ID:          helpers.NewUUID(),
+			EducationID: newEducation.ID,
+			Name:        v.Name,
+			Percentage:  v.Percentage,
+		}
+
+		newSkills = append(newSkills, newSkill)
+	}
+
+	newEducation.Skills = newSkills
 	if err := database.DB.Create(&newEducation).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
@@ -33,22 +46,30 @@ func AddEducations(ctx *gin.Context) {
 
 }
 
-func EditEducations(ctx *gin.Context) {
-	var body struct {
-		models.EducationPayload
-		ID string `json:"id" validate:"required"`
-	}
+func UpdateEducations(ctx *gin.Context) {
+	var body models.Education
 	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
 		return
 	}
-
-	var currEducation models.Education
-	if err := database.DB.First(&currEducation, "id = ?", body.ID).Error; err != nil {
+	var newSkills []models.EduSkill
+	if err := database.DB.Where("education_id = ?", body.ID).Delete(&newSkills).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	if err := database.DB.Updates(body).Save(&currEducation).Error; err != nil {
+	for _, v := range body.Skills {
+		newSkill := models.EduSkill{
+			ID:          helpers.NewUUID(),
+			EducationID: body.ID,
+			Name:        v.Name,
+			Percentage:  v.Percentage,
+		}
+
+		newSkills = append(newSkills, newSkill)
+	}
+
+	body.Skills = newSkills
+	if err := database.DB.Save(&body).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -56,27 +77,9 @@ func EditEducations(ctx *gin.Context) {
 	helpers.JSONResponse(ctx, "")
 }
 
-// func UpdateSkills(ctx *gin.Context) {
-// 	var body struct {
-// 		ID       string `json:"id"`
-// 		NewSkill string `json:"new_skill"`
-// 	}
-
-// 	var currSkill models.Skills
-// 	if err := database.DB.First(&currSkill, "id = ?", body.ID).Error; err != nil {
-// 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
-// 		return
-// 	}
-
-// 	currSkill.Name = body.NewSkill
-// 	database.DB.Save(&currSkill)
-
-// 	helpers.JSONResponse(ctx, "")
-// }
-
 func GetEducations(ctx *gin.Context) {
 	var educations []models.Education
-	GetTableByModel(ctx, &educations)
+	GetTableByModel(ctx, &educations, "Skills")
 }
 
 func DeleteEducations(ctx *gin.Context) {

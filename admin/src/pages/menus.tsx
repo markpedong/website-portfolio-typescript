@@ -12,14 +12,10 @@ import Blogs from './blogs'
 import Messages from './messages'
 import Testimonials from './testimonials'
 import { BsRecord } from 'react-icons/bs'
+import Education from './education'
+import { GiDiploma } from 'react-icons/gi'
 
 export default [
-	{
-		path: '/',
-		name: 'Information',
-		element: <Information />,
-		icon: <IoIosInformationCircle />
-	},
 	{
 		path: '/blog',
 		name: 'Blogs',
@@ -27,10 +23,22 @@ export default [
 		icon: <FaBlog />
 	},
 	{
+		path: '/education',
+		name: 'Education',
+		element: <Education />,
+		icon: <GiDiploma />
+	},
+	{
 		path: '/experience',
 		name: 'Experience',
 		element: <Experience />,
 		icon: <FaPhoenixFramework />
+	},
+	{
+		path: '/',
+		name: 'Information',
+		element: <Information />,
+		icon: <IoIosInformationCircle />
 	},
 	{
 		path: '/link',

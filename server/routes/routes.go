@@ -73,15 +73,17 @@ func CreateRoutes(r *gin.Engine) {
 		testimonials.POST("/addTestimonials", controllers.AddTestimonials)
 		testimonials.GET("/getTestimonials", controllers.GetTestimonials)
 		testimonials.POST("/updateTestimonials", controllers.EditTestimonials)
-		testimonials.DELETE("/deleteTestimonials", controllers.DeleteTestimonials)
+		testimonials.POST("/deleteTestimonials", controllers.DeleteTestimonials)
+		testimonials.POST("/toggleTestimonialStatus", controllers.ToggleTestimonialStatus)
 	}
 
 	educations := r.Group("/educations")
 	{
 		educations.POST("/addEducations", controllers.AddEducations)
 		educations.GET("/getEducations", controllers.GetEducations)
-		educations.POST("/updateEducations", controllers.EditEducations)
-		educations.DELETE("/deleteEducations", controllers.DeleteEducations)
+		educations.POST("/updateEducations", controllers.UpdateEducations)
+		educations.POST("/deleteEducations", controllers.DeleteEducations)
+		educations.POST("/toggleEducationStatus", controllers.ToggleEducationStatus)
 	}
 
 	messages := r.Group("/messages")

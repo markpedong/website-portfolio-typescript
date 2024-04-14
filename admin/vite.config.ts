@@ -15,6 +15,12 @@ export default defineConfig({
 			'/blogs': {
 				target: 'http://localhost:8080'
 			},
+			'/educations': {
+				target: 'http://localhost:8080'
+			},
+			'/experiences': {
+				target: 'http://localhost:8080'
+			},
 			'/info': {
 				target: 'http://localhost:8080'
 			},
@@ -30,9 +36,7 @@ export default defineConfig({
 			'/portfolios': {
 				target: 'http://localhost:8080'
 			},
-			'/experiences': {
-				target: 'http://localhost:8080'
-			},
+
 			'/testimonials': {
 				target: 'http://localhost:8080'
 			}

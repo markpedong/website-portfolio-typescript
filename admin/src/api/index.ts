@@ -185,3 +185,55 @@ export const getMessages = () => get<TMessageItem[]>('/messages/getMessages')
 
 // /messages/addMessages
 export const addMessages = params => post('/messages/addMessages', params)
+
+// /testimonials/getTestimonials
+export type TTestimonialsItem = {
+	id: string
+	author: string
+	description: string
+	image: string
+	job: string
+	status: GLOBAL_STATUS
+	created_at: number
+	updated_at: number
+}
+export const getTestimonials = () => get<TTestimonialsItem[]>('/testimonials/getTestimonials')
+
+// /testimonials/addTestimonials
+export const addTestimonials = params => post('/testimonials/addTestimonials', params)
+
+// /testimonials/updateTestimonials
+export const updateTestimonials = params => post('/testimonials/updateTestimonials', params)
+
+// /testimonials/deleteTestimonials
+export const deleteTestimonials = params => post('/testimonials/deleteTestimonials', params)
+
+// /testimonials/toggleTestimonialStatus
+export const toggleTestimonialStatus = params => post('/testimonials/toggleTestimonialStatus', params)
+
+// /educations/getTestimonials
+export type TEducationsItem = {
+	id: string
+	school: string
+	course: string
+	started: string
+	ended: string
+	description: string
+	status: GLOBAL_STATUS
+	skills: { id: string; name: string; percentage: number }[]
+	created_at: number
+	updated_at: number
+}
+export const getEducations = () => get<TEducationsItem[]>('/educations/getEducations')
+
+// /educations/addEducations
+export const addEducations = params => post('/educations/addEducations', params)
+
+// /educations/updateEducations
+export const updateEducations = params => post('/educations/updateEducations', params)
+
+// /educations/deleteEducations
+export const deleteEducations = params => post('/educations/deleteEducations', params)
+
+// /educations/toggleEducationStatus
+export const toggleEducationStatus = params => post('/educations/toggleEducationStatus', params)

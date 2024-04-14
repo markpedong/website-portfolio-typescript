@@ -34,8 +34,8 @@ type Services struct {
 	Description string                `json:"description"`
 	Logo        string                `json:"logo"`
 	Status      int                   `json:"status" validate:"required" gorm:"default:0"`
-	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 
@@ -54,8 +54,8 @@ type Portfolios struct {
 	Link      string                `json:"link" validate:"required"`
 	Image     string                `json:"image" validate:"required"`
 	Status    int                   `json:"status" validate:"required" gorm:"default:0"`
-	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	CreatedAt int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`
 }
 
@@ -67,22 +67,30 @@ type Blogs struct {
 	Link        string                `json:"link" validate:"required"`
 	Image       string                `json:"image" validate:"required"`
 	Status      int                   `json:"status" gorm:"default:0"`
-	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 
-type Education struct {
+type EduSkill struct {
 	ID          string `json:"id" gorm:"primaryKey"`
-	School      string `json:"school" validate:"required"`
-	Course      string `json:"course" validate:"required"`
-	Started     string `json:"started" validate:"required"`
-	Ended       string `json:"ended" validate:"required"`
-	Description string `json:"description" validate:"required"`
-	// Skills      []ExpSkill            `json:"skills"  gorm:"foreignKey:ExperienceID"`
-	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
-	DeletedAt soft_delete.DeletedAt `json:"-"`
+	EducationID string `json:"education_id"`
+	Name        string `json:"name"`
+	Percentage  int    `json:"percentage"`
+}
+
+type Education struct {
+	ID          string                `json:"id" gorm:"primaryKey"`
+	School      string                `json:"school" validate:"required"`
+	Course      string                `json:"course" validate:"required"`
+	Started     string                `json:"started" validate:"required"`
+	Ended       string                `json:"ended" validate:"required"`
+	Description string                `json:"description" validate:"required"`
+	Skills      []EduSkill            `json:"skills"  gorm:"foreignKey:EducationID"`
+	Status      int                   `json:"status" gorm:"default:0"`
+	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 
 type ExpSkill struct {
@@ -101,8 +109,8 @@ type Experiences struct {
 	Ended     string                `json:"ended" validate:"required"`
 	Skills    []ExpSkill            `json:"skills" gorm:"foreignKey:ExperienceID"`
 	Status    int                   `json:"status" gorm:"default:0"`
-	CreatedAt int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	CreatedAt int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`
 }
 
@@ -112,8 +120,9 @@ type Testimonials struct {
 	Description string                `json:"description" validate:"required"`
 	Image       string                `json:"image"`
 	Job         string                `json:"job"`
-	CreatedAt   int64                 `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt   int64                 `json:"updated_at" gorm:"autoUpdateTime"`
+	Status      int                   `json:"status" gorm:"default:0"`
+	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 

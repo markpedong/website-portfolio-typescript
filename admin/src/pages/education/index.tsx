@@ -1,10 +1,10 @@
 import {
-	TExperienceItem,
-	addExperiences,
-	deleteExperiences,
-	getExperiences,
-	toggleExperienceStatus,
-	updateExperiences
+	TEducationsItem,
+	addEducations,
+	deleteEducations,
+	getEducations,
+	toggleEducationStatus,
+	updateEducations
 } from '@/api'
 import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
@@ -20,28 +20,24 @@ import {
 	ProFormList,
 	ProFormSlider,
 	ProFormText,
+	ProFormTextArea,
 	ProTable
 } from '@ant-design/pro-components'
 import { Button, Popconfirm, Space, Switch, Tag, Typography } from 'antd'
 import { useRef } from 'react'
 
-const Experience = () => {
+const Education = () => {
 	const actionRef = useRef<ActionType>()
-	const columns: ProColumns<TExperienceItem>[] = [
+	const columns: ProColumns<TEducationsItem>[] = [
 		{
-			title: 'Title',
+			title: 'School',
 			align: 'center',
-			dataIndex: 'title'
+			dataIndex: 'school'
 		},
 		{
-			title: 'Company',
+			title: 'Course',
 			align: 'center',
-			dataIndex: 'company'
-		},
-		{
-			title: 'Location',
-			align: 'center',
-			dataIndex: 'location'
+			dataIndex: 'course'
 		},
 		{
 			title: 'Started',
@@ -54,7 +50,12 @@ const Experience = () => {
 			dataIndex: 'ended'
 		},
 		{
-			title: 'Tech Stack',
+			title: 'Description',
+			align: 'center',
+			dataIndex: 'description'
+		},
+		{
+			title: 'Skills',
 			align: 'center',
 			render: (_, record) => (
 				<Space direction="vertical" align="center">
@@ -82,21 +83,21 @@ const Experience = () => {
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}
-					{renderAddEditExperience('EDIT', record)}
-					{renderDeleteExperience(record)}
+					{renderAddEditEducation('EDIT', record)}
+					{renderDeleteEducation(record)}
 				</Space>
 			)
 		}
 	]
 
-	const renderSwitch = (record: TExperienceItem) => {
+	const renderSwitch = (record: TEducationsItem) => {
 		return (
 			<Switch
 				unCheckedChildren="OFF"
 				checkedChildren="ON"
 				checked={record?.status === GLOBAL_STATUS.ON}
 				onChange={async () => {
-					const res = await toggleExperienceStatus({ id: record?.id })
+					const res = await toggleEducationStatus({ id: record?.id })
 
 					return afterModalformFinish(actionRef, res)
 				}}
@@ -104,13 +105,13 @@ const Experience = () => {
 		)
 	}
 
-	const renderAddEditExperience = (type: 'ADD' | 'EDIT', record?: TExperienceItem) => {
+	const renderAddEditEducation = (type: 'ADD' | 'EDIT', record?: TEducationsItem) => {
 		const isEdit = type === 'EDIT'
 		return (
 			<ModalForm
 				{...MODAL_FORM_PROPS}
 				initialValues={isEdit ? record : {}}
-				title={isEdit ? 'Edit Experience' : 'Add Experience'}
+				title={isEdit ? 'Edit Education' : 'Add Education'}
 				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button type="primary">ADD</Button>}
 				grid
 				layout="inline"
@@ -121,17 +122,17 @@ const Experience = () => {
 					let res
 
 					if (isEdit) {
-						res = await updateExperiences({ ...params, id: record?.id })
+						res = await updateEducations({ ...params, id: record?.id })
 					} else {
-						res = await addExperiences(params)
+						res = await addEducations(params)
 					}
 
 					return afterModalformFinish(actionRef, res)
 				}}
 			>
-				<ProFormText label="Title" name="title" rules={[{ required: true }]} />
-				<ProFormText label="Company" name="company" rules={[{ required: true }]} />
-				<ProFormText label="Location" name="location" rules={[{ required: true }]} />
+				<ProFormText label="School" name="school" rules={[{ required: true }]} />
+				<ProFormText label="Course" name="course" rules={[{ required: true }]} />
+				<ProFormTextArea label="Description" name="description" rules={[{ required: true }]} />
 				<ProFormDatePicker
 					colProps={{ span: 12 }}
 					label="Started"
@@ -178,12 +179,12 @@ const Experience = () => {
 			</ModalForm>
 		)
 	}
-	const renderDeleteExperience = (record: TExperienceItem) => {
+	const renderDeleteEducation = (record: TEducationsItem) => {
 		return (
 			<Popconfirm
-				title="Delete this Experience?"
+				title="Delete this Education?"
 				onConfirm={async () => {
-					const res = await deleteExperiences({ id: record?.id })
+					const res = await deleteEducations({ id: record?.id })
 
 					return afterModalformFinish(actionRef, res)
 				}}
@@ -194,7 +195,7 @@ const Experience = () => {
 	}
 
 	const fetchData = async () => {
-		const res = await getExperiences()
+		const res = await getEducations()
 
 		return {
 			data: res?.data.data
@@ -209,11 +210,11 @@ const Experience = () => {
 				columns={columns}
 				actionRef={actionRef}
 				request={fetchData}
-				toolBarRender={() => [renderAddEditExperience('ADD')]}
+				toolBarRender={() => [renderAddEditEducation('ADD')]}
 				scroll={{ x: 950 }}
 			/>
 		</div>
 	)
 }
 
-export default Experience
+export default Education

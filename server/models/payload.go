@@ -1,11 +1,17 @@
 package models
 
+type EduSkillPayload struct {
+	Name       string `json:"name"`
+	Percentage int    `json:"percentage"`
+}
+
 type EducationPayload struct {
-	School      string `json:"school" validate:"required"`
-	Course      string `json:"course" validate:"required"`
-	Started     string `json:"started" validate:"required"`
-	Ended       string `json:"ended" validate:"required"`
-	Description string `json:"description" validate:"required"`
+	School      string            `json:"school" validate:"required"`
+	Course      string            `json:"course" validate:"required"`
+	Started     string            `json:"started" validate:"required"`
+	Ended       string            `json:"ended" validate:"required"`
+	Description string            `json:"description" validate:"required"`
+	Skills      []EduSkillPayload `json:"skills"`
 }
 
 type ExpSkillPayload struct {

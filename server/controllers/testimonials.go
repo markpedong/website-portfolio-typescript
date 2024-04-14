@@ -62,7 +62,7 @@ func DeleteTestimonials(ctx *gin.Context) {
 	DeleteModelByID(ctx, &testimonials)
 }
 
-func ToggleTestimonialsStatus(ctx *gin.Context) {
+func ToggleTestimonialStatus(ctx *gin.Context) {
 	var service models.Testimonials
 	ToggleModelStatus(ctx, &service)
 }
