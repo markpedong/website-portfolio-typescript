@@ -1,31 +1,39 @@
-import logo from '@/assets/logo.png';
-import logoDark from '@/assets/logo-dark.png';
-import { MODAL_FORM_PROPS } from '@/constants';
-import menus from '@/pages/menus';
-import { DownOutlined } from '@ant-design/icons';
-import { ActionType, ModalForm, ProFormText, ProLayout } from '@ant-design/pro-components';
-import { Dropdown, Switch, Typography } from 'antd';
-import { cloneDeep } from 'lodash';
-import { FC, useRef } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import type { MenuProps } from 'antd';
-import { useAppDispatch, useAppSelector } from '@/redux/store';
-import { IoMdMoon, IoMdSunny } from 'react-icons/io';
-import { setDarkMode } from '@/redux/features/booleanSlice';
+import logo from '@/assets/logo.png'
+import logoDark from '@/assets/logo-dark.png'
+import { MODAL_FORM_PROPS } from '@/constants'
+import menus from '@/pages/menus'
+import { DownOutlined } from '@ant-design/icons'
+import { ActionType, ModalForm, ProFormText, ProLayout } from '@ant-design/pro-components'
+import { Dropdown, Switch, Typography } from 'antd'
+import { cloneDeep } from 'lodash'
+import { FC, useRef } from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import type { MenuProps } from 'antd'
+import { useAppDispatch, useAppSelector } from '@/redux/store'
+import { IoMdMoon, IoMdSunny } from 'react-icons/io'
+import { setDarkMode } from '@/redux/features/booleanSlice'
+import { clearUserData } from '@/constants/helper'
+import { resetUserData } from '@/redux/features/userSlice'
 
 const App: FC = () => {
-	const navigate = useNavigate();
-	const dispatch = useAppDispatch();
-	const { pathname } = useLocation();
-	const { darkMode } = useAppSelector(s => s.boolean);
-	const actionRef = useRef<ActionType>();
+	const navigate = useNavigate()
+	const dispatch = useAppDispatch()
+	const { pathname } = useLocation()
+	const { darkMode } = useAppSelector(s => s.boolean)
+	const actionRef = useRef<ActionType>()
 	const items: MenuProps['items'] = [
 		{
 			key: '1',
 			danger: true,
-			label: 'Logout'
+			label: 'Logout',
+			onClick: () => {
+				clearUserData()
+				dispatch(resetUserData())
+				navigate('/')
+				window.location.reload()
+			}
 		}
-	];
+	]
 
 	const renderSearchbar = () => {
 		return (
@@ -34,13 +42,13 @@ const App: FC = () => {
 				title="Search token name or exchanges"
 				trigger={<Typography.Link>Search</Typography.Link>}
 				onFinish={async value => {
-					console.log(value);
+					console.log(value)
 				}}
 			>
 				<ProFormText name="search" placeholder="eg. Bitcoin, Ethereum/ Binance, OKX" />
 			</ModalForm>
-		);
-	};
+		)
+	}
 
 	const renderDarkMode = () => (
 		<div>
@@ -50,7 +58,7 @@ const App: FC = () => {
 				unCheckedChildren={<IoMdSunny />}
 			/>
 		</div>
-	);
+	)
 
 	return (
 		<ProLayout
@@ -75,7 +83,7 @@ const App: FC = () => {
 					>
 						{dom}
 					</Typography.Link>
-				);
+				)
 			}}
 			actionsRender={() => [
 				renderSearchbar(),
@@ -89,7 +97,7 @@ const App: FC = () => {
 		>
 			<Outlet />
 		</ProLayout>
-	);
-};
+	)
+}
 
-export default App;
+export default App
