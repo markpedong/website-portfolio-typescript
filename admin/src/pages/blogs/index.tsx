@@ -167,7 +167,7 @@ const Blogs = () => {
 				actionRef={actionRef}
 				request={fetchData}
 				toolBarRender={() => [renderAddEditBlogs('ADD')]}
-				scroll={{ x: 950 }}
+				scroll={{ x: 1100 }}
 			/>
 		</div>
 	)

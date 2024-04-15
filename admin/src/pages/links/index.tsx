@@ -171,7 +171,7 @@ const Links = () => {
 				request={fetchData}
 				toolBarRender={() => [renderAddEditLinks('ADD')]}
 				scroll={{
-					x: 700
+					x: 800
 				}}
 			/>
 		</div>

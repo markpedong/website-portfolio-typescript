@@ -210,7 +210,7 @@ const Experience = () => {
 				actionRef={actionRef}
 				request={fetchData}
 				toolBarRender={() => [renderAddEditExperience('ADD')]}
-				scroll={{ x: 950 }}
+				scroll={{ x: 1000 }}
 			/>
 		</div>
 	)
