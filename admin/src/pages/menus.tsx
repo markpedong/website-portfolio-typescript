@@ -1,8 +1,8 @@
 import Information from './information'
-import { IoIosColorPalette, IoIosInformationCircle, IoIosLink } from 'react-icons/io'
+import { IoIosInformationCircle, IoIosLink } from 'react-icons/io'
 import { MdOutlineMiscellaneousServices } from 'react-icons/md'
 import { AiFillProject } from 'react-icons/ai'
-import Theme from './theme'
+import Status from './theme'
 import Links from './links'
 import Services from './services'
 import Portfolio from './portfolios'
@@ -14,6 +14,7 @@ import Testimonials from './testimonials'
 import { BsRecord } from 'react-icons/bs'
 import Education from './education'
 import { GiDiploma } from 'react-icons/gi'
+import { IoWarning } from 'react-icons/io5'
 
 export default [
 	{
@@ -71,9 +72,9 @@ export default [
 		icon: <BsRecord />
 	},
 	{
-		path: '/app/theme',
-		name: 'Theme',
-		element: <Theme />,
-		icon: <IoIosColorPalette />
+		path: '/app/status',
+		name: 'Status',
+		element: <Status />,
+		icon: <IoWarning />
 	}
 ]
