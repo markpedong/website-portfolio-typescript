@@ -36,7 +36,9 @@ export default defineConfig({
 			'/portfolios': {
 				target: 'http://localhost:8080'
 			},
-
+			'/public': {
+				target: 'http://localhost:8080'
+			},
 			'/testimonials': {
 				target: 'http://localhost:8080'
 			}

@@ -2,13 +2,17 @@ package routes
 
 import (
 	"portfolio/controllers"
+	"portfolio/middleware"
 
 	"github.com/gin-gonic/gin"
 )
 
 func CreateRoutes(r *gin.Engine) {
+	public := r.Group("/public")
+	public.POST("/login", controllers.Login)
+
 	api := r.Group("/api")
-	// api.Use(middleware.Authentication)
+	api.Use(middleware.Authentication)
 	{
 		api.POST("/uploadImage", controllers.UploadImage)
 		// add public endpoints that will be called by our client
@@ -16,6 +20,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	website := r.Group("/info")
+	website.Use(middleware.Authentication)
 	{
 		website.GET("/getDetails", controllers.GetInformation)
 		website.POST("/addDetails", controllers.AddInformation)
@@ -26,6 +31,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	links := r.Group("/links")
+	links.Use(middleware.Authentication)
 	{
 		links.POST("/addLinks", controllers.AddLinks)
 		links.GET("/getLinks", controllers.GetLinks)
@@ -35,6 +41,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	services := r.Group("/services")
+	services.Use(middleware.Authentication)
 	{
 		services.POST("/addServices", controllers.AddServices)
 		services.GET("/getServices", controllers.GetServices)
@@ -44,6 +51,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	portfolio := r.Group("/portfolios")
+	portfolio.Use(middleware.Authentication)
 	{
 		portfolio.POST("/addPortfolios", controllers.AddPortfolios)
 		portfolio.GET("/getPortfolios", controllers.GetPortfolios)
@@ -53,6 +61,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	experience := r.Group("/experiences")
+	experience.Use(middleware.Authentication)
 	{
 		experience.POST("/addExperiences", controllers.AddExperiences)
 		experience.GET("/getExperiences", controllers.GetExperiences)
@@ -62,6 +71,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	blogs := r.Group("/blogs")
+	blogs.Use(middleware.Authentication)
 	{
 		blogs.POST("/addBlogs", controllers.AddBlogs)
 		blogs.GET("/getBlogs", controllers.GetBlogs)
@@ -71,6 +81,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	testimonials := r.Group("/testimonials")
+	testimonials.Use(middleware.Authentication)
 	{
 		testimonials.POST("/addTestimonials", controllers.AddTestimonials)
 		testimonials.GET("/getTestimonials", controllers.GetTestimonials)
@@ -80,6 +91,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	educations := r.Group("/educations")
+	educations.Use(middleware.Authentication)
 	{
 		educations.POST("/addEducations", controllers.AddEducations)
 		educations.GET("/getEducations", controllers.GetEducations)
@@ -89,6 +101,7 @@ func CreateRoutes(r *gin.Engine) {
 	}
 
 	messages := r.Group("/messages")
+	messages.Use(middleware.Authentication)
 	{
 		messages.GET("/getMessages", controllers.GetMessages)
 		messages.POST("/addMessages", controllers.AddMessages)

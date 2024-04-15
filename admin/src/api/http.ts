@@ -1,3 +1,4 @@
+import { getLocalStorage } from '@/utils/xLocalstorage'
 import { message } from 'antd'
 import axios, { AxiosInstance } from 'axios'
 import { throttle } from 'lodash'
@@ -29,7 +30,7 @@ instance.interceptors.request.use(
 )
 
 const upload = async <T>(url: string, data): Promise<ApiResponse<{ data: T }>> => {
-	// const token = getLocalStorage('token')
+	const token = getLocalStorage('token')
 	const form = new FormData()
 
 	form.append('file', data)
@@ -37,7 +38,8 @@ const upload = async <T>(url: string, data): Promise<ApiResponse<{ data: T }>> =
 	//prettier-ignore
 	const response = await instance.post(url, form, {
 		headers: {
-			'Content-Type': 'multipart/form-data'
+			'Content-Type': 'multipart/form-data',
+			"token": token
 		}
 	})
 
@@ -47,11 +49,16 @@ const upload = async <T>(url: string, data): Promise<ApiResponse<{ data: T }>> =
 const post = async <T>(url: string, data = {}): Promise<ApiResponse<T>> =>
 	instance.post(url, data, {
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			token: getLocalStorage('token')
 		}
 	})
 
 const get = async <T>(url: string, data = {}): Promise<ApiResponse<{ data: T }>> =>
-	instance.get(`${url}${stringify(data) ? '?' + stringify(data) : ''}`)
+	instance.get(`${url}${stringify(data) ? '?' + stringify(data) : ''}`, {
+		headers: {
+			token: getLocalStorage('token')
+		}
+	})
 
 export { post, get, upload }

@@ -2,6 +2,13 @@ import { get, post, upload } from '@/api/http'
 import type { GetProp, UploadProps } from 'antd'
 import { GLOBAL_STATUS } from './constants'
 
+// /public/login
+export type TLoginDetails = {
+	data: { token: string; refresh_token: string }
+}
+
+export const login = params => post<TLoginDetails>('/public/login', params)
+
 // /info/addWebsiteDetails
 export type TWebsiteItem = {
 	id: string

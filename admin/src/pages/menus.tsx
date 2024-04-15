@@ -17,61 +17,61 @@ import { GiDiploma } from 'react-icons/gi'
 
 export default [
 	{
-		path: '/blog',
+		path: '/app/blog',
 		name: 'Blogs',
 		element: <Blogs />,
 		icon: <FaBlog />
 	},
 	{
-		path: '/education',
+		path: '/app/education',
 		name: 'Education',
 		element: <Education />,
 		icon: <GiDiploma />
 	},
 	{
-		path: '/experience',
+		path: '/app/experience',
 		name: 'Experience',
 		element: <Experience />,
 		icon: <FaPhoenixFramework />
 	},
 	{
-		path: '/',
+		path: '/app',
 		name: 'Information',
 		element: <Information />,
 		icon: <IoIosInformationCircle />
 	},
 	{
-		path: '/link',
+		path: '/app/link',
 		name: 'Links',
 		element: <Links />,
 		icon: <IoIosLink />
 	},
 	{
-		path: '/message',
+		path: '/app/message',
 		name: 'Messages',
 		element: <Messages />,
 		icon: <FaMessage />
 	},
 	{
-		path: '/portfolio',
+		path: '/app/portfolio',
 		name: 'Portfolio',
 		element: <Portfolio />,
 		icon: <AiFillProject />
 	},
 	{
-		path: '/service',
+		path: '/app/service',
 		name: 'Services',
 		element: <Services />,
 		icon: <MdOutlineMiscellaneousServices />
 	},
 	{
-		path: '/testimonial',
+		path: '/app/testimonial',
 		name: 'Testimonials',
 		element: <Testimonials />,
 		icon: <BsRecord />
 	},
 	{
-		path: '/theme',
+		path: '/app/theme',
 		name: 'Theme',
 		element: <Theme />,
 		icon: <IoIosColorPalette />

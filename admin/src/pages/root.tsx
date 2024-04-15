@@ -1,22 +1,28 @@
-import App from '@/pages/app';
-import menus from '@/pages/menus';
-import { cloneDeep } from 'lodash';
-import { FC } from 'react';
-import { Navigate, useRoutes } from 'react-router-dom';
+import isAuth from '@/components/isAuth'
+import App from '@/pages/app'
+import menus from '@/pages/menus'
+import { cloneDeep } from 'lodash'
+import { FC } from 'react'
+import { Navigate, useRoutes } from 'react-router-dom'
+import Login from './login'
 
 const Root: FC = () => {
-	const menu = cloneDeep(menus);
+	const menu = cloneDeep(menus)
+	const protectedMenu = menu.map(route => ({
+		...route,
+		element: route.path.includes('/app') ? isAuth(route.element) : route.element
+	}))
+
 	return useRoutes([
 		{
 			path: '/',
+			element: <Login />
+		},
+		{
+			path: '/app',
 			element: <App />,
 			children: [
-				...menu,
-				//dynamic route
-				// {
-				// 	path: '/cryptocurrency/:id',
-				// 	element: <Coin />
-				// },
+				...protectedMenu,
 				{
 					path: '*',
 					element: <Navigate to="/" />
@@ -27,7 +33,7 @@ const Root: FC = () => {
 			path: '*',
 			element: <Navigate to="/" />
 		}
-	]);
-};
+	])
+}
 
-export default Root;
+export default Root
