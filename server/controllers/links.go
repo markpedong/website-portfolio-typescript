@@ -68,3 +68,8 @@ func ToggleLinkStatus(ctx *gin.Context) {
 	var link models.Links
 	ToggleModelStatus(ctx, &link)
 }
+
+func PublicLinks(ctx *gin.Context) {
+	var links []models.Links
+	GetTableByModelStatusON(ctx, &links)
+}

@@ -68,7 +68,7 @@ type Blogs struct {
 	Description string                `json:"description" validate:"required"`
 	Link        string                `json:"link" validate:"required"`
 	Image       string                `json:"image" validate:"required"`
-	Status      int                   `json:"status" gorm:"default:0"`
+	Status      int                   `json:"status" validate:"required" gorm:"default:0"`
 	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
@@ -89,7 +89,7 @@ type Education struct {
 	Ended       string                `json:"ended" validate:"required"`
 	Description string                `json:"description" validate:"required"`
 	Skills      []EduSkill            `json:"skills"  gorm:"foreignKey:EducationID"`
-	Status      int                   `json:"status" gorm:"default:0"`
+	Status      int                   `json:"status" validate:"required" gorm:"default:0"`
 	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
@@ -110,7 +110,7 @@ type Experiences struct {
 	Started   string                `json:"started" validate:"required"`
 	Ended     string                `json:"ended" validate:"required"`
 	Skills    []ExpSkill            `json:"skills" gorm:"foreignKey:ExperienceID"`
-	Status    int                   `json:"status" gorm:"default:0"`
+	Status    int                   `json:"status" validate:"required" gorm:"default:0"`
 	CreatedAt int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt soft_delete.DeletedAt `json:"-"`
@@ -122,7 +122,7 @@ type Testimonials struct {
 	Description string                `json:"description" validate:"required"`
 	Image       string                `json:"image"`
 	Job         string                `json:"job"`
-	Status      int                   `json:"status" gorm:"default:0"`
+	Status      int                   `json:"status" validate:"required" gorm:"default:0"`
 	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
@@ -130,5 +130,5 @@ type Testimonials struct {
 
 type Website struct {
 	ID     string `json:"id" gorm:"primaryKey"`
-	Status int    `json:"status" gorm:"default:0"`
+	Status int    `json:"status" validate:"required" gorm:"default:0"`
 }

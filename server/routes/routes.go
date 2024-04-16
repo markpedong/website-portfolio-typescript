@@ -10,6 +10,7 @@ import (
 func CreateRoutes(r *gin.Engine) {
 	public := r.Group("/public")
 	public.POST("/login", controllers.Login)
+	public.GET("/links", controllers.PublicLinks)
 
 	api := r.Group("/api")
 	api.Use(middleware.Authentication)

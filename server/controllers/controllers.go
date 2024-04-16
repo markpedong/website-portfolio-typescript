@@ -142,3 +142,20 @@ func VerifyPassword(expectedHashedPassword, givenPassword string) (bool, string)
 		return true, "Failed to verify password"
 	}
 }
+
+func GetTableByModelStatusON(ctx *gin.Context, model interface{}, preload ...string) {
+	query := database.DB.Where("status = ?", 1).Order("created_at DESC")
+
+	if len(preload) > 0 {
+		for _, p := range preload {
+			query = query.Preload(p)
+		}
+	}
+
+	if err := query.Find(model).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(model))
+}
