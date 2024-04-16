@@ -92,3 +92,8 @@ func TogglePortfolioStatus(ctx *gin.Context) {
 	var portfolio models.Portfolios
 	ToggleModelStatus(ctx, &portfolio)
 }
+
+func PublicPortfolios(ctx *gin.Context) {
+	var portfolios []models.Portfolios
+	GetTableByModelStatusON(ctx, &portfolios)
+}

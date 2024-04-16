@@ -90,3 +90,8 @@ func ToggleExperienceStatus(ctx *gin.Context) {
 	var experience models.Experiences
 	ToggleModelStatus(ctx, &experience)
 }
+
+func PublicExperiences(ctx *gin.Context) {
+	var experiences []models.Education
+	GetTableByModelStatusON(ctx, &experiences)
+}

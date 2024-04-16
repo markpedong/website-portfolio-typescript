@@ -91,3 +91,8 @@ func ToggleEducationStatus(ctx *gin.Context) {
 	var education models.Education
 	ToggleModelStatus(ctx, &education)
 }
+
+func PublicEducation(ctx *gin.Context) {
+	var education []models.Education
+	GetTableByModelStatusON(ctx, &education)
+}

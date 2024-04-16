@@ -63,3 +63,8 @@ func ToggleServiceStatus(ctx *gin.Context) {
 	var service models.Services
 	ToggleModelStatus(ctx, &service)
 }
+
+func PublicServices(ctx *gin.Context) {
+	var services []models.Services
+	GetTableByModelStatusON(ctx, &services)
+}

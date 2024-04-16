@@ -66,3 +66,8 @@ func ToggleTestimonialStatus(ctx *gin.Context) {
 	var service models.Testimonials
 	ToggleModelStatus(ctx, &service)
 }
+
+func PublicTestimonials(ctx *gin.Context) {
+	var testimonials []models.Testimonials
+	GetTableByModelStatusON(ctx, &testimonials)
+}
