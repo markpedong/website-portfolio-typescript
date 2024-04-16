@@ -10,8 +10,12 @@ import Testimonials from '@/components/testimonials'
 import Education from '@/components/education'
 import Contact from '@/components/contact'
 import Footer from '@/components/footer'
+import { getLinks } from '../../api'
 
-const App = () => {
+const App = async () => {
+	const res = await getLinks()
+
+	console.log("@@@", res?.data)
 	return (
 		<>
 			<div className={styles.mainWrapper}>

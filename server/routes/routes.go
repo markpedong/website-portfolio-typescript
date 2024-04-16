@@ -12,6 +12,11 @@ func CreateRoutes(r *gin.Engine) {
 	{
 		public.POST("/login", controllers.Login)
 		public.GET("/links", controllers.PublicLinks)
+		public.GET("/experiences", controllers.PublicExperiences)
+		public.GET("/educations", controllers.PublicEducations)
+		public.GET("/portfolios", controllers.PublicPortfolios)
+		public.GET("/services", controllers.PublicServices)
+		public.GET("/testimonials", controllers.PublicTestimonials)
 		public.GET("/blogs", controllers.PublicBlogs)
 	}
 
