@@ -9,8 +9,11 @@ import (
 
 func CreateRoutes(r *gin.Engine) {
 	public := r.Group("/public")
-	public.POST("/login", controllers.Login)
-	public.GET("/links", controllers.PublicLinks)
+	{
+		public.POST("/login", controllers.Login)
+		public.GET("/links", controllers.PublicLinks)
+		public.GET("/blogs", controllers.PublicBlogs)
+	}
 
 	api := r.Group("/api")
 	api.Use(middleware.Authentication)

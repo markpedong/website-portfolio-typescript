@@ -74,3 +74,8 @@ func ToggleBlogStatus(ctx *gin.Context) {
 	var blogs models.Blogs
 	ToggleModelStatus(ctx, &blogs)
 }
+
+func PublicBlogs(ctx *gin.Context) {
+	var blogs []models.Blogs
+	GetTableByModelStatusON(ctx, &blogs)
+}
