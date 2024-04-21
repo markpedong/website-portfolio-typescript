@@ -72,4 +72,17 @@ func ToggleLinkStatus(ctx *gin.Context) {
 func PublicLinks(ctx *gin.Context) {
 	var links []models.Links
 	GetTableByModelStatusON(ctx, &links)
+
+	var linksResponse []models.LinksResponse
+	for _, v := range links {
+		newLinkResponse := models.LinksResponse{
+			ID:   v.ID,
+			Link: v.Link,
+			Type: v.Type,
+		}
+
+		linksResponse = append(linksResponse, newLinkResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(linksResponse))
 }

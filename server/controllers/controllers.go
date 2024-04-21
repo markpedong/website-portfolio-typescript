@@ -157,5 +157,4 @@ func GetTableByModelStatusON(ctx *gin.Context, model interface{}, preload ...str
 		return
 	}
 
-	helpers.JSONResponse(ctx, "", helpers.DataHelper(model))
 }
