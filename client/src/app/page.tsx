@@ -11,6 +11,7 @@ import Education from '@/components/education'
 import Contact from '@/components/contact'
 import Footer from '@/components/footer'
 import { getDetails, getLinks, getWebsiteDetails } from '../../api'
+import { IoWarning } from 'react-icons/io5'
 
 const App = async () => {
 	const website = await getWebsiteDetails()
@@ -41,7 +42,10 @@ const App = async () => {
 			<Footer />
 		</>
 	) : (
-		<>maintenance</>
+		<div className="flex justify-center items-center flex-col w-full h-dvh gap-5">
+			<IoWarning color="red" className="h-[5rem] w-[5rem]" />
+			<span className="text-[2rem] font-bold">MAINTENANCE</span>
+		</div>
 	)
 }
 
