@@ -36,7 +36,7 @@ const upload = async <T>(url: string, data): Promise<ApiResponse<{ data: T }>> =
 	form.append('file', data)
 
 	//prettier-ignore
-	const response = await instance.post(url, form, {
+	const response = await instance.post(`https://website-portfolio-admin.vercel.app${url}`, form, {
 		headers: {
 			'Content-Type': 'multipart/form-data',
 			"token": token
@@ -47,7 +47,7 @@ const upload = async <T>(url: string, data): Promise<ApiResponse<{ data: T }>> =
 }
 
 const post = async <T>(url: string, data = {}): Promise<ApiResponse<T>> =>
-	instance.post(url, data, {
+	instance.post(`https://website-portfolio-admin.vercel.app${url}`, data, {
 		headers: {
 			'Content-Type': 'application/json',
 			token: getLocalStorage('token')
@@ -55,7 +55,7 @@ const post = async <T>(url: string, data = {}): Promise<ApiResponse<T>> =>
 	})
 
 const get = async <T>(url: string, data = {}): Promise<ApiResponse<{ data: T }>> =>
-	instance.get(`${url}${stringify(data) ? '?' + stringify(data) : ''}`, {
+	instance.get(`https://website-portfolio-admin.vercel.app${url}${stringify(data) ? '?' + stringify(data) : ''}`, {
 		headers: {
 			token: getLocalStorage('token')
 		}
