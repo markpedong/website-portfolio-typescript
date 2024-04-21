@@ -1,6 +1,6 @@
 import { get, post, upload } from './http'
 
-//info/getDetails
+// /public/details
 export type TDetailsItem = {
 	address: string
 	created_at: number
@@ -10,10 +10,9 @@ export type TDetailsItem = {
 	id: string
 	last_name: string
 	phone: string
-	updated_at: number
 }
 
-export const getDetails = () => get<TDetailsItem>('/info/getDetails')
+export const getDetails = () => get<TDetailsItem>('/public/details')
 
 // /public/getLinks
 export type TLinksItem = {

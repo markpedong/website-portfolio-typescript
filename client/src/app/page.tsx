@@ -10,17 +10,17 @@ import Testimonials from '@/components/testimonials'
 import Education from '@/components/education'
 import Contact from '@/components/contact'
 import Footer from '@/components/footer'
-import { getLinks } from '../../api'
+import { TDetailsItem, getDetails, getLinks } from '../../api'
 
 const App = async () => {
 	const res = await getLinks()
+	const details = await getDetails()
 
-	console.log("@@@", res?.data)
 	return (
 		<>
 			<div className={styles.mainWrapper}>
 				<Navbar />
-				<Content />
+				<Content data={details?.data} />
 			</div>
 			<Specialty />
 			<div className={styles.mainWrapper}>

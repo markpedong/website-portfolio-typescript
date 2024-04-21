@@ -52,3 +52,23 @@ func UpdateInformation(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
+
+func PublicDetails(ctx *gin.Context) {
+	var user models.Users
+	if err := database.DB.First(&user).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	response := models.UsersResponse{
+		ID:          user.ID,
+		FirstName:   user.FirstName,
+		LastName:    user.LastName,
+		Phone:       user.Phone,
+		Address:     user.Address,
+		Description: user.Description,
+		Email:       user.Email,
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(response))
+}
