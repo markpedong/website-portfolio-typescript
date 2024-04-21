@@ -36,3 +36,12 @@ export type TLinksItem = {
 }
 
 export const getLinks = () => get<TLinksItem[]>('/public/links')
+
+// public/services
+export type TServicesItem = {
+	id: string
+	logo: string
+	description: string
+}
+
+export const getServices = () => get<TServicesItem[]>('/public/services')

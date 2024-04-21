@@ -7,40 +7,40 @@ import tsConfigPaths from 'vite-tsconfig-paths'
 // https://vitejs.dev/config/
 export default defineConfig({
 	server: {
-		port: 3002,
+		port: 5467,
 		proxy: {
 			'/api': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/blogs': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/educations': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/experiences': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/info': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/links': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/messages': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/services': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/portfolios': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/public': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			},
 			'/testimonials': {
-				target: 'http://localhost:8080'
+				target: 'https://portfolio-client-ebnp.onrender.com'
 			}
 		}
 	},

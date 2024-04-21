@@ -2,10 +2,11 @@ import styles from './styles.module.scss'
 import Header from '../header'
 import classNames from 'classnames'
 import { RiVipCrownLine } from 'react-icons/ri'
-import React from 'react'
+import React, { FC } from 'react'
 import { GoStack } from 'react-icons/go'
 import { HiOutlineGlobeAlt } from 'react-icons/hi'
 import { inter, jakartaB, jakartaM } from '../../../public/fonts'
+import { TServicesItem } from 'api'
 
 type Props = { title: string; description: string; logo: React.ReactNode }
 const CSpecialty = ({ description, logo, title }: Props) => {
@@ -18,7 +19,7 @@ const CSpecialty = ({ description, logo, title }: Props) => {
 	)
 }
 
-const Specialty = () => {
+const Specialty: FC<{ data: TServicesItem[] }> = ({ data }) => {
 	return (
 		<div className={styles.specialtyWrapper}>
 			<div className={styles.titleWrapper}>

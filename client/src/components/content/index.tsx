@@ -13,7 +13,13 @@ const Content: FC<{ data: TDetailsItem; links: TLinksItem[] }> = ({ data, links 
 
 	const renderLink = (type: string, icon: React.ReactNode) => {
 		const currLink = links?.find(q => q.type === type)
-		return currLink && <Link href={currLink?.link}>{icon}</Link>
+		return (
+			currLink && (
+				<Link target="_blank" href={currLink?.link}>
+					{icon}
+				</Link>
+			)
+		)
 	}
 
 	return (

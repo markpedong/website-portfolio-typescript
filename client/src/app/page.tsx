@@ -10,13 +10,14 @@ import Testimonials from '@/components/testimonials'
 import Education from '@/components/education'
 import Contact from '@/components/contact'
 import Footer from '@/components/footer'
-import { getDetails, getLinks, getWebsiteDetails } from '../../api'
+import { getDetails, getLinks, getServices, getWebsiteDetails } from '../../api'
 import { IoWarning } from 'react-icons/io5'
 
 const App = async () => {
 	const website = await getWebsiteDetails()
 	const links = await getLinks()
 	const details = await getDetails()
+	const services = await getServices()
 
 	return website?.data.status === 1 ? (
 		<>
@@ -24,7 +25,7 @@ const App = async () => {
 				<Navbar />
 				<Content data={details?.data} links={links?.data} />
 			</div>
-			<Specialty />
+			<Specialty data={services?.data} />
 			<div className={styles.mainWrapper}>
 				<Portfolio />
 			</div>
