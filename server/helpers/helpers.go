@@ -54,7 +54,7 @@ func NewUUID() string {
 }
 
 func BindValidateJSON(ctx *gin.Context, body interface{}) error {
-	if err := ctx.ShouldBindJSON(&body); err != nil {
+	if err := ctx.ShouldBindJSON(body); err != nil {
 		ErrJSONResponse(ctx, http.StatusBadRequest, err.Error())
 		return err
 	}

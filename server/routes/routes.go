@@ -11,6 +11,7 @@ func CreateRoutes(r *gin.Engine) {
 	public := r.Group("/public")
 	{
 		public.POST("/login", controllers.Login)
+		public.GET("/website", controllers.GetWebsiteDetails)
 		public.GET("/details", controllers.PublicDetails)
 		public.GET("/links", controllers.PublicLinks)
 		public.GET("/experiences", controllers.PublicExperiences)

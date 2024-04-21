@@ -1,5 +1,12 @@
 import { get, post, upload } from './http'
 
+// /public/website
+export type WebsiteDetails = {
+	id: string
+	status: number
+}
+export const getWebsiteDetails = () => get<WebsiteDetails>('/public/website')
+
 // /public/details
 export type TDetailsItem = {
 	address: string
@@ -15,12 +22,17 @@ export type TDetailsItem = {
 export const getDetails = () => get<TDetailsItem>('/public/details')
 
 // /public/getLinks
+export enum SocialMedia {
+	Twitter = 'twitter',
+	Instagram = 'instagram',
+	LinkedIn = 'linkedin',
+	GitHub = 'github'
+}
+
 export type TLinksItem = {
-	created_at: number
 	id: string
 	link: string
-	updated_at: number
-	type: string
+	type: SocialMedia
 }
 
 export const getLinks = () => get<TLinksItem[]>('/public/links')

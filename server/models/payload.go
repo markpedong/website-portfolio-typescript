@@ -42,3 +42,8 @@ type TestimonialsPayload struct {
 	Image       string `json:"image"`
 	Job         string `json:"job"`
 }
+
+type WebsitePayload struct {
+	ID     string `json:"id" validate:"required"`
+	Status int    `json:"status"`
+}

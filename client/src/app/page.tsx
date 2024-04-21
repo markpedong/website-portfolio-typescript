@@ -10,17 +10,18 @@ import Testimonials from '@/components/testimonials'
 import Education from '@/components/education'
 import Contact from '@/components/contact'
 import Footer from '@/components/footer'
-import { TDetailsItem, getDetails, getLinks } from '../../api'
+import { getDetails, getLinks, getWebsiteDetails } from '../../api'
 
 const App = async () => {
-	const res = await getLinks()
+	const website = await getWebsiteDetails()
+	const links = await getLinks()
 	const details = await getDetails()
 
-	return (
+	return website?.data.status === 1 ? (
 		<>
 			<div className={styles.mainWrapper}>
 				<Navbar />
-				<Content data={details?.data} />
+				<Content data={details?.data} links={links?.data} />
 			</div>
 			<Specialty />
 			<div className={styles.mainWrapper}>
@@ -39,6 +40,8 @@ const App = async () => {
 			</div>
 			<Footer />
 		</>
+	) : (
+		<>maintenance</>
 	)
 }
 

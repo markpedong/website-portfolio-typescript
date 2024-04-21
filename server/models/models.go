@@ -130,5 +130,5 @@ type Testimonials struct {
 
 type Website struct {
 	ID     string `json:"id" gorm:"primaryKey"`
-	Status int    `json:"status" validate:"required" gorm:"default:0"`
+	Status int    `json:"status" gorm:"default:0"`
 }

@@ -4,11 +4,17 @@ import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import Header from '../header'
 import Image from 'next/image'
 import { inter, jakartaB } from '../../../public/fonts'
-import { FC, useEffect } from 'react'
-import { TDetailsItem } from '../../../api'
+import React, { FC, useEffect } from 'react'
+import { SocialMedia, TDetailsItem, TLinksItem } from '../../../api'
+import Link from 'next/link'
 
-const Content: FC<{ data: TDetailsItem }> = ({ data }) => {
-	console.log('@@@', data?.first_name)
+const Content: FC<{ data: TDetailsItem; links: TLinksItem[] }> = ({ data, links }) => {
+	console.log('@@@', links)
+
+	const renderLink = (type: string, icon: React.ReactNode) => {
+		const currLink = links?.find(q => q.type === type)
+		return currLink && <Link href={currLink?.link}>{icon}</Link>
+	}
 
 	return (
 		<div className={styles.mainContentWrapper}>
@@ -19,10 +25,10 @@ const Content: FC<{ data: TDetailsItem }> = ({ data }) => {
 				</span>
 				<span className={inter.className}>{data?.description}</span>
 				<div>
-					<FaInstagram />
-					<FaGithub />
-					<FaTwitter />
-					<FaLinkedin />
+					{renderLink(SocialMedia.Instagram, <FaInstagram className="h-full w-full" />)}
+					{renderLink(SocialMedia.GitHub, <FaGithub className="h-full w-full" />)}
+					{renderLink(SocialMedia.Twitter, <FaTwitter className="h-full w-full" />)}
+					{renderLink(SocialMedia.LinkedIn, <FaLinkedin className="h-full w-full" />)}
 				</div>
 			</div>
 			<div className={styles.imageContainer}>
