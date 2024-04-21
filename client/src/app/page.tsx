@@ -2,7 +2,6 @@ import React from 'react'
 import styles from '@/styles/styles.module.scss'
 import Navbar from '../components/navbar'
 import Content from '@/components/content'
-import Specialty from '@/components/specialty'
 import Portfolio from '@/components/portfolio'
 import Experience from '@/components/experience'
 import Blogs from '@/components/blogs'
@@ -14,10 +13,7 @@ import { getDetails, getLinks, getServices, getWebsiteDetails } from '../../api'
 import { IoWarning } from 'react-icons/io5'
 
 const App = async () => {
-	const website = await getWebsiteDetails()
-	const links = await getLinks()
-	const details = await getDetails()
-	const services = await getServices()
+	const [website, links, details] = await Promise.all([getWebsiteDetails(), getLinks(), getDetails(), getServices()])
 
 	return website?.data.status === 1 ? (
 		<>
@@ -25,7 +21,7 @@ const App = async () => {
 				<Navbar />
 				<Content data={details?.data} links={links?.data} />
 			</div>
-			<Specialty data={services?.data} />
+			{/* <Specialty data={services?.data} /> */}
 			<div className={styles.mainWrapper}>
 				<Portfolio />
 			</div>
