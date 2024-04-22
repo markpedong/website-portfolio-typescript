@@ -58,7 +58,7 @@
 
     div:nth-of-type(3) {
         img {
-            @apply absolute h-[13rem] w-[10rem] top-0 right-0 z-[100] rounded-2xl;
+            @apply absolute h-[13rem] w-[10rem] top-0 right-[1rem] z-[100] rounded-2xl;
         }
     }
 }
