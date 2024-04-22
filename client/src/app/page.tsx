@@ -14,7 +14,12 @@ import { IoWarning } from 'react-icons/io5'
 import Specialty from '@/components/specialty'
 
 const App = async () => {
-	const [website, links, details, services] = await Promise.all([getWebsiteDetails(), getLinks(), getDetails(), getServices()])
+	const [website, links, details, services] = await Promise.all([
+		getWebsiteDetails(),
+		getLinks(),
+		getDetails(),
+		getServices()
+	])
 
 	return (
 		<div>
