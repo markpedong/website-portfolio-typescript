@@ -42,9 +42,7 @@ const Status = () => {
 						})
 					}
 
-					setTimeout(() => {
-						window.location.reload()
-					}, 500)
+					fetchWebsiteData()
 					return afterModalformFinish(undefined, res, websiteFormRef)
 				}}
 			>
