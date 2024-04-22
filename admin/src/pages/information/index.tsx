@@ -38,9 +38,7 @@ const Information = () => {
 						res = await updateDetails({ ...params, id: init?.id })
 					}
 
-					setTimeout(() => {
-						window.location.reload()
-					}, 500)
+					fetchData()
 					return afterModalformFinish(undefined, res, formRef)
 				}}
 			>
