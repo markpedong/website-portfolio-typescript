@@ -6,6 +6,13 @@ type LinksResponse struct {
 	Type string `json:"type" validate:"required"`
 }
 
+type ServicesResponse struct {
+	ID          string `json:"id" gorm:"primaryKey"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Logo        string `json:"logo"`
+}
+
 type UsersResponse struct {
 	ID          string `json:"id" gorm:"primaryKey"`
 	FirstName   string `json:"first_name" validate:"required"`

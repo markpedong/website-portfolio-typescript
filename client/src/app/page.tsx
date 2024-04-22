@@ -11,9 +11,10 @@ import Contact from '@/components/contact'
 import Footer from '@/components/footer'
 import { getDetails, getLinks, getServices, getWebsiteDetails } from '../../api'
 import { IoWarning } from 'react-icons/io5'
+import Specialty from '@/components/specialty'
 
 const App = async () => {
-	const [website, links, details] = await Promise.all([getWebsiteDetails(), getLinks(), getDetails(), getServices()])
+	const [website, links, details, services] = await Promise.all([getWebsiteDetails(), getLinks(), getDetails(), getServices()])
 
 	return (
 		<div>
@@ -23,7 +24,7 @@ const App = async () => {
 						<Navbar />
 						<Content data={details?.data} links={links?.data} />
 					</div>
-					{/* <Specialty data={services?.data} /> */}
+					<Specialty data={services?.data} />
 					<div className={styles.mainWrapper}>
 						<Portfolio />
 					</div>

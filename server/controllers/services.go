@@ -67,4 +67,19 @@ func ToggleServiceStatus(ctx *gin.Context) {
 func PublicServices(ctx *gin.Context) {
 	var services []models.Services
 	GetTableByModelStatusON(ctx, &services)
+
+	var servicesResponse []models.ServicesResponse
+	for _, v := range services {
+		newServicesResponse := models.ServicesResponse{
+			ID:          v.ID,
+			Title:       v.Title,
+			Description: v.Description,
+			Logo:        v.Logo,
+		}
+
+		servicesResponse = append(servicesResponse, newServicesResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(servicesResponse))
+
 }
