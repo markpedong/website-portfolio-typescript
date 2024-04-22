@@ -13,8 +13,8 @@ type Users struct {
 	Address     string                `json:"address" validate:"required"`
 	Description string                `json:"description" validate:"required"`
 	Email       string                `json:"email" validate:"required"`
-	Username    string                `json:"username" validate:"required"`
-	Password    string                `json:"password" validate:"required"`
+	Username    string                `json:"username"`
+	Password    string                `json:"password"`
 	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
