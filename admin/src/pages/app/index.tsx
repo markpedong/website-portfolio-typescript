@@ -64,7 +64,6 @@ const App: FC = () => {
 		<ProLayout
 			location={{ pathname }}
 			actionRef={actionRef}
-			title="Blockdetails"
 			fixSiderbar
 			fixedHeader
 			layout="mix"
