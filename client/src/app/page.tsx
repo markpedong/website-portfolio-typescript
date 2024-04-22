@@ -15,33 +15,37 @@ import { IoWarning } from 'react-icons/io5'
 const App = async () => {
 	const [website, links, details] = await Promise.all([getWebsiteDetails(), getLinks(), getDetails(), getServices()])
 
-	return website?.data.status === 1 ? (
-		<>
-			<div className={styles.mainWrapper}>
-				<Navbar />
-				<Content data={details?.data} links={links?.data} />
-			</div>
-			{/* <Specialty data={services?.data} /> */}
-			<div className={styles.mainWrapper}>
-				<Portfolio />
-			</div>
-			<div className={styles.wrapperWithBG}>
-				<Experience />
-			</div>
-			<Blogs />
-			<div className={styles.wrapperWithBG}>
-				<Testimonials />
-			</div>
-			<Education />
-			<div className={styles.wrapperWithBG}>
-				<Contact />
-			</div>
-			<Footer />
-		</>
-	) : (
-		<div className="flex justify-center items-center flex-col w-full h-dvh gap-5">
-			<IoWarning color="red" className="h-[5rem] w-[5rem]" />
-			<span className="text-[2rem] font-bold">MAINTENANCE</span>
+	return (
+		<div>
+			{website?.data.status === 1 ? (
+				<>
+					<div className={styles.mainWrapper}>
+						<Navbar />
+						<Content data={details?.data} links={links?.data} />
+					</div>
+					{/* <Specialty data={services?.data} /> */}
+					<div className={styles.mainWrapper}>
+						<Portfolio />
+					</div>
+					<div className={styles.wrapperWithBG}>
+						<Experience />
+					</div>
+					<Blogs />
+					<div className={styles.wrapperWithBG}>
+						<Testimonials />
+					</div>
+					<Education />
+					<div className={styles.wrapperWithBG}>
+						<Contact />
+					</div>
+					<Footer />
+				</>
+			) : (
+				<div className="flex justify-center items-center flex-col w-full h-dvh gap-5">
+					<IoWarning color="red" className="h-[5rem] w-[5rem]" />
+					<span className="text-[2rem] font-bold">MAINTENANCE</span>
+				</div>
+			)}
 		</div>
 	)
 }
