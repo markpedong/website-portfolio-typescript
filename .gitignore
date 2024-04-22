@@ -45,3 +45,4 @@ next-env.d.ts
 /admin/dist
 
 /client/.env
+/admin/.env
