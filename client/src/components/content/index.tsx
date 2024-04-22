@@ -9,7 +9,6 @@ import { SocialMedia, TDetailsItem, TLinksItem } from '../../../api'
 import Link from 'next/link'
 
 const Content: FC<{ data: TDetailsItem; links: TLinksItem[] }> = ({ data, links }) => {
-	console.log('@@@', links)
 
 	const renderLink = (type: string, icon: React.ReactNode) => {
 		const currLink = links?.find(q => q.type === type)

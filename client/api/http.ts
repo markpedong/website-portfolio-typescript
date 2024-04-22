@@ -65,7 +65,7 @@ const post = async <T>(url: string, data = {}): Promise<ApiResponse<T>> => {
 	return response as ApiResponse<T>
 }
 
-const get = async <T>(url: string, data = {}, client = true): Promise<ApiResponse<T>> => {
+const get = async <T>(url: string, data = {}): Promise<ApiResponse<T>> => {
 	const token = getLocalStorage('token')
 	const apiResponse = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}${stringify(data) ? '?' + stringify(data) : ''}`, {
 		method: 'GET',
