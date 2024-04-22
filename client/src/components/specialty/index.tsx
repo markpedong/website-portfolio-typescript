@@ -20,7 +20,7 @@ const CSpecialty: FC<{ item: TServicesItem }> = ({ item: { description, logo, ti
 
 const Specialty: FC<{ data: TServicesItem[] }> = ({ data }) => {
 	return (
-		<div className={styles.specialtyWrapper}>
+		<div className={styles.specialtyWrapper} id="specialty__el">
 			<div className={styles.titleWrapper}>
 				<Header title="services" />
 				<span className={classNames(styles.title, jakartaB.className)}>Specialized In</span>

@@ -12,7 +12,7 @@ import styles from './styles.module.scss'
 
 const Blogs = () => {
 	return (
-		<div className={styles.blogsWrapper}>
+		<div className={styles.blogsWrapper} id="blogs__el">
 			<div className={styles.titleWrapper}>
 				<Header title="my articles" />
 				<span className={classNames(styles.title, jakartaB.className)}>Personal Blog</span>

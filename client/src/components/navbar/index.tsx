@@ -29,6 +29,13 @@ const Navbar = () => {
 	const { darkMode } = useAppSelector(state => state.boolean)
 	const [open, setOpen] = useState(false)
 
+	const scrollToElement = elementId => {
+		const el = document.getElementById(elementId)
+		if (el) {
+			el.scrollIntoView({ behavior: 'smooth' })
+		}
+	}
+
 	useEffect(() => {
 		document.documentElement.classList.toggle('dark', darkMode)
 	}, [darkMode])
@@ -55,10 +62,18 @@ const Navbar = () => {
 				<span className={poppins.className}>Mark P.</span>
 			</div>
 			<div className={classNames(styles.linksContainer, inter.className)}>
-				<motion.span whileTap={scaleSize}>Services</motion.span>
-				<motion.span whileTap={scaleSize}>Portfolios</motion.span>
-				<motion.span whileTap={scaleSize}>Experience</motion.span>
-				<motion.span whileTap={scaleSize}>Blog</motion.span>
+				<motion.span whileTap={scaleSize} onClick={() => scrollToElement('specialty__el')}>
+					Services
+				</motion.span>
+				<motion.span whileTap={scaleSize} onClick={() => scrollToElement('portfolio__el')}>
+					Portfolios
+				</motion.span>
+				<motion.span whileTap={scaleSize} onClick={() => scrollToElement('experience__el')}>
+					Experience
+				</motion.span>
+				<motion.span whileTap={scaleSize} onClick={() => scrollToElement('blogs__el')}>
+					Blog
+				</motion.span>
 				{/* <span>
 					<HiOutlineEllipsisHorizontal />
 				</span> */}
@@ -69,8 +84,13 @@ const Navbar = () => {
 				</motion.span>
 				<motion.span whileTap={scaleSize}>Resume</motion.span>
 			</div>
-			<div className={styles.navBtnWrapper}>
-				<Sheet onOpenChange={q => setOpen(q)} open={open}>
+			<div className={classNames(styles.navBtnWrapper, 'overflow-y-scroll max-h-screen')}>
+				<Sheet
+					onOpenChange={q => {
+						setOpen(q)
+					}}
+					open={open}
+				>
 					<SheetTrigger>
 						<MdMenu size="20" />
 					</SheetTrigger>
@@ -84,10 +104,18 @@ const Navbar = () => {
 							</SheetTitle>
 							<SheetDescription>
 								<div className={classNames(styles.navlinks, inter.className)}>
-									<motion.span whileTap={scaleSize}>Services</motion.span>
-									<motion.span whileTap={scaleSize}>Portfolios</motion.span>
-									<motion.span whileTap={scaleSize}>Experience</motion.span>
-									<motion.span whileTap={scaleSize}>Blog</motion.span>
+									<motion.span whileTap={scaleSize} onClick={() => scrollToElement('specialty__el')}>
+										Services
+									</motion.span>
+									<motion.span whileTap={scaleSize} onClick={() => scrollToElement('portfolio__el')}>
+										Portfolios
+									</motion.span>
+									<motion.span whileTap={scaleSize} onClick={() => scrollToElement('experience__el')}>
+										Experience
+									</motion.span>
+									<motion.span whileTap={scaleSize} onClick={() => scrollToElement('blogs__el')}>
+										Blog
+									</motion.span>
 								</div>
 								<div className={classNames(styles.btnContainer, styles.mobile)}>
 									<motion.span whileTap={scaleSize} onClick={() => dispatch(setDarkMode())}>

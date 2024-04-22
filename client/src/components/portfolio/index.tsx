@@ -32,7 +32,7 @@ const Portfolio = () => {
 	const [hoveredItem, setHoveredItem] = useState(null)
 
 	return (
-		<div className={styles.portfolioWrapper}>
+		<div className={styles.portfolioWrapper} id="portfolio__el">
 			<Header title="my works" />
 			<Carousel opts={{ loop: true }}>
 				<PortfolioHeader />

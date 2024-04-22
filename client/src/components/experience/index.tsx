@@ -25,7 +25,7 @@ const Experience = () => {
 	}, [])
 
 	return (
-		<div className={styles.experienceWrapper}>
+		<div className={styles.experienceWrapper} id="experience__el">
 			<Header title="career path" />
 			<div className={styles.experienceContainer}>
 				<div className={styles.leftContainer}>
