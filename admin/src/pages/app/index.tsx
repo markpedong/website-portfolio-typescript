@@ -85,7 +85,6 @@ const App: FC = () => {
 				)
 			}}
 			actionsRender={() => [
-				renderSearchbar(),
 				renderDarkMode(),
 				<Dropdown menu={{ items }}>
 					<a onClick={e => e.preventDefault()}>
