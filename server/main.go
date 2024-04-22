@@ -16,7 +16,7 @@ func init() {
 }
 func CorsMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		allowedOrigins := []string{"https://markpedong.com", "https://website-portfolio-admin.vercel.app"}
+		allowedOrigins := []string{"https://markpedong.com", "https://website-portfolio-typescript-ruby.vercel.app"}
 		origin := ctx.Request.Header.Get("Origin")
 
 		for _, allowedOrigin := range allowedOrigins {
