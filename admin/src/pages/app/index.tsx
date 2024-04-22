@@ -67,12 +67,13 @@ const App: FC = () => {
 			fixSiderbar
 			fixedHeader
 			layout="mix"
-			headerTitleRender={() => (
+			headerTitleRender={(props) => <>{props}</>}
+			logo={
 				<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 					<img src={darkMode ? logoDark : logo} />
 					<h1>M</h1>
 				</div>
-			)}
+			}
 			route={{ routes: cloneDeep(menus) }}
 			menuItemRender={(item, dom) => {
 				return (
