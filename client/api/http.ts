@@ -71,7 +71,9 @@ const get = async <T>(url: string, data = {}): Promise<ApiResponse<T>> => {
 		method: 'GET',
 		headers: {
 			...(token ? { token: String(token)?.replaceAll(`"`, '') } : {})
-		}
+		},
+		cache: "no-store",
+		next: { revalidate: 0 }
 	})
 	//prettier-ignore
 	const response = await apiResponse.json() as ApiResponse<T>
