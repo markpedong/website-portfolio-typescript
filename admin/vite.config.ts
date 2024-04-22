@@ -6,6 +6,7 @@ import tsConfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config
 export default defineConfig({
+	base: "/app",
 	// server: {
 	// 	port: 5467,
 	// 	proxy: {
