@@ -1,9 +1,8 @@
 import logo from '@/assets/logo.png'
 import logoDark from '@/assets/logo-dark.png'
-import { MODAL_FORM_PROPS } from '@/constants'
 import menus from '@/pages/menus'
 import { DownOutlined } from '@ant-design/icons'
-import { ActionType, ModalForm, ProFormText, ProLayout } from '@ant-design/pro-components'
+import { ActionType, ProLayout } from '@ant-design/pro-components'
 import { Dropdown, Switch, Typography } from 'antd'
 import { cloneDeep } from 'lodash'
 import { FC, useRef } from 'react'
@@ -34,21 +33,6 @@ const App: FC = () => {
 			}
 		}
 	]
-
-	const renderSearchbar = () => {
-		return (
-			<ModalForm
-				{...MODAL_FORM_PROPS}
-				title="Search token name or exchanges"
-				trigger={<Typography.Link>Search</Typography.Link>}
-				onFinish={async value => {
-					console.log(value)
-				}}
-			>
-				<ProFormText name="search" placeholder="eg. Bitcoin, Ethereum/ Binance, OKX" />
-			</ModalForm>
-		)
-	}
 
 	const renderDarkMode = () => (
 		<div>
