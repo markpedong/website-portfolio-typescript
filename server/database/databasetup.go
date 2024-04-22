@@ -37,6 +37,7 @@ func DBSetup() {
 		&models.EduSkill{},
 		&models.Testimonials{},
 		&models.Website{},
+		&models.Color{},
 	)
 	if err != nil {
 		log.Fatal(err.Error())

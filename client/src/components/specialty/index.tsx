@@ -1,18 +1,17 @@
-import styles from './styles.module.scss'
-import Header from '../header'
-import classNames from 'classnames'
-import { RiVipCrownLine } from 'react-icons/ri'
-import React, { FC } from 'react'
-import { GoStack } from 'react-icons/go'
-import { HiOutlineGlobeAlt } from 'react-icons/hi'
-import { inter, jakartaB, jakartaM } from '../../../public/fonts'
 import { TServicesItem } from 'api'
+import classNames from 'classnames'
+import Image from 'next/image'
+import { FC } from 'react'
+import { inter, jakartaB, jakartaM } from '../../../public/fonts'
+import Header from '../header'
+import styles from './styles.module.scss'
 
-type Props = { title: string; description: string; logo: React.ReactNode }
-const CSpecialty = ({ description, logo, title }: Props) => {
+const CSpecialty: FC<{ item: TServicesItem }> = ({ item: { description, logo, title, id } }) => {
 	return (
 		<div className={styles.cspecialtyContainer}>
-			<div>{logo}</div>
+			<div>
+				<Image style={{ color: '#7E74F1' }} src={logo} alt={id} height={20} width={20} />
+			</div>
 			<div className={jakartaM.className}>{title}</div>
 			<div className={inter.className}>{description}</div>
 		</div>
@@ -27,21 +26,9 @@ const Specialty: FC<{ data: TServicesItem[] }> = ({ data }) => {
 				<span className={classNames(styles.title, jakartaB.className)}>Specialized In</span>
 			</div>
 			<div className={styles.contentWrapper}>
-				<CSpecialty
-					title="UI/UX Design"
-					description="Turn what you have in mind of a digital product into a reality. For any platform you consider."
-					logo={<RiVipCrownLine color="#7E74F1" />}
-				/>
-				<CSpecialty
-					title="Application Development"
-					description="Standard designing, building, and implementing your application with documentation."
-					logo={<GoStack color="#7E74F1" />}
-				/>
-				<CSpecialty
-					title="Web Development"
-					description="Create and maintain your websites and also take care of its performance and traffic capacity"
-					logo={<HiOutlineGlobeAlt color="#7E74F1" />}
-				/>
+				{data?.map(q => (
+					<CSpecialty item={q} />
+				))}
 			</div>
 		</div>
 	)

@@ -21,7 +21,6 @@ const App = async () => {
 		getServices()
 	])
 
-	console.log('@@@', website)
 	return (
 		<div>
 			{website?.data.status === 1 ? (

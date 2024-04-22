@@ -35,7 +35,7 @@ type Services struct {
 	Title       string                `json:"title"`
 	Description string                `json:"description"`
 	Logo        string                `json:"logo"`
-	Status      int                   `json:"status" validate:"required" gorm:"default:0"`
+	Status      int                   `json:"status" gorm:"default:0"`
 	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
@@ -128,7 +128,16 @@ type Testimonials struct {
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
 }
 
+type Color struct {
+	ID        string `json:"id" gorm:"primaryKey"`
+	Theme     string `json:"theme"`
+	Title     string `json:"title"`
+	Color     string `json:"color"`
+	WebsiteID string `json:"website_id"`
+}
+
 type Website struct {
-	ID     string `json:"id" gorm:"primaryKey"`
-	Status int    `json:"status" gorm:"default:0"`
+	ID     string  `json:"id" gorm:"primaryKey"`
+	Status int     `json:"status" gorm:"default:0"`
+	Colors []Color `json:"colors" gorm:"foreignKey:WebsiteID"`
 }

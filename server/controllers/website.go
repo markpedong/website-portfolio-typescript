@@ -32,7 +32,7 @@ func AddWebsiteDetails(ctx *gin.Context) {
 func GetWebsiteDetails(ctx *gin.Context) {
 	var website models.Website
 
-	if err := database.DB.First(&website).Error; err != nil {
+	if err := database.DB.Preload("Colors").First(&website).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}

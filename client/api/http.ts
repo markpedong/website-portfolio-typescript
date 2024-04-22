@@ -72,7 +72,6 @@ const get = async <T>(url: string, data = {}): Promise<ApiResponse<T>> => {
 		headers: {
 			...(token ? { token: String(token)?.replaceAll(`"`, '') } : {})
 		},
-		cache: "no-store",
 		next: { revalidate: 0 }
 	})
 	//prettier-ignore

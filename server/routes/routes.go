@@ -30,6 +30,12 @@ func CreateRoutes(r *gin.Engine) {
 		// add login function and wrap everything in middleware.
 	}
 
+	colors := r.Group("/colors")
+	colors.Use(middleware.Authentication)
+	{
+		colors.POST("/updateColors", controllers.UpdateColors)
+	}
+
 	website := r.Group("/info")
 	website.Use(middleware.Authentication)
 	{

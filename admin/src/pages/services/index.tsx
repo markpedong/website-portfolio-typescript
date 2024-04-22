@@ -31,17 +31,18 @@ const Services = () => {
 			title: 'Logo',
 			align: 'center',
 			search: false,
-			render: (_, record) => <Image src={record?.logo} alt="logo" width={60} height={60} />
+			render: (_, record) => <Image src={record?.logo} alt="logo" width={30} height={30} />
 		},
 		{
 			title: 'Title',
 			dataIndex: 'title',
-			align: 'center'
+			align: 'left'
 		},
 		{
 			title: 'Description',
 			dataIndex: 'description',
-			align: 'center'
+			align: 'justify',
+			width: 300
 		},
 		{
 			title: 'Updated',
@@ -55,6 +56,7 @@ const Services = () => {
 		},
 		{
 			title: 'Operator',
+			align: 'center',
 			search: false,
 			render: (_, record) => {
 				return (
