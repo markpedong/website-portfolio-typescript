@@ -78,4 +78,20 @@ func ToggleBlogStatus(ctx *gin.Context) {
 func PublicBlogs(ctx *gin.Context) {
 	var blogs []models.Blogs
 	GetTableByModelStatusON(ctx, &blogs)
+
+	var blogsResponse []models.BlogsResponse
+	for _, v := range blogs {
+		newBlogsResponse := models.BlogsResponse{
+			ID:          v.ID,
+			Image:       v.Image,
+			Title:       v.Title,
+			Date:        v.Date,
+			Description: v.Description,
+			Link:        v.Link,
+		}
+
+		blogsResponse = append(blogsResponse, newBlogsResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(blogsResponse))
 }

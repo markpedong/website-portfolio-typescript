@@ -70,4 +70,19 @@ func ToggleTestimonialStatus(ctx *gin.Context) {
 func PublicTestimonials(ctx *gin.Context) {
 	var testimonials []models.Testimonials
 	GetTableByModelStatusON(ctx, &testimonials)
+
+	var testimonialsResponse []models.TestimonialResponse
+	for _, v := range testimonials {
+		newTestimonialsResponse := models.TestimonialResponse{
+			ID:          v.ID,
+			Image:       v.Image,
+			Author:      v.Author,
+			Description: v.Description,
+			Job:         v.Job,
+		}
+
+		testimonialsResponse = append(testimonialsResponse, newTestimonialsResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(testimonialsResponse))
 }

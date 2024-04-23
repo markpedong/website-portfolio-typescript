@@ -96,4 +96,19 @@ func TogglePortfolioStatus(ctx *gin.Context) {
 func PublicPortfolios(ctx *gin.Context) {
 	var portfolios []models.Portfolios
 	GetTableByModelStatusON(ctx, &portfolios)
+
+	var portfolioResponse []models.PortfolioResponse
+	for _, v := range portfolios {
+		newPortfolioResponse := models.PortfolioResponse{
+			ID:    v.ID,
+			Link:  v.Link,
+			Title: v.Title,
+			Tech:  v.Tech,
+			Image: v.Image,
+		}
+
+		portfolioResponse = append(portfolioResponse, newPortfolioResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(portfolioResponse))
 }

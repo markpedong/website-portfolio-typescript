@@ -81,5 +81,4 @@ func PublicServices(ctx *gin.Context) {
 	}
 
 	helpers.JSONResponse(ctx, "", helpers.DataHelper(servicesResponse))
-
 }

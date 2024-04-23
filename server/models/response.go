@@ -1,13 +1,13 @@
 package models
 
 type LinksResponse struct {
-	ID   string `json:"id" gorm:"primaryKey"`
-	Link string `json:"link" validate:"required"`
-	Type string `json:"type" validate:"required"`
+	ID   string `json:"id"`
+	Link string `json:"link"`
+	Type string `json:"type"`
 }
 
 type ExpSkillResponse struct {
-	ID         string `json:"id" gorm:"primaryKey"`
+	ID         string `json:"id"`
 	Name       string `json:"name"`
 	Percentage int    `json:"percentage"`
 }
@@ -23,34 +23,59 @@ type ExperienceResponse struct {
 }
 
 type EduSkillResponse struct {
-	ID         string `json:"id" gorm:"primaryKey"`
+	ID         string `json:"id"`
 	Name       string `json:"name"`
 	Percentage int    `json:"percentage"`
 }
 
 type EducationResponse struct {
 	ID          string             `json:"id" `
-	School      string             `json:"school" validate:"required"`
-	Course      string             `json:"course" validate:"required"`
-	Started     string             `json:"started" validate:"required"`
-	Ended       string             `json:"ended" validate:"required"`
-	Description string             `json:"description" validate:"required"`
+	School      string             `json:"school"`
+	Course      string             `json:"course"`
+	Started     string             `json:"started"`
+	Ended       string             `json:"ended"`
+	Description string             `json:"description"`
 	Skills      []EduSkillResponse `json:"skills" `
 }
 
 type ServicesResponse struct {
-	ID          string `json:"id" gorm:"primaryKey"`
+	ID          string `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	Logo        string `json:"logo"`
 }
 
 type UsersResponse struct {
-	ID          string `json:"id" gorm:"primaryKey"`
-	FirstName   string `json:"first_name" validate:"required"`
-	LastName    string `json:"last_name" validate:"required"`
-	Phone       string `json:"phone" validate:"required"`
-	Address     string `json:"address" validate:"required"`
-	Description string `json:"description" validate:"required"`
-	Email       string `json:"email" validate:"required"`
+	ID          string `json:"id"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	Phone       string `json:"phone"`
+	Address     string `json:"address"`
+	Description string `json:"description"`
+	Email       string `json:"email"`
+}
+
+type PortfolioResponse struct {
+	ID    string   `json:"id" `
+	Title string   `json:"title" `
+	Tech  []string `json:"tech" `
+	Link  string   `json:"link"`
+	Image string   `json:"image"`
+}
+
+type TestimonialResponse struct {
+	ID          string `json:"id" `
+	Author      string `json:"author"`
+	Description string `json:"description"`
+	Image       string `json:"image"`
+	Job         string `json:"job"`
+}
+
+type BlogsResponse struct {
+	ID          string `json:"id" `
+	Title       string `json:"title" `
+	Date        string `json:"date"`
+	Description string `json:"description"`
+	Link        string `json:"link"`
+	Image       string `json:"image"`
 }
