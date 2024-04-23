@@ -95,4 +95,31 @@ func ToggleEducationStatus(ctx *gin.Context) {
 func PublicEducations(ctx *gin.Context) {
 	var education []models.Education
 	GetTableByModelStatusON(ctx, &education)
+
+	var educationResponse []models.EducationResponse
+	for _, v := range education {
+		var skillsResponse []models.EduSkillResponse
+		for _, q := range v.Skills {
+			skillResponse := models.EduSkillResponse{
+				ID:         q.ID,
+				Name:       q.Name,
+				Percentage: q.Percentage,
+			}
+
+			skillsResponse = append(skillsResponse, skillResponse)
+		}
+		newEducationResponse := models.EducationResponse{
+			ID:          v.ID,
+			School:      v.School,
+			Course:      v.Course,
+			Started:     v.Started,
+			Ended:       v.Ended,
+			Description: v.Description,
+			Skills:      skillsResponse,
+		}
+
+		educationResponse = append(educationResponse, newEducationResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(educationResponse))
 }

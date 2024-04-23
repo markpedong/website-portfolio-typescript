@@ -92,6 +92,33 @@ func ToggleExperienceStatus(ctx *gin.Context) {
 }
 
 func PublicExperiences(ctx *gin.Context) {
-	var experiences []models.Education
+	var experiences []models.Experiences
 	GetTableByModelStatusON(ctx, &experiences)
+
+	var experienceResponse []models.ExperienceResponse
+	for _, v := range experiences {
+		var skillsResponse []models.ExpSkillResponse
+		for _, q := range v.Skills {
+			skillResponse := models.ExpSkillResponse{
+				ID:         q.ID,
+				Name:       q.Name,
+				Percentage: q.Percentage,
+			}
+
+			skillsResponse = append(skillsResponse, skillResponse)
+		}
+		newExperienceResponse := models.ExperienceResponse{
+			ID:       v.ID,
+			Company:  v.Company,
+			Title:    v.Title,
+			Location: v.Location,
+			Started:  v.Started,
+			Ended:    v.Ended,
+			Skills:   skillsResponse,
+		}
+
+		experienceResponse = append(experienceResponse, newExperienceResponse)
+	}
+
+	helpers.JSONResponse(ctx, "", helpers.DataHelper(experienceResponse))
 }
