@@ -168,6 +168,7 @@ const Blogs = () => {
 				request={fetchData}
 				toolBarRender={() => [renderAddEditBlogs('ADD')]}
 				scroll={{ x: 1100 }}
+				search={false}
 			/>
 		</div>
 	)
