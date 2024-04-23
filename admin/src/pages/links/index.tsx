@@ -35,6 +35,7 @@ const Links = () => {
 		{
 			title: 'Operator',
 			align: 'center',
+			width: 160,
 			render: (_, record) => {
 				return (
 					<Space align="center">

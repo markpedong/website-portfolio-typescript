@@ -36,7 +36,8 @@ const Services = () => {
 		{
 			title: 'Title',
 			dataIndex: 'title',
-			align: 'left'
+			align: 'left',
+			width: 200
 		},
 		{
 			title: 'Description',
@@ -47,17 +48,20 @@ const Services = () => {
 		{
 			title: 'Updated',
 			align: 'center',
+			width: 180,
 			render: (_, q) => dateTimeFormatter(q?.updated_at, 'MM-DD-YYYY HH:MM:ss')
 		},
 		{
 			title: 'Created',
 			align: 'center',
+			width: 180,
 			render: (_, q) => dateTimeFormatter(q?.created_at, 'MM-DD-YYYY HH:MM:ss')
 		},
 		{
 			title: 'Operator',
 			align: 'center',
 			search: false,
+			width: 190,
 			render: (_, record) => {
 				return (
 					<Space>
@@ -170,7 +174,7 @@ const Services = () => {
 				rowKey="id"
 				columns={columns}
 				request={fetchData}
-				scroll={{ x: 650 }}
+				scroll={{ x: 1000 }}
 			/>
 		</div>
 	)

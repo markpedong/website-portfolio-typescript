@@ -36,12 +36,12 @@ const Portfolio = () => {
 		},
 		{
 			title: 'Title',
-			align: 'center',
+			align: 'start',
 			dataIndex: 'title'
 		},
 		{
 			title: 'Tech Stack',
-			align: 'center',
+			align: 'left',
 			render: (_, record) =>
 				record?.tech?.map(q => (
 					<Tag color={`#${randomColorGenerator()}`} key={q}>
@@ -52,7 +52,8 @@ const Portfolio = () => {
 		{
 			title: 'Link',
 			align: 'center',
-			dataIndex: 'link'
+			dataIndex: 'link',
+			width: 225,
 		},
 		{
 			title: 'Updated',
@@ -67,6 +68,7 @@ const Portfolio = () => {
 		{
 			title: 'Operator',
 			align: 'center',
+			width: 160,
 			search: false,
 			render: (_, record) => {
 				return (

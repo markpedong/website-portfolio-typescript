@@ -149,7 +149,7 @@ const Education = () => {
 				/>
 				<ProFormList
 					name="skills"
-					label="Tech Stack"
+					label="Skill Stack"
 					creatorButtonProps={{
 						position: 'bottom',
 						creatorButtonText: 'Add Skill'
@@ -162,7 +162,7 @@ const Education = () => {
 						<ProFormText
 							{...INPUT_TRIM}
 							name="name"
-							label="Technology"
+							label="Skill"
 							colProps={{ span: 12 }}
 							labelCol={{ flex: '120px' }}
 							rules={[{ required: true }]}
