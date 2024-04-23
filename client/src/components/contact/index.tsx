@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { FC } from 'react'
 import styles from './styles.module.scss'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
@@ -8,10 +8,11 @@ import { motion } from 'framer-motion'
 import { scaleSize } from '@/constants'
 import { CiMail, CiMapPin, CiPhone } from 'react-icons/ci'
 import { interM } from '../../../public/fonts'
+import { TDetailsItem } from 'api'
 
 type Props = {}
 
-const Contact = (props: Props) => {
+const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 	return (
 		<div className={styles.contactWrapper}>
 			<div className={styles.inputContainer}>

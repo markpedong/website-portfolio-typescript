@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import styles from './styles.module.scss'
 import Header from '../header'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
 import classNames from 'classnames'
 import { jakartaB, jakartaM } from '../../../public/fonts'
 import { IoMdLink } from 'react-icons/io'
+import { TPortfolioItem } from 'api'
 
 const PortfolioHeader = () => {
 	const { scrollNext, scrollPrev } = useCarousel()
@@ -28,7 +29,7 @@ const PortfolioHeader = () => {
 	)
 }
 
-const Portfolio = () => {
+const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 	const [hoveredItem, setHoveredItem] = useState(null)
 
 	return (
@@ -54,7 +55,9 @@ const Portfolio = () => {
 												transition={{ duration: 0.2 }}
 												className={styles.extraContainer}
 											>
-												<span className={classNames(styles.title, jakartaM.className)}>Agency Website</span>
+												<span className={classNames(styles.title, jakartaM.className)}>
+													Agency Website
+												</span>
 												<div className={styles.techContainer}>
 													<span>WordPress</span>
 													<span>React</span>

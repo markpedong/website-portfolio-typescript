@@ -1,16 +1,17 @@
 'use client'
 
-import React from 'react'
+import React, { FC } from 'react'
 import Header from '../header'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { inter, jakartaB, jakartaM } from '../../../public/fonts'
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import Image from 'next/image'
+import { TTestimonialsItem } from 'api'
 
 type Props = {}
 
-const Testimonials = (props: Props) => {
+const Testimonials: FC<{ data: TTestimonialsItem[] }> = ({ data }) => {
 	return (
 		<div>
 			<Header title="my clients" />
@@ -24,8 +25,8 @@ const Testimonials = (props: Props) => {
 									<Image src={''} alt="" width={60} height={60} />
 								</div>
 								<span className={classNames(styles.description, inter.className)}>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem impedit, aspernatur quis sed ullam
-									itaque?
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem impedit, aspernatur
+									quis sed ullam itaque?
 								</span>
 								<span className={classNames(styles.author, jakartaM.className)}>Amelia Miller</span>
 								<span className={styles.work}>Designer</span>

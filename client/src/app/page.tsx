@@ -9,17 +9,33 @@ import Testimonials from '@/components/testimonials'
 import Education from '@/components/education'
 import Contact from '@/components/contact'
 import Footer from '@/components/footer'
-import { getDetails, getLinks, getServices, getWebsiteDetails } from '../../api'
+import {
+	getBlogs,
+	getDetails,
+	getEducations,
+	getExperiences,
+	getLinks,
+	getPortfolios,
+	getServices,
+	getTestimonials,
+	getWebsiteDetails
+} from '../../api'
 import { IoWarning } from 'react-icons/io5'
 import Specialty from '@/components/specialty'
 
 const App = async () => {
-	const [website, links, details, services] = await Promise.all([
-		getWebsiteDetails(),
-		getLinks(),
-		getDetails(),
-		getServices()
-	])
+	const [website, links, details, services, portfolio, experiences, blogs, testimonials, educations] =
+		await Promise.all([
+			getWebsiteDetails(),
+			getLinks(),
+			getDetails(),
+			getServices(),
+			getPortfolios(),
+			getExperiences(),
+			getBlogs(),
+			getTestimonials(),
+			getEducations()
+		])
 
 	return (
 		<div>
@@ -31,18 +47,18 @@ const App = async () => {
 					</div>
 					<Specialty data={services?.data} />
 					<div className={styles.mainWrapper}>
-						<Portfolio />
+						<Portfolio data={portfolio?.data} />
 					</div>
 					<div className={styles.wrapperWithBG}>
-						<Experience />
+						<Experience data={experiences?.data} />
 					</div>
 					<Blogs />
 					<div className={styles.wrapperWithBG}>
-						<Testimonials />
+						<Testimonials data={testimonials?.data} />
 					</div>
 					<Education />
 					<div className={styles.wrapperWithBG}>
-						<Contact />
+						<Contact data={details?.data} />
 					</div>
 					<Footer />
 				</>

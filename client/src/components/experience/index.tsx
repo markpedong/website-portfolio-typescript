@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Header from '../header'
 import styles from './styles.module.scss'
 import { FaAngleRight } from 'react-icons/fa6'
@@ -9,8 +9,9 @@ import { scaleSize } from '@/constants'
 import classNames from 'classnames'
 import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
 import { Separator } from '../ui/separator'
+import { TExperienceItem } from 'api'
 
-const Experience = () => {
+const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 	const [selectedItem, setSelectedItem] = useState(null)
 
 	const scaleSize = { scale: 0.9 }
@@ -56,8 +57,12 @@ const Experience = () => {
 									<span className={classNames(styles.title, jakartaM.className)}>
 										Front-end Developer <u>Apple Inc.</u>
 									</span>
-									<span className={classNames(styles.location, inter.className)}>California, United States</span>
-									<span className={classNames(styles.duration, interM.className)}>Nov 2020 - Present • Full-time</span>
+									<span className={classNames(styles.location, inter.className)}>
+										California, United States
+									</span>
+									<span className={classNames(styles.duration, interM.className)}>
+										Nov 2020 - Present • Full-time
+									</span>
 									<div className={styles.techContainer}>
 										<span>WordPress</span>
 										<span>React</span>
@@ -66,20 +71,20 @@ const Experience = () => {
 								<Separator className="my-[2rem]" />
 								<div className={classNames(styles.descriptionContainer, inter.className)}>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
+										adipisicing elit. Aliquam, sunt.
 									</span>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
+										adipisicing elit. Aliquam, sunt.
 									</span>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
+										adipisicing elit. Aliquam, sunt.
 									</span>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
+										adipisicing elit. Aliquam, sunt.
 									</span>
 								</div>
 							</motion.div>

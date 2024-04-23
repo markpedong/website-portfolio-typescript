@@ -37,7 +37,7 @@ export type TLinksItem = {
 
 export const getLinks = () => get<TLinksItem[]>('/public/links')
 
-// public/services
+// /public/services
 export type TServicesItem = {
 	id: string
 	logo: string
@@ -46,3 +46,68 @@ export type TServicesItem = {
 }
 
 export const getServices = () => get<TServicesItem[]>('/public/services')
+
+// /public/portfolios
+export type TPortfolioItem = {
+	id: string
+	title: string
+	tech: string[]
+	link: string
+	image: string
+}
+
+export const getPortfolios = () => get<TPortfolioItem[]>('/public/portfolios')
+
+// /public/experiences
+export type TSkillItem = {
+	id: string
+	name: string
+	percentage: string
+}
+export type TExperienceItem = {
+	id: string
+	company: string
+	title: string
+	location: string
+	started: string
+	ended: string
+	skills: TSkillItem[]
+}
+
+export const getExperiences = () => get<TExperienceItem[]>('/public/experiences')
+
+// /public/blogs
+export type TBlogsItem = {
+	id: string
+	title: string
+	date: string
+	description: string
+	link: string
+	image: string
+}
+
+export const getBlogs = () => get<TBlogsItem[]>('/public/blogs')
+
+// /public/testimonials
+export type TTestimonialsItem = {
+	id: string
+	author: string
+	description: string
+	image: string
+	job: string
+}
+
+export const getTestimonials = () => get<TTestimonialsItem[]>('/public/testimonials')
+
+// /public/educations
+export type TEducationItem = {
+	id: string
+	school: string
+	course: string
+	started: string
+	ended: string
+	description: string
+	skills: TSkillItem[]
+}
+
+export const getEducations = () => get<TEducationItem[]>('/public/educations')
