@@ -1,13 +1,15 @@
 'use client'
 
-import React from 'react'
+import React, { FC } from 'react'
 import styles from './styles.module.scss'
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import classNames from 'classnames'
 import { inter } from '../../../public/fonts'
 import { motion } from 'framer-motion'
 import { scaleSize } from '@/constants'
-const Footer = () => {
+import { TDetailsItem, TLinksItem } from 'api'
+
+const Footer: FC<{ links: TLinksItem[]; details: TDetailsItem }> = ({ links, details }) => {
 	return (
 		<div className={styles.footerWrapper}>
 			<div className={styles.iconContainer}>

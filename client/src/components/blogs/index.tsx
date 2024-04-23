@@ -6,11 +6,12 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
 import Header from '../header'
-import { Card, CardContent } from '../ui/card'
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import styles from './styles.module.scss'
+import { FC } from 'react'
+import { TBlogsItem } from 'api'
 
-const Blogs = () => {
+const Blogs: FC<{ data: TBlogsItem[] }> = ({ data }) => {
 	return (
 		<div className={styles.blogsWrapper} id="blogs__el">
 			<div className={styles.titleWrapper}>
@@ -33,7 +34,10 @@ const Blogs = () => {
 											'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid quisquam officia excepturi ducimus, sed minima.'
 										}
 									</span>
-									<motion.span whileTap={scaleSize} className={classNames(interM.className, styles.btn)}>
+									<motion.span
+										whileTap={scaleSize}
+										className={classNames(interM.className, styles.btn)}
+									>
 										Continue Reading
 									</motion.span>
 								</div>

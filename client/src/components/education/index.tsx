@@ -1,16 +1,15 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Header from '../header'
 import styles from './styles.module.scss'
-import { FaAngleRight } from 'react-icons/fa6'
 import { AnimatePresence, motion } from 'framer-motion'
 import classNames from 'classnames'
 import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
-import { Separator } from '../ui/separator'
 import { Progress } from '../ui/progress'
+import { TEducationItem } from 'api'
 
-const Education = () => {
+const Education: FC<{ data: TEducationItem[] }> = ({ data }) => {
 	const [selectedItem, setSelectedItem] = useState(null)
 
 	const scaleSize = { scale: 0.9 }
@@ -38,7 +37,9 @@ const Education = () => {
 							onClick={event => handleItemClick(w, event)}
 						>
 							<span className={classNames(styles.school, jakartaM.className)}>Kingston University</span>
-							<span className={classNames(styles.course, inter.className)}>Master's Degree - Software Engineering</span>
+							<span className={classNames(styles.course, inter.className)}>
+								Master's Degree - Software Engineering
+							</span>
 							<span className={classNames(styles.year, interM.className)}>2019 - 2021</span>
 						</motion.div>
 					))}
@@ -53,9 +54,9 @@ const Education = () => {
 								transition={{ duration: 0.2, type: 'spring', stiffness: 100 }}
 							>
 								<span className={classNames(inter.className, styles.description)}>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quae possimus adipisci. Similique
-									ipsa dolores mollitia? Aliquid ut vero quae aspernatur molestias fugit similique corrupti, aut
-									doloribus cum, amet sint.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quae possimus
+									adipisci. Similique ipsa dolores mollitia? Aliquid ut vero quae aspernatur molestias
+									fugit similique corrupti, aut doloribus cum, amet sint.
 								</span>
 								<div className={styles.progressContainer}>
 									<div className={styles.progress}>

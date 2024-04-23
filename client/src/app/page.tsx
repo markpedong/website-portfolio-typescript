@@ -52,15 +52,15 @@ const App = async () => {
 					<div className={styles.wrapperWithBG}>
 						<Experience data={experiences?.data} />
 					</div>
-					<Blogs />
+					<Blogs data={blogs?.data} />
 					<div className={styles.wrapperWithBG}>
 						<Testimonials data={testimonials?.data} />
 					</div>
-					<Education />
+					<Education data={educations?.data} />
 					<div className={styles.wrapperWithBG}>
 						<Contact data={details?.data} />
 					</div>
-					<Footer />
+					<Footer links={links?.data} details={details?.data} />
 				</>
 			) : (
 				<div className="flex justify-center items-center flex-col w-full h-dvh gap-5">
