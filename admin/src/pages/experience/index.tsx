@@ -9,7 +9,7 @@ import {
 import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { capFrstLtr, randomColorGenerator } from '@/constants/helper'
-import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
+import { dateTimeFormatter } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
 import {
 	ActionType,
@@ -35,7 +35,7 @@ const Experience = () => {
 		},
 		{
 			title: 'Company',
-			align: 'center',
+			align: 'start',
 			dataIndex: 'company'
 		},
 		{
@@ -44,20 +44,41 @@ const Experience = () => {
 			dataIndex: 'location'
 		},
 		{
-			title: 'Started',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Started</div>
+					<div>Ended</div>
+				</div>
+			),
 			align: 'center',
-			dataIndex: 'started'
+			width: 100,
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{record.started}</div>
+					<div>{record.ended}</div>
+				</div>
+			)
 		},
 		{
-			title: 'Ended',
-			align: 'center',
-			dataIndex: 'ended'
+			title: 'Descriptions',
+			align: 'start',
+			ellipsis: true,
+			width: 100,
+			render: (_, record) => (
+				<Space direction="vertical">
+					{record?.descriptions?.map(q => (
+						<span key={q?.id} className="overflow-hidden text-ellipsis whitespace-nowrap">
+							- {q?.description}
+						</span>
+					))}
+				</Space>
+			)
 		},
 		{
 			title: 'Tech Stack',
-			align: 'center',
+			align: 'left',
 			render: (_, record) => (
-				<Space direction="vertical" align="center">
+				<Space direction="vertical" align="start">
 					{record?.skills?.map(q => (
 						<Tag key={q?.id} color={`#${randomColorGenerator()}`}>
 							{capFrstLtr(q?.name)} - {q?.percentage}%
@@ -67,18 +88,25 @@ const Experience = () => {
 			)
 		},
 		{
-			title: 'Updated',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Created</div>
+					<div>Updated</div>
+				</div>
+			),
 			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
-		},
-		{
-			title: 'Created',
-			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
+			width: 160,
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Operator',
 			align: 'center',
+			width: 180,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}
@@ -121,7 +149,11 @@ const Experience = () => {
 					let res
 
 					if (isEdit) {
-						res = await updateExperiences({ ...params, id: record?.id })
+						res = await updateExperiences({
+							...params,
+							descriptions: params?.descriptions?.map(q => q?.description),
+							id: record?.id
+						})
 					} else {
 						res = await addExperiences(params)
 					}
@@ -147,6 +179,26 @@ const Experience = () => {
 					width={250}
 				/>
 				<ProFormList
+					name="descriptions"
+					label="Descriptions"
+					creatorButtonProps={{
+						position: 'bottom',
+						creatorButtonText: 'Add Description'
+					}}
+					copyIconProps={false}
+					max={5}
+					alwaysShowItemLabel
+				>
+					<div style={{ marginBottom: '1rem' }}>
+						<ProFormText
+							name="description"
+							label="Description"
+							labelCol={{ flex: '120px' }}
+							rules={[{ required: true }]}
+						/>
+					</div>
+				</ProFormList>
+				<ProFormList
 					name="skills"
 					label="Tech Stack"
 					creatorButtonProps={{
@@ -159,7 +211,6 @@ const Experience = () => {
 				>
 					<ProForm.Group style={{ marginBottom: '1rem' }}>
 						<ProFormText
-							{...INPUT_TRIM}
 							name="name"
 							label="Technology"
 							colProps={{ span: 12 }}

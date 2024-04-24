@@ -27,7 +27,7 @@ const Specialty: FC<{ data: TServicesItem[] }> = ({ data }) => {
 			</div>
 			<div className={styles.contentWrapper}>
 				{data?.map(q => (
-					<CSpecialty item={q} />
+					<CSpecialty item={q} key={q?.id} />
 				))}
 			</div>
 		</div>

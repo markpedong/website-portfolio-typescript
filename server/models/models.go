@@ -102,18 +102,24 @@ type ExpSkill struct {
 	Percentage   int    `json:"percentage"`
 }
 
+type ExpDesc struct {
+	ID           string `json:"id" gorm:"primaryKey"`
+	ExperienceID string `json:"experience_id"`
+	Description  string `json:"description"`
+}
 type Experiences struct {
-	ID        string                `json:"id" gorm:"primaryKey" validate:"required"`
-	Company   string                `json:"company"  validate:"required"`
-	Title     string                `json:"title" validate:"required"`
-	Location  string                `json:"location" validate:"required"`
-	Started   string                `json:"started" validate:"required"`
-	Ended     string                `json:"ended" validate:"required"`
-	Skills    []ExpSkill            `json:"skills" gorm:"foreignKey:ExperienceID"`
-	Status    int                   `json:"status" validate:"required" gorm:"default:0"`
-	CreatedAt int                   `json:"created_at" gorm:"autoCreateTime"`
-	UpdatedAt int                   `json:"updated_at" gorm:"autoUpdateTime"`
-	DeletedAt soft_delete.DeletedAt `json:"-"`
+	ID           string                `json:"id" gorm:"primaryKey" validate:"required"`
+	Company      string                `json:"company"  validate:"required"`
+	Title        string                `json:"title" validate:"required"`
+	Location     string                `json:"location" validate:"required"`
+	Started      string                `json:"started" validate:"required"`
+	Ended        string                `json:"ended" validate:"required"`
+	Skills       []ExpSkill            `json:"skills" gorm:"foreignKey:ExperienceID"`
+	Descriptions []ExpDesc             `json:"descriptions" gorm:"foreignKey:ExperienceID"`
+	Status       int                   `json:"status" validate:"required" gorm:"default:0"`
+	CreatedAt    int                   `json:"created_at" gorm:"autoCreateTime"`
+	UpdatedAt    int                   `json:"updated_at" gorm:"autoUpdateTime"`
+	DeletedAt    soft_delete.DeletedAt `json:"-"`
 }
 
 type Testimonials struct {

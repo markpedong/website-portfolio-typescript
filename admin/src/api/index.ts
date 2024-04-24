@@ -136,6 +136,12 @@ export const updateExperiences = params => post('/experiences/updateExperiences'
 export const deleteExperiences = params => post('/experiences/deleteExperiences', params)
 
 // /experiences/getExperiences
+export type TDescriptionItem = {
+	id: string
+	description: string
+	experience_id: string
+}
+
 export type TExperienceItem = {
 	id: string
 	company: string
@@ -144,10 +150,12 @@ export type TExperienceItem = {
 	started: string
 	ended: string
 	skills: { id: string; name: string; percentage: number }[]
+	descriptions: TDescriptionItem[]
 	status: GLOBAL_STATUS
 	created_at: number
 	updated_at: number
 }
+
 export const getExperiences = () => get<TPortfolioItem[]>('/experiences/getExperiences')
 
 // /experiences/toggleExperienceStatus

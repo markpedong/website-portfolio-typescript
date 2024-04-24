@@ -9,7 +9,7 @@ import {
 import { GLOBAL_STATUS } from '@/api/constants'
 import { MODAL_FORM_PROPS, PRO_TABLE_PROPS } from '@/constants'
 import { capFrstLtr, randomColorGenerator } from '@/constants/helper'
-import { INPUT_TRIM, dateTimeFormatter } from '@/utils'
+import { dateTimeFormatter } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
 import {
 	ActionType,
@@ -31,34 +31,42 @@ const Education = () => {
 	const columns: ProColumns<TEducationsItem>[] = [
 		{
 			title: 'School',
-			align: 'center',
+			align: 'left',
 			dataIndex: 'school'
 		},
 		{
 			title: 'Course',
 			align: 'center',
-			dataIndex: 'course'
+			dataIndex: 'course',
+			ellipsis: true
 		},
 		{
-			title: 'Started',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Started</div>
+					<div>Ended</div>
+				</div>
+			),
 			align: 'center',
-			dataIndex: 'started'
-		},
-		{
-			title: 'Ended',
-			align: 'center',
-			dataIndex: 'ended'
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{record.started}</div>
+					<div>{record.ended}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Description',
 			align: 'center',
+			ellipsis: true,
 			dataIndex: 'description'
 		},
 		{
 			title: 'Skills',
-			align: 'center',
+			align: 'left',
+			ellipsis: true,
 			render: (_, record) => (
-				<Space direction="vertical" align="center">
+				<Space direction="vertical" align="start">
 					{record?.skills?.map(q => (
 						<Tag key={q?.id} color={`#${randomColorGenerator()}`}>
 							{capFrstLtr(q?.name)} - {q?.percentage}%
@@ -68,18 +76,24 @@ const Education = () => {
 			)
 		},
 		{
-			title: 'Updated',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Created</div>
+					<div>Updated</div>
+				</div>
+			),
 			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
-		},
-		{
-			title: 'Created',
-			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Operator',
 			align: 'center',
+			width: 180,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}
@@ -160,7 +174,6 @@ const Education = () => {
 				>
 					<ProForm.Group style={{ marginBottom: '1rem' }}>
 						<ProFormText
-							{...INPUT_TRIM}
 							name="name"
 							label="Skill"
 							colProps={{ span: 12 }}

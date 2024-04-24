@@ -11,6 +11,8 @@ import classNames from 'classnames'
 import { jakartaB, jakartaM } from '../../../public/fonts'
 import { IoMdLink } from 'react-icons/io'
 import { TPortfolioItem } from 'api'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const PortfolioHeader = () => {
 	const { scrollNext, scrollPrev } = useCarousel()
@@ -38,7 +40,7 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 			<Carousel opts={{ loop: true }}>
 				<PortfolioHeader />
 				<CarouselContent className="mt-[5rem]">
-					{[1, 2, 3, 4, 5, 6].map((item, index) => (
+					{data?.map((item, index) => (
 						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-14">
 							<div className={'relative w-full'}>
 								<Card className={hoveredItem === item && styles.activeCard}>
@@ -47,6 +49,7 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 										onMouseEnter={() => setHoveredItem(item)}
 										onMouseLeave={() => setHoveredItem(null)}
 									>
+										<Image className="object-cover object-right-top" src={item?.image} alt="image_project" fill />
 										{hoveredItem === item && (
 											<motion.div
 												initial={{ opacity: 0, y: 50 }}
@@ -55,13 +58,14 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 												transition={{ duration: 0.2 }}
 												className={styles.extraContainer}
 											>
-												<span className={classNames(styles.title, jakartaM.className)}>
-													Agency Website
-												</span>
+												<span className={classNames(styles.title, jakartaM.className)}>{item?.title}</span>
 												<div className={styles.techContainer}>
-													<span>WordPress</span>
-													<span>React</span>
-													<IoMdLink color="#656D72" />
+													{item?.tech?.map(w => (
+														<span>{w}</span>
+													))}
+													<Link href={item?.link} target="_blank">
+														<IoMdLink color="#656D72" />
+													</Link>
 												</div>
 											</motion.div>
 										)}

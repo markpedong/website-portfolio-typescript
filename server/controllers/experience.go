@@ -23,6 +23,16 @@ func AddExperiences(ctx *gin.Context) {
 		Started:  body.Started,
 		Ended:    body.Ended,
 	}
+	var newDescriptions []models.ExpDesc
+	for _, v := range body.Descriptions {
+		newSkill := models.ExpDesc{
+			ID:           helpers.NewUUID(),
+			ExperienceID: newExperience.ID,
+			Description:  v,
+		}
+
+		newDescriptions = append(newDescriptions, newSkill)
+	}
 
 	var newSkills []models.ExpSkill
 	for _, v := range body.Skills {
@@ -37,6 +47,7 @@ func AddExperiences(ctx *gin.Context) {
 	}
 
 	newExperience.Skills = newSkills
+	newExperience.Descriptions = newDescriptions
 	if err := database.DB.Create(&newExperience).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
@@ -46,13 +57,21 @@ func AddExperiences(ctx *gin.Context) {
 }
 
 func UpdateExperiences(ctx *gin.Context) {
-	var body models.Experiences
+	var body struct {
+		models.ExperiencePayload
+		ID string `json:"id" validate:"required"`
+	}
 	if err := helpers.BindValidateJSON(ctx, &body); err != nil {
-		helpers.ErrJSONResponse(ctx, http.StatusBadRequest, "Invalid request payload")
+		helpers.ErrJSONResponse(ctx, http.StatusBadRequest, err.Error())
 		return
 	}
 	var newSkills []models.ExpSkill
 	if err := database.DB.Where("experience_id = ?", body.ID).Delete(&newSkills).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	var newDescriptions []models.ExpDesc
+	if err := database.DB.Where("experience_id = ?", body.ID).Delete(&newDescriptions).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -67,18 +86,35 @@ func UpdateExperiences(ctx *gin.Context) {
 
 		newSkills = append(newSkills, newSkill)
 	}
+	for _, v := range body.Descriptions {
+		newDescription := models.ExpDesc{
+			ID:           helpers.NewUUID(),
+			ExperienceID: body.ID,
+			Description:  v,
+		}
 
-	body.Skills = newSkills
-	if err := database.DB.Save(&body).Error; err != nil {
+		newDescriptions = append(newDescriptions, newDescription)
+	}
+
+	var currExperience models.Experiences
+	if err := database.DB.FirstOrCreate(&currExperience, "id = ?", body.ID).Error; err != nil {
 		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
+
+	currExperience.Skills = newSkills
+	currExperience.Descriptions = newDescriptions
+	if err := database.DB.Save(&currExperience).Error; err != nil {
+		helpers.ErrJSONResponse(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
 	helpers.JSONResponse(ctx, "")
 }
 
 func GetExperiences(ctx *gin.Context) {
 	var experiences []models.Experiences
-	GetTableByModel(ctx, &experiences, "Skills")
+	GetTableByModel(ctx, &experiences, "Skills", "Descriptions")
 }
 
 func DeleteExperiences(ctx *gin.Context) {
@@ -93,7 +129,7 @@ func ToggleExperienceStatus(ctx *gin.Context) {
 
 func PublicExperiences(ctx *gin.Context) {
 	var experiences []models.Experiences
-	GetTableByModelStatusON(ctx, &experiences)
+	GetTableByModelStatusON(ctx, &experiences, "Skills")
 
 	var experienceResponse []models.ExperienceResponse
 	for _, v := range experiences {

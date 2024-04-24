@@ -53,17 +53,23 @@ const Portfolio = () => {
 			title: 'Link',
 			align: 'center',
 			dataIndex: 'link',
-			width: 225,
+			width: 225
 		},
 		{
-			title: 'Updated',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Created</div>
+					<div>Updated</div>
+				</div>
+			),
 			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
-		},
-		{
-			title: 'Created',
-			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
+			width: 160,
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Operator',
@@ -110,6 +116,7 @@ const Portfolio = () => {
 						<Button type="primary">Add</Button>
 					)
 				}
+				width={1000}
 				initialValues={isEdit ? record : {}}
 				labelCol={{ flex: '110px' }}
 				onFinish={async params => {
@@ -121,6 +128,7 @@ const Portfolio = () => {
 						res = await addPortfolios({ ...params, image: imgUrl })
 					}
 
+					setImgUrl('')
 					return afterModalformFinish(actionRef, res)
 				}}
 			>
@@ -129,7 +137,7 @@ const Portfolio = () => {
 				<ProFormSelect
 					label="Tech Stack"
 					name="tech"
-					fieldProps={{ mode: 'tags', maxCount: 5 }}
+					fieldProps={{ mode: 'tags', maxCount: 7 }}
 					rules={[{ required: true }]}
 				/>
 				<ProFormUploadButton

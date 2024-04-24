@@ -10,9 +10,10 @@ import classNames from 'classnames'
 import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
 import { Separator } from '../ui/separator'
 import { TExperienceItem } from 'api'
+import { dateTimeFormatter } from '@/lib/utils'
 
 const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
-	const [selectedItem, setSelectedItem] = useState(null)
+	const [selectedItem, setSelectedItem] = useState<TExperienceItem>()
 
 	const scaleSize = { scale: 0.9 }
 
@@ -22,7 +23,7 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 	}
 
 	useEffect(() => {
-		setSelectedItem('apple')
+		setSelectedItem(data?.[0])
 	}, [])
 
 	return (
@@ -32,59 +33,59 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 				<div className={styles.leftContainer}>
 					<span className={classNames(styles.header, jakartaB.className)}>Work Experiences</span>
 					<div className={styles.btnContainer}>
-						{['apple', 'google', 'amazon']?.map(w => (
+						{data?.map(w => (
 							<motion.div
-								key={w}
+								key={w?.id}
 								className={styles.btn}
 								whileTap={scaleSize}
 								onClick={event => handleItemClick(w, event)}
 							>
-								<span>{w}</span> <FaAngleRight />
+								<span>{w?.title}</span> <FaAngleRight />
 							</motion.div>
 						))}
 					</div>
 				</div>
 				<AnimatePresence>
-					{selectedItem && (
+					{selectedItem?.id && (
 						<div className={styles.rightContainer}>
 							<motion.div
-								key={selectedItem}
+								key={selectedItem?.id}
 								initial={{ opacity: 0, x: 20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.2, type: 'spring', stiffness: 100 }}
 							>
 								<div className={styles.textContainer}>
 									<span className={classNames(styles.title, jakartaM.className)}>
-										Front-end Developer <u>Apple Inc.</u>
+										{selectedItem?.title}, <u>{selectedItem?.company}</u>
 									</span>
-									<span className={classNames(styles.location, inter.className)}>
-										California, United States
-									</span>
+									<span className={classNames(styles.location, inter.className)}>{selectedItem?.location}</span>
 									<span className={classNames(styles.duration, interM.className)}>
-										Nov 2020 - Present • Full-time
+										{dateTimeFormatter(selectedItem?.started, 'MM-YYYY')} <span>&#8212;</span>{' '}
+										{dateTimeFormatter(selectedItem?.ended, 'MM-YYYY')} • Full-time
 									</span>
 									<div className={styles.techContainer}>
-										<span>WordPress</span>
-										<span>React</span>
+										{selectedItem?.skills?.map(q => (
+											<span>{q?.name}</span>
+										))}
 									</div>
 								</div>
 								<Separator className="my-[2rem]" />
 								<div className={classNames(styles.descriptionContainer, inter.className)}>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit. Aliquam, sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
+										sunt.
 									</span>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit. Aliquam, sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
+										sunt.
 									</span>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit. Aliquam, sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
+										sunt.
 									</span>
 									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit. Aliquam, sunt.
+										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
+										sunt.
 									</span>
 								</div>
 							</motion.div>

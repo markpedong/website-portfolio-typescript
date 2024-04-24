@@ -35,11 +35,17 @@
 }
 
 .activeCard {
-    background-color: rgba(0, 0, 0, 0.1)
+    @apply relative;
 }
 
 .extraContainer {
-    @apply w-full h-[10rem] bg-white text-black rounded-b-lg absolute left-0 bottom-0 px-[1.8rem] pt-[2.2rem];
+    @apply w-full h-[10rem] bg-white text-black absolute left-0 bottom-0 px-[1.8rem] pt-[2.2rem];
+
+    &::before {
+        @apply absolute top-[-15rem] left-0 h-[15rem] w-full;
+        background-color: rgba(0, 0, 0, 0.65);
+        content: '';
+    }
 
     .title {
         @apply text-[#232E35];
@@ -47,7 +53,7 @@
     }
 
     .techContainer {
-        @apply mt-[1rem] flex items-center justify-start gap-3;
+        @apply mt-[1rem] flex flex-wrap items-center justify-start gap-3;
 
         span {
             @apply text-[#656D72] px-2 py-1 rounded-sm;

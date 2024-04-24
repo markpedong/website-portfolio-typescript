@@ -20,12 +20,13 @@ type ExpSkillPayload struct {
 }
 
 type ExperiencePayload struct {
-	Company  string            `json:"company"  validate:"required"`
-	Title    string            `json:"title" validate:"required"`
-	Location string            `json:"location" validate:"required"`
-	Started  string            `json:"started" validate:"required"`
-	Ended    string            `json:"ended" validate:"required"`
-	Skills   []ExpSkillPayload `json:"skills"`
+	Company      string            `json:"company"  validate:"required"`
+	Title        string            `json:"title" validate:"required"`
+	Location     string            `json:"location" validate:"required"`
+	Started      string            `json:"started" validate:"required"`
+	Ended        string            `json:"ended" validate:"required"`
+	Descriptions []string          `json:"descriptions" validate:"required"`
+	Skills       []ExpSkillPayload `json:"skills"`
 }
 
 type BlogsPayload struct {
