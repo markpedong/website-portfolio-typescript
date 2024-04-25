@@ -67,7 +67,7 @@ const Experience = () => {
 			render: (_, record) => (
 				<Space direction="vertical">
 					{record?.descriptions?.map(q => (
-						<span key={q?.id} className="overflow-hidden text-ellipsis whitespace-nowrap">
+						<span key={q?.id}  className="overflow-hidden text-ellipsis whitespace-nowrap">
 							- {q?.description}
 						</span>
 					))}

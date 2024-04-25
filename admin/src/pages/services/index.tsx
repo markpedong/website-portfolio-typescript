@@ -43,19 +43,23 @@ const Services = () => {
 			title: 'Description',
 			dataIndex: 'description',
 			align: 'justify',
-			width: 300
 		},
 		{
-			title: 'Updated',
-			align: 'center',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Created</div>
+					<div>Updated</div>
+				</div>
+			),
 			width: 180,
-			render: (_, q) => dateTimeFormatter(q?.updated_at, 'MM-DD-YYYY HH:MM:ss')
-		},
-		{
-			title: 'Created',
+			search: false,
 			align: 'center',
-			width: 180,
-			render: (_, q) => dateTimeFormatter(q?.created_at, 'MM-DD-YYYY HH:MM:ss')
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Operator',
