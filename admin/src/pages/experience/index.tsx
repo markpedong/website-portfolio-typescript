@@ -63,11 +63,11 @@ const Experience = () => {
 			title: 'Descriptions',
 			align: 'start',
 			ellipsis: true,
-			width: 100,
+			width: 120,
 			render: (_, record) => (
 				<Space direction="vertical">
 					{record?.descriptions?.map(q => (
-						<span key={q?.id}  className="overflow-hidden text-ellipsis whitespace-nowrap">
+						<span className="overflow-x-auto text-ellipsis whitespace-nowrap" key={q?.id}>
 							- {q?.description}
 						</span>
 					))}
@@ -145,6 +145,7 @@ const Experience = () => {
 				rowProps={{
 					gutter: [0, 25]
 				}}
+				width={1200}
 				onFinish={async params => {
 					let res
 
@@ -161,71 +162,66 @@ const Experience = () => {
 					return afterModalformFinish(actionRef, res)
 				}}
 			>
-				<ProFormText label="Title" name="title" rules={[{ required: true }]} />
-				<ProFormText label="Company" name="company" rules={[{ required: true }]} />
-				<ProFormText label="Location" name="location" rules={[{ required: true }]} />
-				<ProFormDatePicker
-					colProps={{ span: 12 }}
-					label="Started"
-					name="started"
-					rules={[{ required: true }]}
-					width={250}
-				/>
-				<ProFormDatePicker
-					colProps={{ span: 12 }}
-					label="Ended"
-					name="ended"
-					rules={[{ required: true }]}
-					width={250}
-				/>
-				<ProFormList
-					name="descriptions"
-					label="Descriptions"
-					creatorButtonProps={{
-						position: 'bottom',
-						creatorButtonText: 'Add Description'
-					}}
-					copyIconProps={false}
-					max={5}
-					alwaysShowItemLabel
-				>
-					<div style={{ marginBottom: '1rem' }}>
-						<ProFormText
-							name="description"
-							label="Description"
-							labelCol={{ flex: '120px' }}
-							rules={[{ required: true }]}
-						/>
-					</div>
-				</ProFormList>
-				<ProFormList
-					name="skills"
-					label="Tech Stack"
-					creatorButtonProps={{
-						position: 'bottom',
-						creatorButtonText: 'Add Skill'
-					}}
-					copyIconProps={false}
-					max={5}
-					alwaysShowItemLabel
-				>
-					<ProForm.Group style={{ marginBottom: '1rem' }}>
-						<ProFormText
-							name="name"
-							label="Technology"
-							colProps={{ span: 12 }}
-							labelCol={{ flex: '120px' }}
-							rules={[{ required: true }]}
-						/>
-						<ProFormSlider
-							name="percentage"
-							label="Percentage"
-							colProps={{ span: 12 }}
-							labelCol={{ flex: '120px' }}
-							rules={[{ required: true }]}
-						/>
+				<ProForm.Group>
+					<ProForm.Group colProps={{ span: 9 }} rowProps={{ gutter: [0, 20] }}>
+						<ProFormText label="Title" name="title" rules={[{ required: true }]} />
+						<ProFormText label="Company" name="company" rules={[{ required: true }]} />
+						<ProFormText label="Location" name="location" rules={[{ required: true }]} />
+						<ProFormDatePicker label="Started" name="started" rules={[{ required: true }]} />
+						<ProFormDatePicker label="Ended" name="ended" rules={[{ required: true }]} />
 					</ProForm.Group>
-				</ProFormList>
+					<ProForm.Group colProps={{ span: 15 }}>
+						<ProFormList
+							name="descriptions"
+							label="Descriptions"
+							creatorButtonProps={{
+								position: 'bottom',
+								creatorButtonText: 'Add Description'
+							}}
+							copyIconProps={false}
+							max={5}
+							alwaysShowItemLabel
+							style={{ marginBottom: '1rem' }}
+						>
+							<div style={{ marginBottom: '1rem' }}>
+								<ProFormText
+									name="description"
+									label="Description"
+									labelCol={{ flex: '100px' }}
+									rules={[{ required: true }]}
+								/>
+							</div>
+						</ProFormList>
+						<ProFormList
+							name="skills"
+							label="Tech Stack"
+							creatorButtonProps={{
+								position: 'bottom',
+								creatorButtonText: 'Add Skill'
+							}}
+							copyIconProps={false}
+							max={5}
+							alwaysShowItemLabel
+						>
+							<ProForm.Group style={{ marginBottom: '1rem' }}>
+								<ProFormText
+									name="name"
+									label="Technology"
+									colProps={{ span: 12 }}
+									labelCol={{ flex: '100px' }}
+									rules={[{ required: true }]}
+								/>
+								<ProFormSlider
+									name="percentage"
+									label="Percentage"
+									colProps={{ span: 12 }}
+									labelCol={{ flex: '100px' }}
+									rules={[{ required: true }]}
+								/>
+							</ProForm.Group>
+						</ProFormList>
+					</ProForm.Group>
+				</ProForm.Group>
 			</ModalForm>
 		)
 	}
