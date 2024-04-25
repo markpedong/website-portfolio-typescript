@@ -27,3 +27,8 @@ func UpdateColors(ctx *gin.Context) {
 
 	helpers.JSONResponse(ctx, "")
 }
+
+func SetColorsDefault(ctx *gin.Context) {
+	// get all the instance of default value  here, use find 	that gets the data with default on name
+	// set the current theme with the default value based on title.
+}
