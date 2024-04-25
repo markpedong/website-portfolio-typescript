@@ -30,6 +30,7 @@ const Testimonials = () => {
 		{
 			title: 'Image',
 			align: 'center',
+			search: false,
 			render: (_, record) => <Image src={record?.image} alt="image" width={60} height={60} />
 		},
 		{
@@ -70,6 +71,7 @@ const Testimonials = () => {
 			title: 'Operator',
 			align: 'center',
 			width: 180,
+			search: false,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}

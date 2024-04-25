@@ -23,11 +23,13 @@ const Blogs = () => {
 		{
 			title: 'Image',
 			align: 'center',
+			width: 80,
+			search: false,
 			render: (_, record) => <Image src={record?.image} alt="image" width={60} height={60} />
 		},
 		{
 			title: 'Title',
-			align: 'center',
+			align: 'start',
 			dataIndex: 'title'
 		},
 		{
@@ -38,21 +40,32 @@ const Blogs = () => {
 		{
 			title: 'Link',
 			align: 'center',
-			dataIndex: 'link'
+			dataIndex: 'link',
+			ellipsis: true, 
+			width: 200
 		},
 		{
-			title: 'Updated',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Created</div>
+					<div>Updated</div>
+				</div>
+			),
+			search: false,
 			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
-		},
-		{
-			title: 'Created',
-			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
+			width: 160,
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Operator',
 			align: 'center',
+			search: false,
+			width: 160,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}
@@ -93,6 +106,7 @@ const Blogs = () => {
 					)
 				}
 				grid
+				onOpenChange={visible => !visible && setImgUrl('')}
 				layout="inline"
 				rowProps={{
 					gutter: [0, 25]
@@ -168,7 +182,6 @@ const Blogs = () => {
 				request={fetchData}
 				toolBarRender={() => [renderAddEditBlogs('ADD')]}
 				scroll={{ x: 1100 }}
-				search={false}
 			/>
 		</div>
 	)
