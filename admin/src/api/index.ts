@@ -32,6 +32,8 @@ export type TDetailsItem = {
 	id: string
 	last_name: string
 	phone: string
+	resume_pdf: string
+	resume_docx: string
 	updated_at: number
 }
 

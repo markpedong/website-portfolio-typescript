@@ -4,6 +4,7 @@ import { get, post, upload } from './http'
 export type WebsiteDetails = {
 	id: string
 	status: number
+	isResumeDownloadable: number
 }
 export const getWebsiteDetails = () => get<WebsiteDetails>('/public/website')
 

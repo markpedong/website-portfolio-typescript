@@ -54,6 +54,7 @@ type UsersResponse struct {
 	Address     string `json:"address"`
 	Description string `json:"description"`
 	Email       string `json:"email"`
+	Resume      string `json:"resume"`
 }
 
 type PortfolioResponse struct {

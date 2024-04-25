@@ -68,6 +68,7 @@ func PublicDetails(ctx *gin.Context) {
 		Address:     user.Address,
 		Description: user.Description,
 		Email:       user.Email,
+		Resume:      user.ResumePDF,
 	}
 
 	helpers.JSONResponse(ctx, "", helpers.DataHelper(response))

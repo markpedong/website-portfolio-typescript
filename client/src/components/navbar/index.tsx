@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import { motion } from 'framer-motion'
 import { Inter, Poppins } from 'next/font/google'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { GoMoon, GoSun } from 'react-icons/go'
 import styles from './styles.module.scss'
 import {
@@ -20,11 +20,12 @@ import {
 	SheetTrigger
 } from '@/components/ui/sheet'
 import { MdMenu } from 'react-icons/md'
+import { WebsiteDetails } from 'api'
 
 const poppins = Poppins({ weight: '600', subsets: ['latin'] })
 const inter = Inter({ weight: '400', subsets: ['latin'] })
 
-const Navbar = () => {
+const Navbar: FC<{ data: WebsiteDetails }> = ({ data }) => {
 	const dispatch = useAppDispatch()
 	const { darkMode } = useAppSelector(state => state.boolean)
 	const [open, setOpen] = useState(false)
@@ -84,7 +85,7 @@ const Navbar = () => {
 				<motion.span whileTap={scaleSize} onClick={() => dispatch(setDarkMode())}>
 					{darkMode ? <GoSun color="white" size={20} /> : <GoMoon size={20} />}
 				</motion.span>
-				<motion.span whileTap={scaleSize}>Resume</motion.span>
+				{data?.isResumeDownloadable === 1 && <motion.span whileTap={scaleSize}>Resume</motion.span>}
 			</div>
 			<div className={classNames(styles.navBtnWrapper, 'overflow-y-scroll max-h-screen')}>
 				<Sheet
