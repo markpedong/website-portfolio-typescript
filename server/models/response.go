@@ -47,14 +47,15 @@ type ServicesResponse struct {
 }
 
 type UsersResponse struct {
-	ID          string `json:"id"`
-	FirstName   string `json:"first_name"`
-	LastName    string `json:"last_name"`
-	Phone       string `json:"phone"`
-	Address     string `json:"address"`
-	Description string `json:"description"`
-	Email       string `json:"email"`
-	Resume      string `json:"resume"`
+	ID                   string `json:"id"`
+	FirstName            string `json:"first_name"`
+	LastName             string `json:"last_name"`
+	Phone                string `json:"phone"`
+	Address              string `json:"address"`
+	Description          string `json:"description"`
+	Email                string `json:"email"`
+	Resume               string `json:"resume"`
+	IsResumeDownloadable int    `json:"isResumeDownloadable"`
 }
 
 type PortfolioResponse struct {

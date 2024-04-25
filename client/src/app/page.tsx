@@ -42,7 +42,7 @@ const App = async () => {
 			{website?.data.status === 1 ? (
 				<>
 					<div className={styles.mainWrapper}>
-						<Navbar data={website?.data} />
+						<Navbar data={details?.data} />
 						<Content data={details?.data} links={links?.data} />
 					</div>
 					<Specialty data={services?.data} />

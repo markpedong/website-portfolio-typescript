@@ -48,7 +48,7 @@
 }
 
 .techContainer {
-    @apply flex items-center justify-start gap-3;
+    @apply flex flex-wrap items-center justify-start gap-3;
 
     span {
         @apply text-[#656D72] px-2 py-1 rounded-sm;

@@ -1,31 +1,24 @@
 'use client'
 
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { scaleSize } from '@/constants'
 import { setDarkMode } from '@/redux/features/booleanSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/store'
+import { TDetailsItem } from 'api'
 import classNames from 'classnames'
 import { motion } from 'framer-motion'
 import { Inter, Poppins } from 'next/font/google'
 import Image from 'next/image'
 import { FC, useEffect, useState } from 'react'
 import { GoMoon, GoSun } from 'react-icons/go'
-import styles from './styles.module.scss'
-import {
-	Sheet,
-	SheetClose,
-	SheetContent,
-	SheetDescription,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger
-} from '@/components/ui/sheet'
 import { MdMenu } from 'react-icons/md'
-import { WebsiteDetails } from 'api'
+import styles from './styles.module.scss'
+import Link from 'next/link'
 
 const poppins = Poppins({ weight: '600', subsets: ['latin'] })
 const inter = Inter({ weight: '400', subsets: ['latin'] })
 
-const Navbar: FC<{ data: WebsiteDetails }> = ({ data }) => {
+const Navbar: FC<{ data: TDetailsItem }> = ({ data }) => {
 	const dispatch = useAppDispatch()
 	const { darkMode } = useAppSelector(state => state.boolean)
 	const [open, setOpen] = useState(false)
@@ -85,7 +78,13 @@ const Navbar: FC<{ data: WebsiteDetails }> = ({ data }) => {
 				<motion.span whileTap={scaleSize} onClick={() => dispatch(setDarkMode())}>
 					{darkMode ? <GoSun color="white" size={20} /> : <GoMoon size={20} />}
 				</motion.span>
-				{data?.isResumeDownloadable === 1 && <motion.span whileTap={scaleSize}>Resume</motion.span>}
+				{data?.isResumeDownloadable === 1 && (
+					<motion.span whileTap={scaleSize}>
+						<Link target="_blank" href={data?.resume}>
+							Resume
+						</Link>
+					</motion.span>
+				)}
 			</div>
 			<div className={classNames(styles.navBtnWrapper, 'overflow-y-scroll max-h-screen')}>
 				<Sheet
@@ -124,7 +123,11 @@ const Navbar: FC<{ data: WebsiteDetails }> = ({ data }) => {
 									<motion.span whileTap={scaleSize} onClick={() => dispatch(setDarkMode())}>
 										{darkMode ? <GoSun color="white" size={20} /> : <GoMoon size={20} />}
 									</motion.span>
-									<motion.span whileTap={scaleSize}>Resume</motion.span>
+									<motion.span whileTap={scaleSize}>
+										<Link target="_blank" href={data?.resume}>
+											Resume
+										</Link>
+									</motion.span>
 								</div>
 							</SheetDescription>
 						</SheetHeader>

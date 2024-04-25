@@ -1,8 +1,16 @@
 import { TDetailsItem, addDetails, getDetails, updateDetails, uploadImage } from '@/api'
+import { GLOBAL_STATUS } from '@/api/constants'
 import { FORM_PROPS, INPUT_EMAIL } from '@/constants'
 import { INPUT_TRIM } from '@/utils'
 import { afterModalformFinish } from '@/utils/antd'
-import { ProForm, ProFormInstance, ProFormText, ProFormTextArea, ProFormUploadButton } from '@ant-design/pro-components'
+import {
+	ProForm,
+	ProFormInstance,
+	ProFormSwitch,
+	ProFormText,
+	ProFormTextArea,
+	ProFormUploadButton
+} from '@ant-design/pro-components'
 import { Typography } from 'antd'
 import { useEffect, useRef, useState } from 'react'
 
@@ -43,7 +51,8 @@ const Information = () => {
 							...params,
 							id: init?.id,
 							resume_pdf: !!!pdfUrl ? init?.resume_pdf : pdfUrl,
-							resume_docx: !!!docxUrl ? init?.resume_docx : docxUrl
+							resume_docx: !!!docxUrl ? init?.resume_docx : docxUrl,
+							isResumeDownloadable: params.isResumeDownloadable ? 1 : 0
 						})
 					}
 
@@ -75,6 +84,21 @@ const Information = () => {
 				/>
 				<ProFormTextArea rules={[{ required: true }]} label="Address" name="address" />
 				<ProFormTextArea rules={[{ required: true }]} label="Description" name="description" />
+				<ProFormSwitch
+					label="Resumé"
+					name="isResumeDownloadable"
+					checkedChildren={
+						<span className="font-bold" style={{ letterSpacing: '0.2rem', fontWeight: 800 }}>
+							ENABLED
+						</span>
+					}
+					unCheckedChildren={
+						<span className="font-bold" style={{ letterSpacing: '0.2rem', fontWeight: 800 }}>
+							DISABLED
+						</span>
+					}
+					fieldProps={{ value: init?.isResumeDownloadable === GLOBAL_STATUS.ON ? true : false }}
+				/>
 				<ProFormUploadButton
 					label="Resumé PDF"
 					name="resume_pdf"

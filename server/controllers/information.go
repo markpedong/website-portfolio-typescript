@@ -61,14 +61,15 @@ func PublicDetails(ctx *gin.Context) {
 	}
 
 	response := models.UsersResponse{
-		ID:          user.ID,
-		FirstName:   user.FirstName,
-		LastName:    user.LastName,
-		Phone:       user.Phone,
-		Address:     user.Address,
-		Description: user.Description,
-		Email:       user.Email,
-		Resume:      user.ResumePDF,
+		ID:                   user.ID,
+		FirstName:            user.FirstName,
+		LastName:             user.LastName,
+		Phone:                user.Phone,
+		Address:              user.Address,
+		Description:          user.Description,
+		Email:                user.Email,
+		Resume:               user.ResumePDF,
+		IsResumeDownloadable: user.IsResumeDownloadable,
 	}
 
 	helpers.JSONResponse(ctx, "", helpers.DataHelper(response))

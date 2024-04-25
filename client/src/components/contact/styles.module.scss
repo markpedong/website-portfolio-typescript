@@ -54,6 +54,26 @@
     font-size: toRem(12);
 }
 
+.contactContainer {
+    @apply flex justify-center items-start gap-4 pt-4
+}
+
+@media screen and (max-width: 576px) {
+
+    .inputContainer,
+    .detailsContainer {
+        @apply w-[100%];
+    }
+
+    .headerContainer {
+        @apply flex justify-center flex-col items-center;
+    }
+
+    .contactContainer {
+        @apply flex-col items-center;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .contactWrapper {
         @apply grid-cols-1;

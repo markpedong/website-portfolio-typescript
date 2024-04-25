@@ -4,7 +4,6 @@ import { get, post, upload } from './http'
 export type WebsiteDetails = {
 	id: string
 	status: number
-	isResumeDownloadable: number
 }
 export const getWebsiteDetails = () => get<WebsiteDetails>('/public/website')
 
@@ -18,6 +17,8 @@ export type TDetailsItem = {
 	id: string
 	last_name: string
 	phone: string
+	isResumeDownloadable: number
+	resume: string
 }
 
 export const getDetails = () => get<TDetailsItem>('/public/details')

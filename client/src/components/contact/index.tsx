@@ -45,20 +45,15 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 
 	return (
 		<div>
-			<div>
+			<div className={styles.headerContainer}>
 				<Header title="contact me" />
 				<span className={classNames(styles.header, jakartaB.className)}>Send me a Message!</span>
 			</div>
-			<div className="flex justify-center items-start gap-4 pt-4">
+			<div className={styles.contactContainer}>
 				<div className={styles.inputContainer}>
 					<Input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
 					<Input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-					<Textarea
-						rows={5}
-						placeholder="Message"
-						value={message}
-						onChange={e => setMessage(e.target.value)}
-					/>
+					<Textarea rows={5} placeholder="Message" value={message} onChange={e => setMessage(e.target.value)} />
 					<motion.div whileTap={scaleSize} className={styles.btnSubmit} onClick={submitMessage}>
 						Send Message
 					</motion.div>
