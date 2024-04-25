@@ -52,6 +52,7 @@ const Experience = () => {
 			),
 			align: 'center',
 			width: 100,
+			search: false,
 			render: (_, record) => (
 				<div className="flex flex-col">
 					<div>{record.started}</div>
@@ -62,12 +63,12 @@ const Experience = () => {
 		{
 			title: 'Descriptions',
 			align: 'start',
+			search: false,
 			ellipsis: true,
-			width: 120,
 			render: (_, record) => (
 				<Space direction="vertical">
 					{record?.descriptions?.map(q => (
-						<span className="overflow-x-auto text-ellipsis whitespace-nowrap" key={q?.id}>
+						<span className="overflow-hidden text-ellipsis" key={q?.id}>
 							- {q?.description}
 						</span>
 					))}
@@ -77,6 +78,7 @@ const Experience = () => {
 		{
 			title: 'Tech Stack',
 			align: 'left',
+			search: false,
 			render: (_, record) => (
 				<Space direction="vertical" align="start">
 					{record?.skills?.map(q => (
@@ -94,6 +96,7 @@ const Experience = () => {
 					<div>Updated</div>
 				</div>
 			),
+			search: false,
 			align: 'center',
 			width: 160,
 			render: (_, record) => (
@@ -107,6 +110,7 @@ const Experience = () => {
 			title: 'Operator',
 			align: 'center',
 			width: 180,
+			search: false,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}

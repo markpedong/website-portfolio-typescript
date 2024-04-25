@@ -32,6 +32,7 @@ const Portfolio = () => {
 			title: 'Image',
 			align: 'center',
 			search: false,
+			width: 100,
 			render: (_, record) => <Image src={record?.image} alt="logo" width={60} height={60} />
 		},
 		{
@@ -42,6 +43,7 @@ const Portfolio = () => {
 		{
 			title: 'Tech Stack',
 			align: 'left',
+			search: false,
 			render: (_, record) =>
 				record?.tech?.map(q => (
 					<Tag color={`#${randomColorGenerator()}`} key={q}>
@@ -53,6 +55,7 @@ const Portfolio = () => {
 			title: 'Link',
 			align: 'center',
 			dataIndex: 'link',
+			ellipsis: true,
 			width: 225
 		},
 		{
@@ -64,6 +67,7 @@ const Portfolio = () => {
 			),
 			align: 'center',
 			width: 160,
+			search: false,
 			render: (_, record) => (
 				<div className="flex flex-col">
 					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
@@ -118,7 +122,7 @@ const Portfolio = () => {
 				}
 				width={1000}
 				initialValues={isEdit ? record : {}}
-				onOpenChange={(visible) => !visible && setImgUrl("")}
+				onOpenChange={visible => !visible && setImgUrl('')}
 				labelCol={{ flex: '110px' }}
 				onFinish={async params => {
 					let res
