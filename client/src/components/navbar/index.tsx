@@ -34,6 +34,8 @@ const Navbar = () => {
 		if (el) {
 			el.scrollIntoView({ behavior: 'smooth' })
 		}
+
+		setOpen(false)
 	}
 
 	useEffect(() => {

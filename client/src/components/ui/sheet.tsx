@@ -60,6 +60,8 @@ const SheetContent = React.forwardRef<
     <SheetPrimitive.Content
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
+      // automatically scrolling up bug fixed
+      onCloseAutoFocus={event => event.preventDefault()}
       {...props}
     >
       {children}
