@@ -7,24 +7,28 @@ import classNames from 'classnames'
 import { inter } from '../../../public/fonts'
 import { motion } from 'framer-motion'
 import { scaleSize } from '@/constants'
-import { TDetailsItem, TLinksItem } from 'api'
+import { SocialMedia, TDetailsItem, TLinksItem } from 'api'
+import Link from 'next/link'
 
 const Footer: FC<{ links: TLinksItem[]; details: TDetailsItem }> = ({ links, details }) => {
+	const renderLink = (type: string, icon: React.ReactNode) => {
+		const currLink = links?.find(q => q.type === type)
+		return (
+			currLink && (
+				<Link target="_blank" href={currLink?.link}>
+					{icon}
+				</Link>
+			)
+		)
+	}
+
 	return (
 		<div className={styles.footerWrapper}>
 			<div className={styles.iconContainer}>
-				<motion.span whileTap={scaleSize}>
-					<FaInstagram />
-				</motion.span>
-				<motion.span whileTap={scaleSize}>
-					<FaGithub />
-				</motion.span>
-				<motion.span whileTap={scaleSize}>
-					<FaTwitter />
-				</motion.span>
-				<motion.span whileTap={scaleSize}>
-					<FaLinkedin />
-				</motion.span>
+				{renderLink(SocialMedia.Instagram, <FaInstagram className="h-full w-full" />)}
+				{renderLink(SocialMedia.GitHub, <FaGithub className="h-full w-full" />)}
+				{renderLink(SocialMedia.Twitter, <FaTwitter className="h-full w-full" />)}
+				{renderLink(SocialMedia.LinkedIn, <FaLinkedin className="h-full w-full" />)}
 			</div>
 			<div className={classNames(styles.text, inter.className)}>© 2024 - Mark Pedong</div>
 		</div>

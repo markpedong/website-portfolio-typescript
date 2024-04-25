@@ -18,6 +18,10 @@
     }
 }
 
+.header {
+    font-size: toRem(25);
+}
+
 .detailsContainer {
     @apply pt-[2rem] pl-[2rem] flex flex-col gap-5;
 
@@ -62,6 +66,5 @@
     .detailsContainer {
         @apply grid grid-cols-3 pl-0;
         grid-template-columns: repeat(auto-fill, minmax(toRem(250), 1fr));
-
     }
 }

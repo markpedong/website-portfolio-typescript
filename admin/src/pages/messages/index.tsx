@@ -21,21 +21,11 @@ const Messages = () => {
 			align: 'center'
 		},
 		{
-			title: (
-				<div className="flex flex-col gap-0">
-					<div>Created</div>
-					<div>Updated</div>
-				</div>
-			),
+			title: 'Created',
 			search: false,
 			align: 'center',
 			width: 160,
-			render: (_, record) => (
-				<div className="flex flex-col">
-					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
-					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
-				</div>
-			)
+			render: (_, record) => dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')
 		}
 	]
 	const fetchData = async () => {

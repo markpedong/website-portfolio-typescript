@@ -20,6 +20,7 @@ func CreateRoutes(r *gin.Engine) {
 		public.GET("/services", controllers.PublicServices)
 		public.GET("/testimonials", controllers.PublicTestimonials)
 		public.GET("/blogs", controllers.PublicBlogs)
+		public.POST("/addMessages", controllers.AddMessages)
 	}
 
 	api := r.Group("/api")
@@ -121,6 +122,5 @@ func CreateRoutes(r *gin.Engine) {
 	messages.Use(middleware.Authentication)
 	{
 		messages.GET("/getMessages", controllers.GetMessages)
-		messages.POST("/addMessages", controllers.AddMessages)
 	}
 }

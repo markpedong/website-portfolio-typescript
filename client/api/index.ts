@@ -118,3 +118,6 @@ export type TEducationItem = {
 }
 
 export const getEducations = () => get<TEducationItem[]>('/public/educations')
+
+// /public/addMessages
+export const addMessages = params => post('/public/addMessages', params)
