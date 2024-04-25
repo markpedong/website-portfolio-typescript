@@ -129,7 +129,7 @@ func ToggleExperienceStatus(ctx *gin.Context) {
 
 func PublicExperiences(ctx *gin.Context) {
 	var experiences []models.Experiences
-	GetTableByModelStatusON(ctx, &experiences, "Skills")
+	GetTableByModelStatusON(ctx, &experiences, "Skills", "Descriptions")
 
 	var experienceResponse []models.ExperienceResponse
 	for _, v := range experiences {
@@ -144,13 +144,14 @@ func PublicExperiences(ctx *gin.Context) {
 			skillsResponse = append(skillsResponse, skillResponse)
 		}
 		newExperienceResponse := models.ExperienceResponse{
-			ID:       v.ID,
-			Company:  v.Company,
-			Title:    v.Title,
-			Location: v.Location,
-			Started:  v.Started,
-			Ended:    v.Ended,
-			Skills:   skillsResponse,
+			ID:           v.ID,
+			Company:      v.Company,
+			Title:        v.Title,
+			Location:     v.Location,
+			Started:      v.Started,
+			Ended:        v.Ended,
+			Skills:       skillsResponse,
+			Descriptions: v.Descriptions,
 		}
 
 		experienceResponse = append(experienceResponse, newExperienceResponse)

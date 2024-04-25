@@ -10,11 +10,11 @@
     background-color: var(--bg-primary);
 
     .imageContainer {
-        @apply absolute bg-red-500 top-0 left-[50%] rounded-full;
+        @apply absolute top-0 left-[50%];
         transform: translate(-50%, -50%);
 
         img {
-            @apply size-[5rem];
+            @apply size-[5rem] rounded-full;
         }
     }
 

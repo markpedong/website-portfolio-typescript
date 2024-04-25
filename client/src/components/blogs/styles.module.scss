@@ -22,7 +22,11 @@
 }
 
 .imgContainer {
-    @apply bg-red-500 h-48 w-auto rounded-t-lg;
+    @apply  h-48 w-full rounded-t-lg;
+
+    img {
+        @apply h-full w-full object-cover object-top;
+    }
 }
 
 .dataContainer {

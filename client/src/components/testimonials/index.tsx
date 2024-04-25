@@ -18,18 +18,17 @@ const Testimonials: FC<{ data: TTestimonialsItem[] }> = ({ data }) => {
 			<div className={classNames(styles.header, jakartaB.className)}>Testimonials</div>
 			<Carousel opts={{ loop: true }} className="w-full">
 				<CarouselContent className="mt-[5rem]">
-					{[1, 2, 3, 4, 5, 6].map((item, index) => (
+					{data?.map((q, index) => (
 						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center">
 							<div className={styles.testimonialContainer}>
 								<div className={styles.imageContainer}>
-									<Image src={''} alt="" width={60} height={60} />
+									<Image src={q?.image} alt={q?.id} width={60} height={60} />
 								</div>
 								<span className={classNames(styles.description, inter.className)}>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem impedit, aspernatur
-									quis sed ullam itaque?
+									{q?.description}
 								</span>
-								<span className={classNames(styles.author, jakartaM.className)}>Amelia Miller</span>
-								<span className={styles.work}>Designer</span>
+								<span className={classNames(styles.author, jakartaM.className)}>{q?.author}</span>
+								<span className={styles.work}>{q?.job}</span>
 							</div>
 						</CarouselItem>
 					))}

@@ -94,7 +94,7 @@ func ToggleEducationStatus(ctx *gin.Context) {
 
 func PublicEducations(ctx *gin.Context) {
 	var education []models.Education
-	GetTableByModelStatusON(ctx, &education)
+	GetTableByModelStatusON(ctx, &education, "Skills")
 
 	var educationResponse []models.EducationResponse
 	for _, v := range education {

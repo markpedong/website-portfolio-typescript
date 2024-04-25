@@ -49,7 +49,15 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 										onMouseEnter={() => setHoveredItem(item)}
 										onMouseLeave={() => setHoveredItem(null)}
 									>
-										<Image className="object-cover object-right-top" src={item?.image} alt="image_project" fill />
+										<Image
+											className="object-cover object-right-top"
+											src={item?.image}
+											alt="image_project"
+											fill
+											sizes="(max-width: 100vw) 100vw"
+											quality={100}
+											priority
+										/>
 										{hoveredItem === item && (
 											<motion.div
 												initial={{ opacity: 0, y: 50 }}
@@ -58,7 +66,9 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 												transition={{ duration: 0.2 }}
 												className={styles.extraContainer}
 											>
-												<span className={classNames(styles.title, jakartaM.className)}>{item?.title}</span>
+												<span className={classNames(styles.title, jakartaM.className)}>
+													{item?.title}
+												</span>
 												<div className={styles.techContainer}>
 													{item?.tech?.map(w => (
 														<span>{w}</span>

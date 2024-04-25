@@ -23,6 +23,7 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 	}
 
 	useEffect(() => {
+		console.log('@@@', data)
 		setSelectedItem(data?.[0])
 	}, [])
 
@@ -58,35 +59,26 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 									<span className={classNames(styles.title, jakartaM.className)}>
 										{selectedItem?.title}, <u>{selectedItem?.company}</u>
 									</span>
-									<span className={classNames(styles.location, inter.className)}>{selectedItem?.location}</span>
+									<span className={classNames(styles.location, inter.className)}>
+										{selectedItem?.location}
+									</span>
 									<span className={classNames(styles.duration, interM.className)}>
 										{dateTimeFormatter(selectedItem?.started, 'MM-YYYY')} <span>&#8212;</span>{' '}
 										{dateTimeFormatter(selectedItem?.ended, 'MM-YYYY')} • Full-time
 									</span>
 									<div className={styles.techContainer}>
 										{selectedItem?.skills?.map(q => (
-											<span>{q?.name}</span>
+											<span key={q?.id}>{q?.name}</span>
 										))}
 									</div>
 								</div>
 								<Separator className="my-[2rem]" />
 								<div className={classNames(styles.descriptionContainer, inter.className)}>
-									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
-									</span>
-									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
-									</span>
-									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
-									</span>
-									<span>
-										<p className={styles.hypen}>-</p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam,
-										sunt.
-									</span>
+									{selectedItem?.descriptions?.map(q => (
+										<span key={q?.id}>
+											<p className={styles.hypen}>-</p> {q?.description}
+										</span>
+									))}
 								</div>
 							</motion.div>
 						</div>

@@ -23,7 +23,7 @@
 }
 
 .btn {
-    @apply flex flex-col justify-center items-start p-[1rem] mb-[1rem];
+    @apply flex flex-col justify-center items-start p-[1rem] mb-[1rem] cursor-pointer;
     color: var(--color-primary);
 
     &:last-of-type {

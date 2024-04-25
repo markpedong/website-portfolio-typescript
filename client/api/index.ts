@@ -78,7 +78,7 @@ export type TExperienceItem = {
 	started: string
 	ended: string
 	skills: TSkillItem[]
-	descripion: TDescriptionItem[]
+	descriptions: TDescriptionItem[]
 }
 
 export const getExperiences = () => get<TExperienceItem[]>('/public/experiences')

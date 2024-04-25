@@ -10,6 +10,8 @@ import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import styles from './styles.module.scss'
 import { FC } from 'react'
 import { TBlogsItem } from 'api'
+import { dateTimeFormatter } from '@/lib/utils'
+import Link from 'next/link'
 
 const Blogs: FC<{ data: TBlogsItem[] }> = ({ data }) => {
 	return (
@@ -20,25 +22,34 @@ const Blogs: FC<{ data: TBlogsItem[] }> = ({ data }) => {
 			</div>
 			<Carousel opts={{ loop: true }} className="w-full">
 				<CarouselContent className="mt-[5rem]">
-					{[1, 2, 3, 4, 5, 6].map((item, index) => (
-						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center">
+					{data?.map((item, index) => (
+						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center" >
 							<div className={styles.blogContainer}>
 								<div className={styles.imgContainer}>
-									<Image src={''} alt={''} width={200} height={40} />
+									<Image
+										src={item?.image}
+										alt={item?.id}
+										width={200}
+										height={40}
+										priority
+										quality={100}
+									/>
 								</div>
 								<div className={styles.dataContainer}>
-									<p className={classNames(styles.title, jakartaM.className)}>{'TEST 1'}</p>
-									<span className={classNames(styles.date, interM.className)}>{'July 15, 2021'}</span>
+									<p className={classNames(styles.title, jakartaM.className)}>{item?.title}</p>
+									<span className={classNames(styles.date, interM.className)}>
+										{dateTimeFormatter(item?.date, 'MMMM-DD-YYYY')}
+									</span>
 									<span className={classNames(inter.className, styles.description)}>
-										{
-											'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid quisquam officia excepturi ducimus, sed minima.'
-										}
+										{item?.description}
 									</span>
 									<motion.span
 										whileTap={scaleSize}
 										className={classNames(interM.className, styles.btn)}
 									>
-										Continue Reading
+										<Link href={item?.link} target="_blank">
+											Continue Reading
+										</Link>
 									</motion.span>
 								</div>
 							</div>

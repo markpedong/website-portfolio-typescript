@@ -13,13 +13,14 @@ type ExpSkillResponse struct {
 }
 
 type ExperienceResponse struct {
-	ID       string             `json:"id" `
-	Company  string             `json:"company" `
-	Title    string             `json:"title"`
-	Location string             `json:"location"`
-	Started  string             `json:"started"`
-	Ended    string             `json:"ended"`
-	Skills   []ExpSkillResponse `json:"skills" `
+	ID           string             `json:"id" `
+	Company      string             `json:"company" `
+	Title        string             `json:"title"`
+	Location     string             `json:"location"`
+	Started      string             `json:"started"`
+	Ended        string             `json:"ended"`
+	Skills       []ExpSkillResponse `json:"skills" `
+	Descriptions []ExpDesc          `json:"descriptions"`
 }
 
 type EduSkillResponse struct {
