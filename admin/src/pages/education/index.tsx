@@ -47,6 +47,7 @@ const Education = () => {
 					<div>Ended</div>
 				</div>
 			),
+			search: false,
 			align: 'center',
 			render: (_, record) => (
 				<div className="flex flex-col">
@@ -65,6 +66,8 @@ const Education = () => {
 			title: 'Skills',
 			align: 'left',
 			ellipsis: true,
+			search: false,
+			width: 200,
 			render: (_, record) => (
 				<Space direction="vertical" align="start">
 					{record?.skills?.map(q => (
@@ -82,6 +85,7 @@ const Education = () => {
 					<div>Updated</div>
 				</div>
 			),
+			search: false,
 			align: 'center',
 			render: (_, record) => (
 				<div className="flex flex-col">
@@ -94,6 +98,7 @@ const Education = () => {
 			title: 'Operator',
 			align: 'center',
 			width: 180,
+			search: false,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}
@@ -129,6 +134,7 @@ const Education = () => {
 				trigger={isEdit ? <Typography.Link>Edit</Typography.Link> : <Button type="primary">ADD</Button>}
 				grid
 				layout="inline"
+				width={1400}
 				rowProps={{
 					gutter: [0, 25]
 				}}
@@ -144,51 +150,57 @@ const Education = () => {
 					return afterModalformFinish(actionRef, res)
 				}}
 			>
-				<ProFormText label="School" name="school" rules={[{ required: true }]} />
-				<ProFormText label="Course" name="course" rules={[{ required: true }]} />
-				<ProFormTextArea label="Description" name="description" rules={[{ required: true }]} />
-				<ProFormDatePicker
-					colProps={{ span: 12 }}
-					label="Started"
-					name="started"
-					rules={[{ required: true }]}
-					width={250}
-				/>
-				<ProFormDatePicker
-					colProps={{ span: 12 }}
-					label="Ended"
-					name="ended"
-					rules={[{ required: true }]}
-					width={250}
-				/>
-				<ProFormList
-					name="skills"
-					label="Skill Stack"
-					creatorButtonProps={{
-						position: 'bottom',
-						creatorButtonText: 'Add Skill'
-					}}
-					copyIconProps={false}
-					max={5}
-					alwaysShowItemLabel
-				>
-					<ProForm.Group style={{ marginBottom: '1rem' }}>
-						<ProFormText
-							name="name"
-							label="Skill"
+				<ProForm.Group colProps={{ span: 12 }} rowProps={{ gutter: [0, 20] }}>
+					<ProFormText label="School" name="school" rules={[{ required: true }]} />
+					<ProFormText label="Course" name="course" rules={[{ required: true }]} />
+					<ProFormTextArea label="Description" name="description" rules={[{ required: true }]} />
+					<ProForm.Group>
+						<ProFormDatePicker
 							colProps={{ span: 12 }}
-							labelCol={{ flex: '120px' }}
+							label="Started"
+							name="started"
 							rules={[{ required: true }]}
+							width={210}
 						/>
-						<ProFormSlider
-							name="percentage"
-							label="Percentage"
+						<ProFormDatePicker
 							colProps={{ span: 12 }}
-							labelCol={{ flex: '120px' }}
+							label="Ended"
+							name="ended"
 							rules={[{ required: true }]}
+							width={210}
 						/>
 					</ProForm.Group>
-				</ProFormList>
+				</ProForm.Group>
+				<ProForm.Group colProps={{ span: 12 }}>
+					<ProFormList
+						name="skills"
+						label="Skill Stack"
+						creatorButtonProps={{
+							position: 'bottom',
+							creatorButtonText: 'Add Skill'
+						}}
+						copyIconProps={false}
+						max={5}
+						alwaysShowItemLabel
+					>
+						<ProForm.Group style={{ marginBottom: '1rem' }}>
+							<ProFormText
+								name="name"
+								label="Skill"
+								colProps={{ span: 12 }}
+								labelCol={{ flex: '50px' }}
+								rules={[{ required: true }]}
+							/>
+							<ProFormSlider
+								name="percentage"
+								label="Percentage"
+								colProps={{ span: 12 }}
+								labelCol={{ flex: '100px' }}
+								rules={[{ required: true }]}
+							/>
+						</ProForm.Group>
+					</ProFormList>
+				</ProForm.Group>
 			</ModalForm>
 		)
 	}

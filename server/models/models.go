@@ -89,7 +89,7 @@ type Education struct {
 	Ended       string                `json:"ended" validate:"required"`
 	Description string                `json:"description" validate:"required"`
 	Skills      []EduSkill            `json:"skills"  gorm:"foreignKey:EducationID"`
-	Status      int                   `json:"status" validate:"required" gorm:"default:0"`
+	Status      int                   `json:"status" gorm:"default:0"`
 	CreatedAt   int                   `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt   int                   `json:"updated_at" gorm:"autoUpdateTime"`
 	DeletedAt   soft_delete.DeletedAt `json:"-"`
