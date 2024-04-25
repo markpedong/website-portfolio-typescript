@@ -44,45 +44,52 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 	}
 
 	return (
-		<div className={styles.contactWrapper}>
-			<div className={styles.inputContainer}>
-				<div>
-					<Header title="contact me" />
-					<span className={classNames(styles.header, jakartaB.className)}>Send me a Message!</span>
-				</div>
-				<Input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
-				<Input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-				<Textarea rows={5} placeholder="Message" value={message} onChange={e => setMessage(e.target.value)} />
-				<motion.div whileTap={scaleSize} className={styles.btnSubmit} onClick={submitMessage}>
-					Send Message
-				</motion.div>
+		<div>
+			<div>
+				<Header title="contact me" />
+				<span className={classNames(styles.header, jakartaB.className)}>Send me a Message!</span>
 			</div>
-			<div className={styles.detailsContainer}>
-				<div className={styles.details}>
-					<div className={styles.icon}>
-						<CiMapPin color="#7E74F1" />
-					</div>
-					<div className={styles.extra}>
-						<span className={interM.className}>Address</span>
-						<span>{data?.address}</span>
-					</div>
+			<div className="flex justify-center items-start gap-4 pt-4">
+				<div className={styles.inputContainer}>
+					<Input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+					<Input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+					<Textarea
+						rows={5}
+						placeholder="Message"
+						value={message}
+						onChange={e => setMessage(e.target.value)}
+					/>
+					<motion.div whileTap={scaleSize} className={styles.btnSubmit} onClick={submitMessage}>
+						Send Message
+					</motion.div>
 				</div>
-				<div className={styles.details}>
-					<div className={styles.icon}>
-						<CiPhone color="#7E74F1" />
+				<div className={styles.detailsContainer}>
+					<div className={styles.details}>
+						<div className={styles.icon}>
+							<CiMapPin color="#7E74F1" />
+						</div>
+						<div className={styles.extra}>
+							<span className={interM.className}>Address</span>
+							<span>{data?.address}</span>
+						</div>
 					</div>
-					<div className={styles.extra}>
-						<span className={interM.className}>Phone</span>
-						<span>{data?.phone}</span>
+					<div className={styles.details}>
+						<div className={styles.icon}>
+							<CiPhone color="#7E74F1" />
+						</div>
+						<div className={styles.extra}>
+							<span className={interM.className}>Phone</span>
+							<span>{data?.phone}</span>
+						</div>
 					</div>
-				</div>
-				<div className={styles.details}>
-					<div className={styles.icon}>
-						<CiMail color="#7E74F1" />
-					</div>
-					<div className={styles.extra}>
-						<span className={interM.className}>Email</span>
-						<span>{data?.email}</span>
+					<div className={styles.details}>
+						<div className={styles.icon}>
+							<CiMail color="#7E74F1" />
+						</div>
+						<div className={styles.extra}>
+							<span className={interM.className}>Email</span>
+							<span>{data?.email}</span>
+						</div>
 					</div>
 				</div>
 			</div>

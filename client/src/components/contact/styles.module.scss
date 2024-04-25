@@ -1,11 +1,7 @@
 @import "@/styles/_helpers.scss";
 
-.contactWrapper {
-    @apply grid grid-cols-2 gap-5;
-}
-
 .inputContainer {
-    @apply flex flex-col gap-6;
+    @apply flex flex-col gap-6 w-[50%];
 
     input,
     textarea {
@@ -23,7 +19,7 @@
 }
 
 .detailsContainer {
-    @apply pt-[2rem] pl-[2rem] flex flex-col gap-5;
+    @apply pt-[2rem] pl-[2rem] flex flex-col gap-5 w-[50%];
 
     .details {
         @apply flex items-center gap-3 justify-start;
