@@ -118,6 +118,7 @@ const Portfolio = () => {
 				}
 				width={1000}
 				initialValues={isEdit ? record : {}}
+				onOpenChange={(visible) => !visible && setImgUrl("")}
 				labelCol={{ flex: '110px' }}
 				onFinish={async params => {
 					let res
@@ -128,7 +129,6 @@ const Portfolio = () => {
 						res = await addPortfolios({ ...params, image: imgUrl })
 					}
 
-					setImgUrl('')
 					return afterModalformFinish(actionRef, res)
 				}}
 			>

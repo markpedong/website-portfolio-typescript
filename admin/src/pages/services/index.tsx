@@ -124,6 +124,7 @@ const Services = () => {
 						<Button type="primary">Add</Button>
 					)
 				}
+				onOpenChange={(visible) => !visible && setImgUrl("")}
 				onFinish={async params => {
 					let res
 

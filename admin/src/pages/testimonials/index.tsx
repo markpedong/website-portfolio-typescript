@@ -40,7 +40,9 @@ const Testimonials = () => {
 		{
 			title: 'Description',
 			align: 'center',
-			dataIndex: 'description'
+			dataIndex: 'description',
+			width: 200,
+			ellipsis: true
 		},
 		{
 			title: 'Job',
@@ -48,18 +50,26 @@ const Testimonials = () => {
 			dataIndex: 'job'
 		},
 		{
-			title: 'Updated',
+			title: (
+				<div className="flex flex-col gap-0">
+					<div>Created</div>
+					<div>Updated</div>
+				</div>
+			),
+			width: 180,
+			search: false,
 			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.updated_at, 'MM-DD-YYYY HH:MM:ss')
-		},
-		{
-			title: 'Created',
-			align: 'center',
-			render: (_, record) => dateTimeFormatter(record?.created_at, 'MM-DD-YYYY HH:MM:ss')
+			render: (_, record) => (
+				<div className="flex flex-col">
+					<div>{dateTimeFormatter(record.created_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+					<div>{dateTimeFormatter(record.updated_at, 'MM-DD-YYYY HH:MM:ss')}</div>
+				</div>
+			)
 		},
 		{
 			title: 'Operator',
 			align: 'center',
+			width: 180,
 			render: (_, record) => (
 				<Space>
 					{renderSwitch(record)}
@@ -104,6 +114,7 @@ const Testimonials = () => {
 				rowProps={{
 					gutter: [0, 25]
 				}}
+				onOpenChange={(visible) => !visible && setImgUrl("")}
 				onFinish={async params => {
 					let res
 
