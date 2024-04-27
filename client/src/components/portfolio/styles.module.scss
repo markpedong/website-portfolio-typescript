@@ -1,7 +1,7 @@
 @import "@/styles/_helpers.scss";
 
 .portfolioWrapper {
-    @apply my-[7rem];
+    @apply flex flex-col items-center justify-center px-[1rem] py-[7rem];
 }
 
 .headerContainer {
@@ -31,7 +31,7 @@
 }
 
 .cardContainer {
-    @apply flex aspect-square items-center justify-center h-[25rem] p-0 w-auto relative;
+    @apply flex flex-col h-[22rem] items-center justify-center w-[19rem] p-0 relative;
 }
 
 .activeCard {
@@ -39,10 +39,10 @@
 }
 
 .extraContainer {
-    @apply w-full h-[10rem] bg-white text-black absolute left-0 bottom-0 px-[1.8rem] pt-[2.2rem];
+    @apply w-full h-[10rem] bg-white text-black absolute left-0 bottom-0 px-[1.2rem] pt-[1rem];
 
     &::before {
-        @apply absolute top-[-15rem] left-0 h-[15rem] w-full;
+        @apply absolute top-[-12rem] left-0 h-[12rem] w-full;
         background-color: rgba(0, 0, 0, 0.65);
         content: '';
     }

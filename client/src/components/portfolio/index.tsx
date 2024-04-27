@@ -37,48 +37,44 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 	return (
 		<div className={styles.portfolioWrapper} id="portfolio__el">
 			<Header title="my works" />
-			<Carousel opts={{ loop: true }}>
+			<Carousel opts={{ loop: true }} className="w-full">
 				<PortfolioHeader />
 				<CarouselContent className="mt-[5rem]">
 					{data?.map((item, index) => (
 						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center">
-							<div className={'relative w-full'}>
-								<Card className={hoveredItem === item && styles.activeCard}>
-									<CardContent
-										className={styles.cardContainer}
-										onMouseEnter={() => setHoveredItem(item)}
-										onMouseLeave={() => setHoveredItem(null)}
+							<div
+								className={classNames(hoveredItem === item && styles.activeCard, styles.cardContainer)}
+								onMouseEnter={() => setHoveredItem(item)}
+								onMouseLeave={() => setHoveredItem(null)}
+							>
+								<Image
+									className="object-cover object-right-top"
+									src={item?.image}
+									alt="image_project"
+									fill
+									sizes="(max-width: 100vw) 100vw"
+									quality={100}
+									priority
+								/>
+								{hoveredItem === item && (
+									<motion.div
+										initial={{ opacity: 0, y: 50 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, y: 50 }}
+										transition={{ duration: 0.2 }}
+										className={styles.extraContainer}
 									>
-										<Image
-											className="object-cover object-right-top"
-											src={item?.image}
-											alt="image_project"
-											fill
-											sizes="(max-width: 100vw) 100vw"
-											quality={100}
-											priority
-										/>
-										{hoveredItem === item && (
-											<motion.div
-												initial={{ opacity: 0, y: 50 }}
-												animate={{ opacity: 1, y: 0 }}
-												exit={{ opacity: 0, y: 50 }}
-												transition={{ duration: 0.2 }}
-												className={styles.extraContainer}
-											>
-												<span className={classNames(styles.title, jakartaM.className)}>{item?.title}</span>
-												<div className={styles.techContainer}>
-													{item?.tech?.map(w => (
-														<span>{w}</span>
-													))}
-													<Link href={item?.link} target="_blank">
-														<IoMdLink color="#656D72" />
-													</Link>
-												</div>
-											</motion.div>
-										)}
-									</CardContent>
-								</Card>
+										<span className={classNames(styles.title, jakartaM.className)}>{item?.title}</span>
+										<div className={styles.techContainer}>
+											{item?.tech?.map(w => (
+												<span>{w}</span>
+											))}
+											<Link href={item?.link} target="_blank">
+												<IoMdLink color="#656D72" />
+											</Link>
+										</div>
+									</motion.div>
+								)}
 							</div>
 						</CarouselItem>
 					))}
