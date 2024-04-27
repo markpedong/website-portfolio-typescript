@@ -41,7 +41,7 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 				<PortfolioHeader />
 				<CarouselContent className="mt-[5rem]">
 					{data?.map((item, index) => (
-						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-14">
+						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center">
 							<div className={'relative w-full'}>
 								<Card className={hoveredItem === item && styles.activeCard}>
 									<CardContent
@@ -66,9 +66,7 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 												transition={{ duration: 0.2 }}
 												className={styles.extraContainer}
 											>
-												<span className={classNames(styles.title, jakartaM.className)}>
-													{item?.title}
-												</span>
+												<span className={classNames(styles.title, jakartaM.className)}>{item?.title}</span>
 												<div className={styles.techContainer}>
 													{item?.tech?.map(w => (
 														<span>{w}</span>
