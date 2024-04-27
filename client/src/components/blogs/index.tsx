@@ -17,36 +17,24 @@ const Blogs: FC<{ data: TBlogsItem[] }> = ({ data }) => {
 	return (
 		<div className={styles.blogsWrapper} id="blogs__el">
 			<div className={styles.titleWrapper}>
-				<Header title="my articles" />
-				<span className={classNames(styles.title, jakartaB.className)}>Personal Blog</span>
+				<Header title="useful articles" />
+				<span className={classNames(styles.title, jakartaB.className)}>Blogs</span>
 			</div>
 			<Carousel opts={{ loop: true }} className="w-full">
 				<CarouselContent className="mt-[5rem]">
 					{data?.map((item, index) => (
-						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center" >
+						<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 flex justify-center">
 							<div className={styles.blogContainer}>
 								<div className={styles.imgContainer}>
-									<Image
-										src={item?.image}
-										alt={item?.id}
-										width={200}
-										height={40}
-										priority
-										quality={100}
-									/>
+									<Image src={item?.image} alt={item?.id} width={200} height={40} priority quality={100} />
 								</div>
 								<div className={styles.dataContainer}>
 									<p className={classNames(styles.title, jakartaM.className)}>{item?.title}</p>
 									<span className={classNames(styles.date, interM.className)}>
 										{dateTimeFormatter(item?.date, 'MMMM-DD-YYYY')}
 									</span>
-									<span className={classNames(inter.className, styles.description)}>
-										{item?.description}
-									</span>
-									<motion.span
-										whileTap={scaleSize}
-										className={classNames(interM.className, styles.btn)}
-									>
+									<span className={classNames(inter.className, styles.description)}>{item?.description}</span>
+									<motion.span whileTap={scaleSize} className={classNames(interM.className, styles.btn)}>
 										<Link href={item?.link} target="_blank">
 											Continue Reading
 										</Link>
