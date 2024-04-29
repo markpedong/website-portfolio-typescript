@@ -44,7 +44,7 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 	}
 
 	return (
-		<div>
+		<div className={styles.mainWrapper}>
 			<div className={styles.headerContainer}>
 				<Header title="contact me" />
 				<span className={classNames(styles.header, jakartaB.className)}>Send me a Message!</span>

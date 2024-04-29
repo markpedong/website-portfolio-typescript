@@ -58,6 +58,16 @@
     @apply flex justify-center items-start gap-4 pt-4
 }
 
+.mainWrapper {
+    @apply px-[10rem]
+}
+
+@media screen and (max-width: 992px) {
+    .mainWrapper {
+        @apply px-0;
+    }
+}
+
 @media screen and (max-width: 576px) {
 
     .inputContainer,
