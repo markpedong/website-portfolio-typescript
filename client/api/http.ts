@@ -1,5 +1,5 @@
 import { stringify } from 'qs'
-import { throttle } from 'lodash'
+import throttle from 'lodash/throttle'
 import { redirect } from 'next/navigation'
 import { getLocalStorage } from '@/lib/xLocalStorage'
 import { clearUserData } from '@/constants/helper'
