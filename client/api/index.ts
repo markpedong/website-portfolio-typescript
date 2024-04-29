@@ -1,4 +1,4 @@
-import { get, post, upload } from './http'
+import { get, post } from './http'
 
 // /public/website
 export type WebsiteDetails = {

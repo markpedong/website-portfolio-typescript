@@ -4,12 +4,11 @@ import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import Header from '../header'
 import Image from 'next/image'
 import { inter, jakartaB } from '../../../public/fonts'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { SocialMedia, TDetailsItem, TLinksItem } from '../../../api'
 import Link from 'next/link'
 
 const Content: FC<{ data: TDetailsItem; links: TLinksItem[] }> = ({ data, links }) => {
-
 	const renderLink = (type: string, icon: React.ReactNode) => {
 		const currLink = links?.find(q => q.type === type)
 		return (

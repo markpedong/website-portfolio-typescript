@@ -9,8 +9,6 @@ import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import Image from 'next/image'
 import { TTestimonialsItem } from 'api'
 
-type Props = {}
-
 const Testimonials: FC<{ data: TTestimonialsItem[] }> = ({ data }) => {
 	return (
 		<div>
@@ -24,9 +22,7 @@ const Testimonials: FC<{ data: TTestimonialsItem[] }> = ({ data }) => {
 								<div className={styles.imageContainer}>
 									<Image src={q?.image} alt={q?.id} width={60} height={60} />
 								</div>
-								<span className={classNames(styles.description, inter.className)}>
-									{q?.description}
-								</span>
+								<span className={classNames(styles.description, inter.className)}>{q?.description}</span>
 								<span className={classNames(styles.author, jakartaM.className)}>{q?.author}</span>
 								<span className={styles.work}>{q?.job}</span>
 							</div>

@@ -5,7 +5,6 @@ import Header from '../header'
 import styles from './styles.module.scss'
 import { FaAngleRight } from 'react-icons/fa6'
 import { AnimatePresence, motion } from 'framer-motion'
-import { scaleSize } from '@/constants'
 import classNames from 'classnames'
 import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
 import { Separator } from '../ui/separator'
@@ -59,9 +58,7 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 									<span className={classNames(styles.title, jakartaM.className)}>
 										{selectedItem?.title}, <u>{selectedItem?.company}</u>
 									</span>
-									<span className={classNames(styles.location, inter.className)}>
-										{selectedItem?.location}
-									</span>
+									<span className={classNames(styles.location, inter.className)}>{selectedItem?.location}</span>
 									<span className={classNames(styles.duration, interM.className)}>
 										{dateTimeFormatter(selectedItem?.started, 'MM-YYYY')} <span>&#8212;</span>{' '}
 										{dateTimeFormatter(selectedItem?.ended, 'MM-YYYY')} • Full-time

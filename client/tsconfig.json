@@ -14,7 +14,8 @@
 		},
 		"jsx": "preserve",
 		"alwaysStrict": true,
-		"noUnusedLocals": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"importHelpers": true,
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"skipLibCheck": true,
@@ -22,7 +23,6 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"noImplicitAny": false,
-		"noUnusedParameters": false,
 		"resolveJsonModule": true,
 		"plugins": [
 			{

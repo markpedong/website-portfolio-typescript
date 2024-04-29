@@ -11,7 +11,8 @@ type ApiResponse<T> = {
 	status: number
 }
 
-export const throttleAlert = (msg: string) => throttle(() => console.error(msg), 1500, { trailing: false, leading: true })
+export const throttleAlert = (msg: string) =>
+	throttle(() => console.error(msg), 1500, { trailing: false, leading: true })
 
 const upload = async <T>(url: string, data): Promise<ApiResponse<T>> => {
 	const token = getLocalStorage('token')
@@ -67,16 +68,19 @@ const post = async <T>(url: string, data = {}): Promise<ApiResponse<T>> => {
 
 const get = async <T>(url: string, data = {}): Promise<ApiResponse<T>> => {
 	const token = getLocalStorage('token')
-	const apiResponse = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}${stringify(data) ? '?' + stringify(data) : ''}`, {
-		method: 'GET',
-		headers: {
-			...(token ? { token: String(token)?.replaceAll(`"`, '') } : {})
-		},
-		next: { revalidate: 0 }
-	})
+	const apiResponse = await fetch(
+		`${process.env.NEXT_PUBLIC_API_BASE_URL}${url}${stringify(data) ? '?' + stringify(data) : ''}`,
+		{
+			method: 'GET',
+			headers: {
+				...(token ? { token: String(token)?.replaceAll(`"`, '') } : {})
+			},
+			next: { revalidate: 0 }
+		}
+	)
 	//prettier-ignore
 	const response = await apiResponse.json() as ApiResponse<T>
-	
+
 	if (response?.status !== 200) {
 		throttleAlert(response.message)
 
