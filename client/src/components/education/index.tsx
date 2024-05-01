@@ -21,7 +21,6 @@ const Education: FC<{ data: TEducationItem[] }> = ({ data }) => {
 	}
 
 	useEffect(() => {
-		console.log('@@@', data)
 		setSelectedItem(data?.[0])
 	}, [])
 

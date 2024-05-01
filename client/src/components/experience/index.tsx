@@ -22,7 +22,6 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 	}
 
 	useEffect(() => {
-		console.log('@@@', data)
 		setSelectedItem(data?.[0])
 	}, [])
 
