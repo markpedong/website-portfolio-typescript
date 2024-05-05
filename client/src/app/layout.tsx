@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 	description: 'Personal Website'
 }
 
+export const revalidate = 0;
 export default function RootLayout({
 	children
 }: Readonly<{
