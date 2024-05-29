@@ -2,7 +2,7 @@ import { TServicesItem } from 'api'
 import classNames from 'classnames'
 import Image from 'next/image'
 import { FC } from 'react'
-import { inter, jakartaB, jakartaM } from '../../../public/fonts'
+import { inter, jakarta } from '../../../public/fonts'
 import Header from '../header'
 import styles from './styles.module.scss'
 
@@ -12,7 +12,7 @@ const CSpecialty: FC<{ item: TServicesItem }> = ({ item: { description, logo, ti
 			<div>
 				<Image style={{ color: '#7E74F1' }} src={logo} alt={id} height={20} width={20} />
 			</div>
-			<div className={jakartaM.className}>{title}</div>
+			<div className={jakarta.className}>{title}</div>
 			<div className={inter.className}>{description}</div>
 		</div>
 	)
@@ -23,7 +23,7 @@ const Specialty: FC<{ data: TServicesItem[] }> = ({ data }) => {
 		<div className={styles.specialtyWrapper} id="specialty__el">
 			<div className={styles.titleWrapper}>
 				<Header title="services" />
-				<span className={classNames(styles.title, jakartaB.className)}>Specialized In</span>
+				<span className={classNames(styles.title, jakarta.className)}>Specialized In</span>
 			</div>
 			<div className={styles.contentWrapper}>
 				{data?.map(q => (

@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6'
 import Header from '../header'
 import Image from 'next/image'
-import { inter, jakartaB } from '../../../public/fonts'
+import { inter, jakarta } from '../../../public/fonts'
 import React, { FC } from 'react'
 import { SocialMedia, TDetailsItem, TLinksItem } from '../../../api'
 import Link from 'next/link'
@@ -24,7 +24,7 @@ const Content: FC<{ data: TDetailsItem; links: TLinksItem[] }> = ({ data, links 
 		<div className={styles.mainContentWrapper}>
 			<div className={styles.nameContainer}>
 				<Header title="My name is" />
-				<span className={classNames(jakartaB.className, styles.title)}>
+				<span className={classNames(jakarta.className, styles.title)}>
 					{data?.first_name} <p style={{ color: '#7E74F1' }}>{data?.last_name}.</p>
 				</span>
 				<span className={inter.className}>{data?.description}</span>

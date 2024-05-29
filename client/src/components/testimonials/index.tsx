@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import Header from '../header'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
-import { inter, jakartaB, jakartaM } from '../../../public/fonts'
+import { inter, jakarta } from '../../../public/fonts'
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import Image from 'next/image'
 import { TTestimonialsItem } from 'api'
@@ -13,7 +13,7 @@ const Testimonials: FC<{ data: TTestimonialsItem[] }> = ({ data }) => {
 	return (
 		<div>
 			<Header title="my clients" />
-			<div className={classNames(styles.header, jakartaB.className)}>Testimonials</div>
+			<div className={classNames(styles.header, jakarta.className)}>Testimonials</div>
 			<Carousel opts={{ loop: true }} className="w-full">
 				<CarouselContent className="mt-[5rem]">
 					{data?.map((q, index) => (
@@ -23,7 +23,7 @@ const Testimonials: FC<{ data: TTestimonialsItem[] }> = ({ data }) => {
 									<Image src={q?.image} alt={q?.id} width={60} height={60} />
 								</div>
 								<span className={classNames(styles.description, inter.className)}>{q?.description}</span>
-								<span className={classNames(styles.author, jakartaM.className)}>{q?.author}</span>
+								<span className={classNames(styles.author, jakarta.className)}>{q?.author}</span>
 								<span className={styles.work}>{q?.job}</span>
 							</div>
 						</CarouselItem>

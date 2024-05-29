@@ -7,12 +7,12 @@ import { Textarea } from '../ui/textarea'
 import { motion } from 'framer-motion'
 import { scaleSize } from '@/constants'
 import { CiMail, CiMapPin, CiPhone } from 'react-icons/ci'
-import { interM, jakartaB } from '../../../public/fonts'
 import { TDetailsItem, addMessages } from 'api'
 import { useToast } from '../ui/use-toast'
 import { ToastAction } from '../ui/toast'
 import classNames from 'classnames'
 import Header from '../header'
+import { inter, jakarta } from '../../../public/fonts'
 
 const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 	const [name, setName] = useState('')
@@ -47,13 +47,18 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 		<div className={styles.mainWrapper}>
 			<div className={styles.headerContainer}>
 				<Header title="contact me" />
-				<span className={classNames(styles.header, jakartaB.className)}>Send me a Message!</span>
+				<span className={classNames(styles.header, jakarta.className)}>Send me a Message!</span>
 			</div>
 			<div className={styles.contactContainer}>
 				<div className={styles.inputContainer}>
 					<Input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
 					<Input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-					<Textarea rows={5} placeholder="Message" value={message} onChange={e => setMessage(e.target.value)} />
+					<Textarea
+						rows={5}
+						placeholder="Message"
+						value={message}
+						onChange={e => setMessage(e.target.value)}
+					/>
 					<motion.div whileTap={scaleSize} className={styles.btnSubmit} onClick={submitMessage}>
 						Send Message
 					</motion.div>
@@ -64,7 +69,7 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 							<CiMapPin color="#7E74F1" />
 						</div>
 						<div className={styles.extra}>
-							<span className={interM.className}>Address</span>
+							<span className={inter.className}>Address</span>
 							<span>{data?.address}</span>
 						</div>
 					</div>
@@ -73,7 +78,7 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 							<CiPhone color="#7E74F1" />
 						</div>
 						<div className={styles.extra}>
-							<span className={interM.className}>Phone</span>
+							<span className={inter.className}>Phone</span>
 							<span>{data?.phone}</span>
 						</div>
 					</div>
@@ -82,7 +87,7 @@ const Contact: FC<{ data: TDetailsItem }> = ({ data }) => {
 							<CiMail color="#7E74F1" />
 						</div>
 						<div className={styles.extra}>
-							<span className={interM.className}>Email</span>
+							<span className={inter.className}>Email</span>
 							<span>{data?.email}</span>
 						</div>
 					</div>

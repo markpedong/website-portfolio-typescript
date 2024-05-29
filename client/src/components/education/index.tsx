@@ -5,7 +5,7 @@ import Header from '../header'
 import styles from './styles.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
 import classNames from 'classnames'
-import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
+import { inter, jakarta } from '../../../public/fonts'
 import { Progress } from '../ui/progress'
 import { TEducationItem } from 'api'
 import { dateTimeFormatter } from '@/lib/utils'
@@ -27,7 +27,7 @@ const Education: FC<{ data: TEducationItem[] }> = ({ data }) => {
 	return (
 		<div className={styles.educationWrapper}>
 			<Header title="learning path" />
-			<span className={classNames(styles.header, jakartaB.className)}>Education & Skills</span>
+			<span className={classNames(styles.header, jakarta.className)}>Education & Skills</span>
 			<div className={styles.educationContainer}>
 				<div className={styles.leftContainer}>
 					{data?.map(w => (
@@ -37,9 +37,9 @@ const Education: FC<{ data: TEducationItem[] }> = ({ data }) => {
 							whileTap={scaleSize}
 							onClick={event => handleItemClick(w, event)}
 						>
-							<span className={classNames(styles.school, jakartaM.className)}>{w?.school}</span>
+							<span className={classNames(styles.school, jakarta.className)}>{w?.school}</span>
 							<span className={classNames(styles.course, inter.className)}>{w?.course}</span>
-							<span className={classNames(styles.year, interM.className)}>
+							<span className={classNames(styles.year, inter.className)}>
 								{dateTimeFormatter(w?.started, 'MM-YYYY')} - {dateTimeFormatter(w?.ended, 'MM-YYYY')}
 							</span>
 						</motion.div>
@@ -60,7 +60,7 @@ const Education: FC<{ data: TEducationItem[] }> = ({ data }) => {
 								<div className={styles.progressContainer}>
 									{selectedItem?.skills?.map(q => (
 										<div className={styles.progress} key={q?.id}>
-											<span className={interM.className}>{q?.name}</span>
+											<span className={inter.className}>{q?.name}</span>
 											<Progress value={+q?.percentage} className={styles.progressBar} />
 										</div>
 									))}

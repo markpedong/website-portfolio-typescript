@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 import { FaAngleRight } from 'react-icons/fa6'
 import { AnimatePresence, motion } from 'framer-motion'
 import classNames from 'classnames'
-import { inter, interM, jakartaB, jakartaM } from '../../../public/fonts'
+import { inter, jakarta } from '../../../public/fonts'
 import { Separator } from '../ui/separator'
 import { TExperienceItem } from 'api'
 import { dateTimeFormatter } from '@/lib/utils'
@@ -30,7 +30,7 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 			<Header title="career path" />
 			<div className={styles.experienceContainer}>
 				<div className={styles.leftContainer}>
-					<span className={classNames(styles.header, jakartaB.className)}>Work Experiences</span>
+					<span className={classNames(styles.header, jakarta.className)}>Work Experiences</span>
 					<div className={styles.btnContainer}>
 						{data?.map(w => (
 							<motion.div
@@ -54,11 +54,13 @@ const Experience: FC<{ data: TExperienceItem[] }> = ({ data }) => {
 								transition={{ duration: 0.2, type: 'spring', stiffness: 100 }}
 							>
 								<div className={styles.textContainer}>
-									<span className={classNames(styles.title, jakartaM.className)}>
+									<span className={classNames(styles.title, jakarta.className)}>
 										{selectedItem?.title}, <u>{selectedItem?.company}</u>
 									</span>
-									<span className={classNames(styles.location, inter.className)}>{selectedItem?.location}</span>
-									<span className={classNames(styles.duration, interM.className)}>
+									<span className={classNames(styles.location, inter.className)}>
+										{selectedItem?.location}
+									</span>
+									<span className={classNames(styles.duration, inter.className)}>
 										{dateTimeFormatter(selectedItem?.started, 'MM-YYYY')} <span>&#8212;</span>{' '}
 										{dateTimeFormatter(selectedItem?.ended, 'MM-YYYY')} • Full-time
 									</span>

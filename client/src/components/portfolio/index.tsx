@@ -7,17 +7,17 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Carousel, CarouselContent, CarouselItem, useCarousel } from '@/components/ui/carousel'
 import { motion } from 'framer-motion'
 import classNames from 'classnames'
-import { jakartaB, jakartaM } from '../../../public/fonts'
 import { IoMdLink } from 'react-icons/io'
 import { TPortfolioItem } from 'api'
 import Image from 'next/image'
 import Link from 'next/link'
+import { jakarta } from 'public/fonts'
 
 const PortfolioHeader = () => {
 	const { scrollNext, scrollPrev } = useCarousel()
 	return (
 		<div className={styles.headerContainer}>
-			<span className={jakartaB.className}>Featured Portfolios</span>
+			<span className={jakarta.className}>Featured Portfolios</span>
 			<div className={styles.arrowContainer}>
 				<div>
 					<FaChevronLeft onClick={scrollPrev} />
@@ -63,7 +63,7 @@ const Portfolio: FC<{ data: TPortfolioItem[] }> = ({ data }) => {
 										transition={{ duration: 0.2 }}
 										className={styles.extraContainer}
 									>
-										<span className={classNames(styles.title, jakartaM.className)}>{item?.title}</span>
+										<span className={classNames(styles.title, jakarta.className)}>{item?.title}</span>
 										<div className={styles.techContainer}>
 											{item?.tech?.map(w => (
 												<span>{w}</span>
